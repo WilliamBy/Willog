@@ -6,6 +6,15 @@ abbrlink: 6e7bdc
 tags:
   - Hexo
 toc: true
+sidebar:
+    left:
+        sticky: false
+    right:
+        sticky: true
+widgets: 
+	- 
+		position: left
+		type: toc
 ---
 ## 基本指令
 
