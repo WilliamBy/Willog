@@ -1,0 +1,41 @@
+.tags.has-addons .tag:not(:last-child) {
+    transition: cubic-bezier(0.4, 0, 1, 1) 0.2s!important;
+}
+
+span.tag:hover {
+    background-color: steelblue!important;
+    color: white!important;
+}
+
+a.article-more.button.is-small.size-small {
+    transition: cubic-bezier(0.4, 0, 1, 1) 0.2s!important;
+    font-weight: bolder!important;
+}
+
+a.article-more.button.is-small.size-small:hover {
+    background-color: steelblue!important;
+    color: white!important;
+    font-weight: bold!important;
+}
+
+a.gallery-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+
+p.has-text-centered.is-size-6.caption {
+    margin-top: 2px;
+}
+
+h3:before {
+    content: "»";
+}
+h2:before {
+    content: "§";
+}
+h4:before {
+    content: "›";
+}
