@@ -10,12 +10,17 @@ span.tag:hover {
 a.article-more.button.is-small.size-small {
     transition: cubic-bezier(0.4, 0, 1, 1) 0.2s!important;
     font-weight: bolder!important;
+    background-color: #323232!important;
+    border-color: transparent!important;
+    border-width: 1.75px;
+    color: white!important;
 }
 
 a.article-more.button.is-small.size-small:hover {
-    background-color: steelblue!important;
-    color: white!important;
-    font-weight: bold!important;
+    background-color: #ffffff!important;
+    border-color: black!important;
+    border-width: 1.75px;
+    color: black!important;
 }
 
 a.gallery-item {
@@ -38,4 +43,18 @@ h2:before {
 }
 h4:before {
     content: "›";
+}
+
+/* ???? */
+.icon.is-small {
+    height: 0em!important;
+    width: 0em!important;
+}
+
+/* ???? */
+a.level-item.button.is-transparent.is-marginless {
+    transition: ease 0.3s;
+}
+a.level-item.button.is-transparent.is-marginless:hover {
+    transform: translateY(-7px);
 }

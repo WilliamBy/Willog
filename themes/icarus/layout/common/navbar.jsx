@@ -55,7 +55,8 @@ class Navbar extends Component {
                             <i class="fas fa-list-ul"></i>
                         </a> : null}
                         {showSearch ? <a class="navbar-item search" title={searchTitle} href="javascript:;">
-                            <i class="fas fa-search"></i>
+                            {/* <i class="fas fa-search"></i> */}
+                            <p>🔍</p>
                         </a> : null}
                     </div>
                 </div>
