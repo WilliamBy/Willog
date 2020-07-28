@@ -15,11 +15,26 @@ widgets:
 		position: left
 		type: toc
 toc: true
-excerpt: "《第一行代码：Android 3rd》第一章到第五章的读书笔记，讲了AS的基本使用方法和Android项目结构，四大组件之一的Activity，以及各种UI控件的编写，还收录了本书中涉及的Kotlin的语法特性"
-thumbnail: 'https://raw.githubusercontent.com/BAIDI-coder/PicGo/master/img/wallhaven-nrmgzm.jpg'
+thumbnail: 'https://gitee.com/BAIDI-CODER/PicGo/raw/master/img/20200728184345.png'
 date: 2020-7-28
 ---
-# 第一行代码 Android（第三版）读书笔记 (一)
+{% label Android success %}
+{% label Kotlin warning %}
+{% label 读书笔记 info %}
+
+<br>
+<br>
+
+<article class="message">
+  <div class="message-header">
+    <p>简介</p>
+  </div>
+  <div class="message-body">
+      <p>"《第一行代码：Android 3rd》第一章到第五章的读书笔记，讲了AS的基本使用方法和Android项目结构，四大组件之一的Activity，以及各种UI控件的编写，还收录了本书中涉及的Kotlin的语法特性"</p>
+  </div>
+</article>
+
+<!-- more -->
 
 ## 第一章 开启征程（概要）
 
@@ -29,7 +44,7 @@ date: 2020-7-28
 ## 第二章 Kotlin 语法糖
 
 {% alert info %}
-同{% post_link kotlin 学习笔记 '《Kotlin 学习笔记》' %}一同食用最佳
+ 同《Kotlin 学习笔记》一同食用更佳！
 {% endalert %}
 
 ### 《第一行》中出现的 Kotlin 特性预览表
@@ -111,8 +126,26 @@ date: 2020-7-28
 - `Inflater` 的作用：将xml格式的布局文件解析转化成View的实例
 - `findViewById()` 返回布局中指定id的View实例, 在Activity类中直接使用`findViewById()`相当于在当前Activitiy所加载的布局中寻找对应的view，而使用`view.findViewById()`则指定了寻找的区域是view内
 
-> *留意Kotlin自动类型推导机制的使用场合，方法*
+{% alert danger %}
+ 留意Kotlin自动类型推导机制的使用场合，方法
+{% endalert %}
 
 ## *第五章 手机平板要兼顾，探究Fragment
 
-学习内容：Frag 生命周期，Frag 动态加载布局
+<div class="dropdown is-hoverable">
+  <div class="dropdown-trigger">
+    <button class="button" aria-haspopup="true" aria-controls="dropdown-menu4">
+      <span>学习内容</span>
+      <span class="icon is-small">
+        <i class="fas fa-angle-down" aria-hidden="true"></i>
+      </span>
+    </button>
+  </div>
+  <div class="dropdown-menu" id="dropdown-menu4" role="menu">
+    <div class="dropdown-content">
+      <div class="dropdown-item">
+        <p>Frag 生命周期，Frag 动态加载布局</p>
+      </div>
+    </div>
+  </div>
+</div>
