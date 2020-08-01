@@ -1,1 +1,128 @@
-use strict;function updateCoords(e){pointerX=(e.clientXe.touches[0].clientX)-canvasEl.getBoundingClientRect().left,pointerY=e.clientYe.touches[0].clientY-canvasEl.getBoundingClientRect().top}function setParticuleDirection(e){var t=anime.random(0,360)Math.PI180,a=anime.random(50,180),n=[-1,1][anime.random(0,1)]a;return{xe.x+nMath.cos(t),ye.y+nMath.sin(t)}}function createParticule(es,t){var a={};return a.x=e,a.y=t,a.color=colors[anime.random(0,colors.length-1)],a.radius=anime.random(16,32),a.endPos=setParticuleDirection(a),a.draw=function(){ctx.beginPath(),ctx.arc(a.x,a.y,a.radius,0,2Math.PI,!0),ctx.fillStyle=a.color,ctx.fill()},a}function createCircle(e,t){var a={};return a.x=e,a.y=t,a.color=#F00,a.radius=0.1,a.alpha=0.5,a.lineWidth=6,a.draw=function(){ctx.globalAlpha=a.alpha,ctx.beginPath(),ctx.arc(a.x,a.y,a.radius,0,2Math.PI,!0),ctx.lineWidth=a.lineWidth,ctx.strokeStyle=a.color,ctx.stroke(),ctx.globalAlpha=1},a}function renderParticule(e){for(var t=0;te.animatables.length;t++){e.animatables[t].target.draw()}}function animateParticules(e,t){for(var a=createCircle(e,t),n=[],i=0;inumberOfParticules;i++){n.push(createParticule(e,t))}anime.timeline().add({targetsn,xfunction(e){return e.endPos.x},yfunction(e){return e.endPos.y},radius0.1,durationanime.random(1200,1800),easingeaseOutExpo,updaterenderParticule}).add({targetsa,radiusanime.random(80,160),lineWidth0,alpha{value0,easinglinear,durationanime.random(600,800)},durationanime.random(1200,1800),easingeaseOutExpo,updaterenderParticule,offset0})}function debounce(e,t){var a;return function(){var n=this,i=arguments;clearTimeout(a),a=setTimeout(function(){e.apply(n,i)},t)}}var canvasEl=document.querySelector(.fireworks);if(canvasEl){var ctx=canvasEl.getContext(2d),numberOfParticules=30,pointerX=0,pointerY=0,tap=mousedown,colors=[#FF1461,#18FF92,#5A87FF,#FBF38C],setCanvasSize=debounce(function(){canvasEl.width=2window.innerWidth,canvasEl.height=2window.innerHeight,canvasEl.style.width=window.innerWidth+px,canvasEl.style.height=window.innerHeight+px,canvasEl.getContext(2d).scale(2,2)},500),render=anime({duration10,updatefunction(){ctx.clearRect(0,0,canvasEl.width,canvasEl.height)}});document.addEventListener(tap,function(e){sidebar!==e.target.id&&toggle-sidebar!==e.target.id&&A!==e.target.nodeName&&IMG!==e.target.nodeName&&(render.play(),updateCoords(e),animateParticules(pointerX,pointerY))},!1),setCanvasSize(),window.addEventListener(resize,setCanvasSize,!1)}use strict;function updateCoords(e){pointerX=(e.clientXe.touches[0].clientX)-canvasEl.getBoundingClientRect().left,pointerY=e.clientYe.touches[0].clientY-canvasEl.getBoundingClientRect().top}function setParticuleDirection(e){var t=anime.random(0,360)Math.PI180,a=anime.random(50,180),n=[-1,1][anime.random(0,1)]a;return{xe.x+nMath.cos(t),ye.y+nMath.sin(t)}}function createParticule(e,t){var a={};return a.x=e,a.y=t,a.color=colors[anime.random(0,colors.length-1)],a.radius=anime.random(16,32),a.endPos=setParticuleDirection(a),a.draw=function(){ctx.beginPath(),ctx.arc(a.x,a.y,a.radius,0,2Math.PI,!0),ctx.fillStyle=a.color,ctx.fill()},a}function createCircle(e,t){var a={};return a.x=e,a.y=t,a.color=#F00,a.radius=0.1,a.alpha=0.5,a.lineWidth=6,a.draw=function(){ctx.globalAlpha=a.alpha,ctx.beginPath(),ctx.arc(a.x,a.y,a.radius,0,2Math.PI,!0),ctx.lineWidth=a.lineWidth,ctx.strokeStyle=a.color,ctx.stroke(),ctx.globalAlpha=1},a}function renderParticule(e){for(var t=0;te.animatables.length;t++){e.animatables[t].target.draw()}}function animateParticules(e,t){for(var a=createCircle(e,t),n=[],i=0;inumberOfParticules;i++){n.push(createParticule(e,t))}anime.timeline().add({targetsn,xfunction(e){return e.endPos.x},yfunction(e){return e.endPos.y},radius0.1,durationanime.random(1200,1800),easingeaseOutExpo,updaterenderParticule}).add({targetsa,radiusanime.random(80,160),lineWidth0,alpha{value0,easinglinear,durationanime.random(600,800)},durationanime.random(1200,1800),easingeaseOutExpo,updaterenderParticule,offset0})}function debounce(e,t){var a;return function(){var n=this,i=arguments;clearTimeout(a),a=setTimeout(function(){e.apply(n,i)},t)}}var canvasEl=document.querySelector(.fireworks);if(canvasEl){var ctx=canvasEl.getContext(2d),numberOfParticules=30,pointerX=0,pointerY=0,tap=mousedown,colors=[#FF1461,#18FF92,#5A87FF,#FBF38C],setCanvasSize=debounce(function(){canvasEl.width=2window.innerWidth,canvasEl.height=2window.innerHeight,canvasEl.style.width=window.innerWidth+px,canvasEl.style.height=window.innerHeight+px,canvasEl.getContext(2d).scale(2,2)},500),render=anime({duration10,updatefunction(){ctx.clearRect(0,0,canvasEl.width,canvasEl.height)}});document.addEventListener(tap,function(e){sidebar!==e.target.id&&toggle-sidebar!==e.target.id&&A!==e.target.nodeName&&IMG!==e.target.nodeName&&(render.play(),updateCoords(e),animateParticules(pointerX,pointerY))},!1),setCanvasSize(),window.addEventListener(resize,setCanvasSize,!1)};
+const cnv = document.getElementById('mineCanvas');
+let ctx = cnv.getContext('2d');
+
+// 基础配置
+let count = 20;
+let innerRadius = 30;
+let outterRadius = 150;
+let moreOutterRadius = 200;
+let easing = 0.05;
+let mcolor = [
+    '#f4433699',
+    '#ffeb3b99',
+    '#03a9f499'
+]
+
+// 窗口变化重置 canvas 大小
+window.onresize = resize();
+
+function resize() {
+    cnv.width = window.innerWidth;
+    cnv.height = window.innerHeight;
+}
+
+window.onload = function () {
+    // 初始化宽高
+    resize();
+
+    // 鼠标逻辑
+    let mouse = new Mouse();
+    mouse.getMousePosition(cnv);
+
+    cnv.addEventListener('mousedown', () => {
+        let balls = getEnoughBall(count, mouse.x, mouse.y);
+
+        let circle = new Ball(mouse.x, mouse.y, innerRadius, '#f4433699');
+
+        var opacticy = 0.6;
+
+        (function animation() {
+            requestAnimationFrame(animation);
+
+            ctx.clearRect(0, 0, cnv.width, cnv.height);
+
+            balls.forEach(item => {
+                item.draw('fill');
+
+                // 缓动动画
+                item.vx = (item.dx - item.x) * easing;
+                item.vy = (item.dy - item.y) * easing;
+                item.x += item.vx;
+                item.y += item.vy;
+                item.sx += -item.sx * easing;
+                item.sy += -item.sy * easing;
+            })
+
+            // circle.draw('stroke');
+            // circle.radius += (outterRadius - circle.radius) * easing;
+            // opacticy = opacticy - 0.6 * easing;
+            // circle.color = `rgba(244, 67, 54, ${opacticy})`
+        })()
+    }, false)
+}
+
+function getEnoughBall(num, mouseX, mouseY) {
+    var balls = [];
+
+    for (let i = 0; i < num; i++) {
+        var ball = new Ball(0, 0, Math.random() * (40 - 5 + 1) + 5, mcolor[parseInt(Math.random() * 3)]);
+        ball.x = mouseX + Math.random() * innerRadius - Math.random() * innerRadius;
+        ball.y = mouseY + Math.random() * innerRadius - Math.random() * innerRadius;
+
+        // 计算最终位置
+        var x = mouseX - ball.x;
+        var y = mouseY - ball.y;
+        var scale = Math.abs(x / y);
+        ball.dx = (x < 0 ? 1 : -1) * moreOutterRadius / Math.sqrt(scale * scale + 1) * Math.random() * scale + mouseX;
+        ball.dy = (y < 0 ? 1 : -1) * moreOutterRadius / Math.sqrt(scale * scale + 1) * Math.random() + mouseY;
+
+        balls.push(ball);
+    }
+
+    return balls;
+}
+
+// ball class
+class Ball {
+    constructor(x, y, radius, color) {
+        this.x = x || 0;
+        this.y = y || 0;
+        this.vx = 0;
+        this.vy = 0;
+        this.sx = 1;
+        this.sy = 1;
+        this.radius = radius || 10;
+        this.color = color || 'black';
+    }
+
+    draw(type) {
+        if (['fill', 'stroke'].indexOf(type) == -1) {
+            throw ('ball.draw need a right type');
+        }
+        ctx.save();
+        ctx.translate(this.x, this.y);
+        ctx.scale(this.sx, this.sy);
+        ctx.fillStyle = this.color;
+        ctx.strokeStyle = this.color;
+        ctx.beginPath();
+        ctx.arc(0, 0, this.radius, 0, 360 * Math.PI / 180);
+        ctx.closePath();
+        type === 'fill' ? ctx.fill() : ctx.stroke();
+        ctx.restore();
+    }
+}
+
+// mouse class
+class Mouse {
+    constructor() {
+        this.x = 0;
+        this.y = 0;
+    }
+
+    getMousePosition(cnv) {
+        cnv.addEventListener('mousedown', (e) => {
+            this.x = e.clientX - cnv.offsetLeft;
+            this.y = e.clientY - cnv.offsetTop;
+        }, false)
+    }
+}

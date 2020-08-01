@@ -73,7 +73,9 @@ date: 2020-7-28
 | :-------------------------: | :--------------------------: | :------------------------------------: | :-------: |
 | `::($变量名).isInitialized` |        `sealed class`        | `fun ClassName.funcName(...) : ... {}` | 下划线`_` |
 
-
+| 函数类型                                  | 高阶函数                               | 内联函数                          |
+| ----------------------------------------- | -------------------------------------- | --------------------------------- |
+| `ClassName.(paraType, ...) -> returnType` | 接受/返回`函数类型/Lambda表达式`的函数 | `inline` `noinline` `crossinline` |
 
 ## 第三章 Activity！所见即所得
 
@@ -102,7 +104,7 @@ date: 2020-7-28
 
   - 思维导图
 
-![Activity 生命周期](https://raw.githubusercontent.com/BAIDI-coder/PicGo/master/img/image-20200529100001541.png)
+![Activity 生命周期](https://gitee.com/BAIDI-CODER/PicGo/raw/master/img/20200728191142.png)
 
 - 保存信息
   - Bundle 类型

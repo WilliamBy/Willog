@@ -34,7 +34,7 @@ widgets:
         # Links to be shown on the bottom of the profile widget
         social_links:
             Github:
-                icon: fab fa-github
+                icon: fab fa-github-alt
                 url: 'https://github.com/BAIDI-coder'
             # Facebook:
             #     icon: fab fa-facebook
@@ -65,9 +65,8 @@ widgets:
         type: links
         # Names and URLs of the sites
         links:
-            Lam: ''
-            Xiong: ''
-            Hexo: 'https://hexo.io'
+            🍃Lam: 'https://lamcoding.github.io'
+            🐻Xiong35: 'http://xiong35.cn'
     # Categories widget configurations
     -
         # Where should the widget be placed, left sidebar or right sidebar

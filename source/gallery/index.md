@@ -11,12 +11,13 @@ categories:
 tags:
 keywords:
 ---
+
 # 🌏颅内世界
 {% alert info %}
 以下图片来源于 {% link wallhaven.cc https://wallhaven.cc/ %}
 {% endalert %}
-<div class="justified-gallery">
 
+<div class="justified-gallery">
 ![👓](https://th.wallhaven.cc/lg/13/13vym3.jpg)
 ![👓](https://th.wallhaven.cc/small/vg/vg3wm5.jpg)
 ![👓](https://th.wallhaven.cc/small/13/13mk9v.jpg)
@@ -25,5 +26,4 @@ keywords:
 ![👓](https://th.wallhaven.cc/lg/ey/eymzjk.jpg)
 ![👓](https://th.wallhaven.cc/small/ym/ymoo2x.jpg)
 ![👓](https://th.wallhaven.cc/small/wy/wyv9qx.jpg)
-
 </div>
