@@ -3,6 +3,9 @@ categories:
   - 杂项
 abbrlink: b8e16674
 toc: true
+widget:
+	- position: left
+	- type: toc
 tags:
   - Math
 ---

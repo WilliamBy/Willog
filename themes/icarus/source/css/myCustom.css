@@ -35,14 +35,41 @@ p.has-text-centered.is-size-6.caption {
     margin-top: 2px;
 }
 
-h3:before {
-    content: "»";
+article.article .content h3::before {
+    content: "♞";
+}
+/* h3.menu-lable::before {
+    content: "";
+} */
+article.article .content h3 {
+    font-size: 1.5em!important;
+}
+
+article.article .content h2 {
+    font-size: 1.8em!important;
+    font-weight: bold!important;
 }
 h2:before {
-    content: "§";
+    content: "♜";
+}
+
+article.article .content h1 {
+    font-size: 2em!important;
+    font-weight: bold!important;
+}
+article.article .content h1::before {
+    content: "#";
+    color: rgb(27, 136, 245);
+}
+
+article.article .content h4 {
+    font-size: 1.25em!important;
 }
 h4:before {
-    content: "›";
+    content: "『";
+}
+h4:after {
+    content: "』";
 }
 
 
@@ -52,4 +79,44 @@ a.level-item.button.is-transparent.is-marginless {
 }
 a.level-item.button.is-transparent.is-marginless:hover {
     transform: translateY(-7px);
+}
+
+article {
+    font-family: sans-serif, 'Microsoft YaHei', monospace!important;
+}
+
+div.level-left > span {
+    color: black;
+}
+
+/*Scroll Bar*/
+::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+    transition: ease 0.1s;
+}
+::-webkit-scrollbar:hover {
+    cursor: pointer!important;
+}
+/*滚动条*/
+::-webkit-scrollbar-thumb {
+    background-color: #c8c8c8!important;
+    /* background-image: -webkit-linear-gradient(45deg, rgba(255,255,255,0.3) 25%, transparent 25%, transparent 50%, rgba(255,255,255,0.3) 50%, rgba(255,255,255,0.3) 75%, transparent 75%, transparent); */
+    background-image: none;
+    transition: ease 0.1s;
+}
+::-webkit-scrollbar-thumb:hover {
+    background-color: #a7a7a7!important;
+    /* background-image: -webkit-linear-gradient(45deg, rgba(255,255,255,0.3) 25%, transparent 25%, transparent 50%, rgba(255,255,255,0.3) 50%, rgba(255,255,255,0.3) 75%, transparent 75%, transparent); */
+    background-image: none;
+    cursor: pointer!important;
+}
+/*滚动槽*/
+::-webkit-scrollbar-track {
+    background: #ededed!important;
+    transition: ease 0.1s;
+}
+::-webkit-scrollbar-track:hover {
+    background: #ededed!important;
+    cursor: pointer!important;
 }
