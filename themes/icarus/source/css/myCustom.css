@@ -38,9 +38,24 @@ p.has-text-centered.is-size-6.caption {
 article.article .content h3::before {
     content: "♞";
 }
-/* h3.menu-lable::before {
-    content: "";
-} */
+article.article .content h3:hover::after {
+    content: "#h3";
+    color: rgb(164, 164, 164);
+    font-family: Impact;
+    font-size: medium;
+    font-weight: normal;
+    left: 5px;
+    position: relative;
+}
+article.article .content h1:hover::after {
+    content: "#h1";
+    color: rgb(164, 164, 164);
+    font-family: Impact;
+    font-size: medium;
+    font-weight: normal;
+    left: 5px;
+    position: relative;
+}
 article.article .content h3 {
     font-size: 1.5em!important;
 }
@@ -49,10 +64,27 @@ article.article .content h2 {
     font-size: 1.8em!important;
     font-weight: bold!important;
 }
-h2:before {
-    content: "♜";
+article.article .content h2:hover::after {
+    content: "#h2";
+    color: rgb(164, 164, 164);
+    font-family: Impact;
+    font-size: medium;
+    font-weight: normal;
+    left: 5px;
+    position: relative;
 }
-
+h2:before {
+    content: "§";
+}
+h1.title.is-3.is-size-4-mobile:hover::after {
+    content: "#h1";
+    color: rgb(164, 164, 164);
+    font-family: Impact;
+    font-size: medium;
+    font-weight: normal;
+    left: 5px;
+    position: relative;
+}
 article.article .content h1 {
     font-size: 2em!important;
     font-weight: bold!important;
@@ -82,17 +114,18 @@ a.level-item.button.is-transparent.is-marginless:hover {
 }
 
 article {
-    font-family: sans-serif, 'Microsoft YaHei', monospace!important;
+    font-family: 'Microsoft YaHei', sans-serif,  monospace!important;
 }
 
 div.level-left > span {
     color: black;
+    font-family: 'Microsoft YaHei', sans-serif, monospace;
 }
 
 /*Scroll Bar*/
 ::-webkit-scrollbar {
-    width: 6px;
-    height: 6px;
+    width: 4px;
+    height: 4px;
     transition: ease 0.1s;
 }
 ::-webkit-scrollbar:hover {
@@ -119,4 +152,8 @@ div.level-left > span {
 ::-webkit-scrollbar-track:hover {
     background: #ededed!important;
     cursor: pointer!important;
+}
+
+a.alert-link:hover {
+    text-decoration: underline;
 }

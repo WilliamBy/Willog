@@ -72,7 +72,7 @@ abbrlink: c484d1a3
 
 {% alert warning %}
 
-Java流基础知识: {% link  传送门 https://www.cnblogs.com/xdp-gacl/p/3634409.html %}
+<a href="https://www.cnblogs.com/xdp-gacl/p/3634409.html" class="alert-link">Java流基础知识</a>
 
 {% endalert %}
 
