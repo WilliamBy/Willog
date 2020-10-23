@@ -16,6 +16,7 @@ article:
     readtime: true
 tags:
   - Android
+  - Kotlin
 widgets:
   - position: left
     type: toc
@@ -103,8 +104,9 @@ fun save(inputText: String) {
 
 ### SharedPreferences 存储
 
-<div class="alert alert-info"><i class="fa fa-info  float-left"></i>  <p>SharedPreferences 是使用键值对的方式来存储数据的，支持多种数据类型的存储</p>
+<div class="alert alert-info"><i class="fa fa-info-circle  float-left"></i>  <p>SharedPreferences 是使用键值对的方式来存储数据的，支持多种数据类型的存储</p>
 </div>
+
 
 - 获取SharedPreferences: 
   - Context 的 `getSharedPreferences()` 
@@ -287,7 +289,7 @@ replaceData.setOnClickListener {
 - 运行时权限（危险权限）申请：第一步同普通权限，第二步如下
 
 ``` kotlin 危险权限申请流程：
-//检查权限是否以及授予;                          权限名（见表8-1）
+//检查权限是否以及授予;                          权限名（见图8-2）
 if(ContextCompat.checkSelfPermission(context: Context, permissionName: String) == PackageManager.PERMISSION_GRANTED) {...}
 
 //申请权限							                  权限列表                  申请码（标识一次申请）
@@ -315,7 +317,7 @@ Uri.parse(uri: String): Uri
 <!Uri>.getPathSegments(): List<String>
 ```
 
-
+<img src="https://gitee.com/BAIDI-CODER/PicGo/raw/master/img/20200915191206.png" alt="图8-2" style="zoom:67%;" />
 
 ### ContentResover 类
 

@@ -4,26 +4,29 @@ cover: true
 mathjax: false
 date: 2020-05-30 20:43:45
 variant: cyberpunk
-img:
-coverImg:
-summary:
-categories:
-tags:
-keywords:
+plugins:
+	gallery: true
 ---
 
 # 🌏颅内世界
+
+## 米山舞のペン
+
 {% alert info %}
-以下图片来源于 {% link wallhaven.cc https://wallhaven.cc/ %}
+
+画师：米山舞
+
 {% endalert %}
 
 <div class="justified-gallery">
-![👓](https://th.wallhaven.cc/lg/13/13vym3.jpg)
-![👓](https://th.wallhaven.cc/small/vg/vg3wm5.jpg)
-![👓](https://th.wallhaven.cc/small/13/13mk9v.jpg)
-![👓](https://th.wallhaven.cc/small/96/96yzg8.jpg)
-![👓](https://w.wallhaven.cc/full/95/wallhaven-95qeox.jpg)
-![👓](https://th.wallhaven.cc/lg/ey/eymzjk.jpg)
-![👓](https://th.wallhaven.cc/small/ym/ymoo2x.jpg)
-![👓](https://th.wallhaven.cc/small/wy/wyv9qx.jpg)
+
+![⭐](https://gitee.com/BAIDI-CODER/PicGo/raw/master/img/20201022213327.png)
+![Eva 全明星 ×](https://gitee.com/BAIDI-CODER/PicGo/raw/master/img/20201022213457.png)
+![](https://gitee.com/BAIDI-CODER/PicGo/raw/master/img/20201022213619.png)
+![Darling in the FranXXX](https://gitee.com/BAIDI-CODER/PicGo/raw/master/img/20201022213935.png)
+![](https://gitee.com/BAIDI-CODER/PicGo/raw/master/img/20201022223415.png)
+![⭐](https://gitee.com/BAIDI-CODER/PicGo/raw/master/img/20201022225328.png)
+
 </div>
+
+

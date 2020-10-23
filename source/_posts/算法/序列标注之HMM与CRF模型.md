@@ -3,8 +3,6 @@ categories:
   - 算法
 abbrlink: 568ec988
 toc: true
-mathjax: true
-katex: true
 tags:
   - AI
   - NLP
@@ -17,6 +15,8 @@ widgets:
 	- 
 		position: left
 		type: toc
+plugins:
+	katex: true
 thumbnail: "https://gitee.com/BAIDI-CODER/PicGo/raw/master/img/20200728191026.png"
 date: 2020-6-15
 ---

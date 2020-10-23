@@ -157,3 +157,20 @@ div.level-left > span {
 a.alert-link:hover {
     text-decoration: underline;
 }
+
+/* mermaid */
+text > tspan.title {
+    font-size: inherit;
+    font-family: "trebuchet ms",verdana,arial!important;
+}
+
+g > foreignObject > div {
+    font-size: 16px;
+    font-weight: normal;
+    font-family: "trebuchet ms",verdana,arial!important;
+}
+
+div.mermaid > svg {
+    display: block;
+    margin: auto;
+}

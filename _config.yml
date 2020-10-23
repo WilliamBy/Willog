@@ -140,7 +140,7 @@ hexo-footnotes:
 #   plugins:
 #     - '@iktakahiro/markdown-it-katex'
 #     - 'markdown-it-emoji'           
-
+    
 # Deployment
 ## Docs: https://hexo.io/docs/deployment.html
 deploy:
