@@ -174,3 +174,11 @@ div.mermaid > svg {
     display: block;
     margin: auto;
 }
+
+.alert-cyber {
+    background-color: #0f1b22;
+    border-color: #02c3db;
+    color: #f2f8fc;
+    border-width: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
