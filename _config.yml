@@ -5,11 +5,10 @@
 # Site
 title: William@blog
 subtitle: 'Willog'
-description: '柏威良的个人博客 baidicoder's personal blog'
-keywords: [baidicoder, weiliang_bai, 博客, 技术, android, web, AI, 算法, 心得, 读书笔记]
+description: 'personal blog'
 author: Weiliang Bai
 language: zh-CN
-timezone: ''
+timezone:
 
 # URL
 ## If your site is put in a subdirectory, set url as 'http://yoursite.com/child' and root as '/child/'
