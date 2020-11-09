@@ -3,15 +3,10 @@ categories:
   - 技术
   - 笔记
 article:
-    # Code highlight settings
     highlight:
-        # Code highlight themes
         theme: atom-one-light
-        # Show copy code button
         clipboard: true
-        # Default folding status of the code blocks. Can be "", "folded", "unfolded"
         fold: folded
-    # Whether to show thumbnail image for every article
     thumbnail: true
     readtime: true
 tags:

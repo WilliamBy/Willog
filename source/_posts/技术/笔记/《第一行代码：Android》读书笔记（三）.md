@@ -3,15 +3,10 @@ categories:
   - 技术
   - 笔记
 article:
-    # Code highlight settings
     highlight:
-        # Code highlight themes
         theme: atom-one-light
-        # Show copy code button
         clipboard: true
-        # Default folding status of the code blocks. Can be "", "folded", "unfolded"
         fold: unfolded
-    # Whether to show thumbnail image for every article
     thumbnail: true
     readtime: true
 tags:
@@ -21,9 +16,7 @@ widgets:
   - position: left
     type: toc
 sidebar:
-    # Left sidebar configurations
     left:
-        # Whether the sidebar sticks to the top when page scrolls
         sticky: false
 toc: true
 thumbnail: 'https://gitee.com/BAIDI-CODER/PicGo/raw/master/img/20201020193149.jpg'

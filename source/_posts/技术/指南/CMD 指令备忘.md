@@ -1,7 +1,7 @@
 ---
 categories:
   - 技术
-  - 备忘
+  - 指南
 abbrlink: 369ceeb5
 tags: Command
 ---

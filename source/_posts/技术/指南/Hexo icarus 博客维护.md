@@ -1,15 +1,14 @@
 ---
 categories:
   - 技术
-  - 备忘
+  - 指南
 abbrlink: 6e7bdc
 tags:
   - Hexo
 toc: true
-widgets: 
-	- 
-		position: left
-		type: toc
+widgets:
+  - position: left
+    type: toc
 ---
 ## 基本指令
 

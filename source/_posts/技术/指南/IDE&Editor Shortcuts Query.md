@@ -1,9 +1,9 @@
 ---
 categories:
   - 技术
-  - 备忘
-widget: null
+  - 指南
 abbrlink: fde8aecf
+widget:
 ---
 # 各大 IDE & Editor 快捷键对照表
 

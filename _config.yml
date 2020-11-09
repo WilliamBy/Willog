@@ -108,13 +108,6 @@ feed:
   content_limit: 140
   content_limit_delim: ' '
   order_by: -date
-# Emoji plugin
-githubEmojis:
-  enable: true
-  className: github-emoji
-  inject: true
-  styles:
-  customEmojis:
 # 自动分类
 auto_category:
  enable: true
@@ -122,23 +115,7 @@ auto_category:
 abbrlink:
   alg: crc32  #support crc16(default) and crc32
   rep: hex    #support dec(default) and hex
-hexo-footnotes:
-# # purer theme 专用
-# markdown:
-#   html: true
-#   xhtmlOut: true
-#   breaks: true
-#   langPrefix:
-#   linkify: true
-#   typographer:
-#   quotes: “”‘’
-#   anchors:
-#     level: 1
-#     permalink: false
-#     separator: '-'
-#   plugins:
-#     - '@iktakahiro/markdown-it-katex'
-#     - 'markdown-it-emoji'           
+
     
 # Deployment
 ## Docs: https://hexo.io/docs/deployment.html
@@ -147,4 +124,4 @@ deploy:
   repository:
           github: git@github.com:BAIDI-coder/BAIDI-coder.github.io.git
           coding: git@e.coding.net:bbbaidi/baidi-blog.git
-  branch: master
+branch: master
