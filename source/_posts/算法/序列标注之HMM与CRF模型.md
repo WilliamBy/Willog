@@ -19,6 +19,7 @@ plugins:
 	katex: true
 thumbnail: "https://gitee.com/BAIDI-CODER/PicGo/raw/master/img/20200728191026.png"
 date: 2020-6-15
+top: 100
 ---
 {% label 机器学习 primary %}
 {% label HMM info %}

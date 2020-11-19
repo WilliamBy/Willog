@@ -1,6 +1,8 @@
 ---
 abbrlink: 827933de
 date: 2020-1-1
+categories:
+  - 杂项
 ---
 # Hexo 的插件扩展调试页面
 <div class="mermaid">

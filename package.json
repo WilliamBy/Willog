@@ -29,6 +29,7 @@
     "hexo-generator-archive": "^1.0.0",
     "hexo-generator-category": "^1.0.0",
     "hexo-generator-feed": "^2.2.0",
+    "hexo-generator-index-plus": "^1.0.0",
     "hexo-generator-indexed": "^1.2.0",
     "hexo-generator-json-content": "^4.2.3",
     "hexo-generator-search": "^2.4.0",

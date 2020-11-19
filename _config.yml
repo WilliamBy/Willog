@@ -55,11 +55,9 @@ highlight:
 # path: Root path for your blogs index page. (default = '')
 # per_page: Posts displayed per page. (0 = disable pagination)
 # order_by: Posts order. (Order by date descending by default)
-index_generator:
+index_generator_plus:
   path: ''
   per_page: 10
-  order_by: -date
-  pagination_dir: page
 
 # Category & Tag
 default_category: 杂项
@@ -81,7 +79,7 @@ use_date_for_updated: false
 
 # Pagination
 ## Set per_page to 0 to disable pagination
-per_page: 12
+per_page: 10
 pagination_dir: page
 
 # Include / Exclude file(s)
@@ -118,10 +116,12 @@ abbrlink:
 
     
 # Deployment
-## Docs: https://hexo.io/docs/deployment.html
 deploy:
-  type: git
-  repository:
-          github: git@github.com:BAIDI-coder/BAIDI-coder.github.io.git
-          coding: git@e.coding.net:bbbaidi/baidi-blog.git
-branch: master
+- type: git
+  repo: git@e.coding.net:williamby/Websites/Willog.git
+  branch: deploy
+- type: git
+  repo: git@github.com:WilliamBy/Willog.git
+- type: git
+  repo: git@e.coding.net:bbbaidi/baidi-blog.git
+  branch: master

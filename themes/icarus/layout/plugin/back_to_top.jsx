@@ -7,8 +7,7 @@ class BackToTop extends Component {
 
         return <Fragment>
             <a id="back-to-top" title={title} href="javascript:;">
-                {/* <i class="fas fa-chevron-up"></i> */}
-                <p>👆</p>
+                <i class="fa fa-chevron-up"></i>
             </a>
             <script src={jsUrl} defer={true}></script>
         </Fragment>;

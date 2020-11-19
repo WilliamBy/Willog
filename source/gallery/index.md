@@ -6,6 +6,15 @@ variant: cyberpunk
 plugins:
 	gallery: true
 toc: true
+sidebar:
+    left:
+        sticky: true
+    right:
+        sticky: false
+widgets: 
+	- 
+		position: left
+		type: toc
 ---
 
 # 🎮 机械猎人

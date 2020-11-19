@@ -13,6 +13,7 @@ widgets:
 toc: true
 thumbnail: 'https://gitee.com/BAIDI-CODER/PicGo/raw/master/img/20200728184345.png'
 date: 2020-7-28
+top: 100
 ---
 {% label Android success %}
 {% label Kotlin warning %}

@@ -1,27 +1,27 @@
 common:
     archive:
         one: '归档'
-        other: '📅归档'
+        other: '归档'
     category:
         one: '分类'
-        other: '📦分类'
+        other: '分类'
     tag:
         one: '标签'
-        other: '🔖标签'
+        other: '标签'
     post:
         one: '文章'
-        other: '🎯文章'
+        other: '文章'
     page:
         one: '页面'
-        other: '📰页面'
+        other: '页面'
     prev: '上一篇'
     next: '下一篇'
 widget:
-    follow: '👉   关注   👈'
-    recents: '📄最新文章'
-    links: '🌏链接'
-    tag_cloud: '🔖标签云'
-    catalogue: '📖目录'
+    follow: '关注'
+    recents: '最新文章'
+    links: '链接'
+    tag_cloud: '标签'
+    catalogue: '目录'
     subscribe_email: '订阅更新'
     subscribe: '订阅'
     adsense: '广告'
