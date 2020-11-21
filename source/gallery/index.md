@@ -30,17 +30,13 @@ widgets:
 
 <div class="justified-gallery">
 
-![初遇长颈兽](https://gitee.com/BAIDI-CODER/PicGo/raw/master/img/20201024152515.jpg)
 ![子午城外](https://i.loli.net/2020/10/25/S15RwEAOcqsumpG.png)
+![雷霆牙](https://i.loli.net/2020/10/25/sfPGZBceEV2nwRp.png)
 ![冰原猎手](https://i.loli.net/2020/10/25/o124mA73UPWd8RK.png)
-![决战雷霆牙](https://i.loli.net/2020/10/25/sfPGZBceEV2nwRp.png)
-![子午城桥](https://i.loli.net/2020/10/25/FREWSPVfcbaCD95.png)
-![惬意](https://i.loli.net/2020/11/01/HhKlnfpeDCAN8qG.png)
-![寻猎风暴鸟](https://i.loli.net/2020/11/01/ZgK3dUyaJ86YOEj.png)
-![绳枪束缚](https://i.loli.net/2020/11/01/YG4IvXmTC5VjDrM.png)
 ![18号大坩埚](https://i.loli.net/2020/11/01/p4RmTjrqfnMFdZe.png)
 ![坟屯](https://i.loli.net/2020/11/06/Vrx9qlOUj53QZNL.png)
-![坟屯巨兽](https://i.loli.net/2020/11/06/1Xdv9FwZziHhDW6.png)
+![造者尽头](https://i.loli.net/2020/11/08/QdDnvsyM8AJVBuP.png)
+![遗迹](https://i.loli.net/2020/11/08/Pum7XIpiGBgSrke.png)
 
 </div>
 
