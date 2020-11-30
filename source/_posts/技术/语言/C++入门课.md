@@ -14,6 +14,8 @@ widgets:
 	- 
 		position: left
 		type: toc
+thumbnail: "https://gitee.com/BAIDI-CODER/PicGo/raw/master/img/20201130113005.png"
+top: 100
 ---
 {% label C/C++ success %}
 
@@ -360,15 +362,23 @@ void main(void) { I i; }
 
 <img src="https://gitee.com/BAIDI-CODER/PicGo/raw/master/img/20201027114930.png" alt="各种函数可重载的运算符" style="zoom:67%;" />
 
-## 强制类型转换
-
-1. 地址类型转换
-2. 数据类型转换
+## 强转重载
 
 - **单参数的构造函数具备类型转换作用**，必要时能自动将参数类型的值转换为要构造的类型。
 
 - 用operator定义强制类型转换函数： `operator 类型(…)` 
-  - 由于转换后的类型就是函数的返回类型， 强制类型转换函数不需要定义返回类。
+  - 强制类型转换函数不需要定义返回类。
+- 当用`explicit`修饰强转重载或单参数构造函数时，相关的隐式类型转换将不会自动进行，必须显式调用
+
+## 递增（减）重载
+
+- 前置`++/--`重载为单目运算符
+- 后置`++/--`重载为双目运算符（多出来的那一目必须为int类型参数）
+- 注意普通成员函数内隐含了一个this参数（占一目）
+
+## 括号重载
+
+- 构造函数的括号不受括号重载的影响
 
 # 模板
 
@@ -418,44 +428,110 @@ class A: public B<T> {...}; //B是模板形参表有一个class类型参数的�
 
 ## 异常
 
-- 抛出的异常分类：内置数据类型异常，标准异常，自定义类对象，不接对象（仅限于catch块中，传递到上一级catch块）
+- 抛出的异常分类：内置数据类型异常，标准异常，自定义类对象，不接任何对象（`throw;`只能用于于catch块中，作用是将异常传递到上一级catch块）
 - try-throw-catch：监视-抛出-捕获，catch到一个对象时调用以对象为参数的构造函数（拷贝/移动构造）
-- 异常接口：`returnType func() throw(...) {}`
+- 异常接口：`returnType func() throw(...) {}`（`noexcept`与`throw()`几乎等价）
 - `set_terminate(), set_unexpect()`：设置自定义终止函数（**异常传递到顶层时调用终止函数**），设置自定义处理不可预料异常的函数（函数产生有悖于异常接口说明的异常类型时调用）。
 
 ### 析构问题
 
-如果通过new产生的指针类型的异常，在catch 处理后，通常应使用delete释放内存； 如果继续传播指针类型的异常，则可以不使用 delete；从最内层被调函数抛出异常到外层调用函数的 catch处理过程捕获异常，由此形成的函数调用 链所有局部对象都会被自动析构，因此使用异 常处理机制能在一定程度上防止内存泄漏； 调用链中通过new分配的内存不会自动释放； 特殊情况在产生异常对象的过程中也会出现内存泄漏情况：未完成构造的对象。
+- 如果通过new产生的指针类型的异常，在catch 处理后，通常应使用delete释放内存；
+- 如果继续传播指针类型的异常，则可以不使用 delete；**从最内层被调函数抛出异常到外层调用函数的catch处理过程捕获异常，由此形成的函数调用链所有局部对象都会被自动析构**，因此使用异 常处理机制能在一定程度上防止内存泄漏；
+- 调用链中通过**new**分配的内存**不会自动释放**；
+- 特殊情况在产生异常对象的过程中也会出现内存泄漏情况：**未完成构造的对象。**
 
-### 带有继承关系的异常
+### 异常与继承
 
-如果父类A的子类为B，B类异常能被catch(A)、 catch(const A)、 catch(volatile A)、 catch(const volatile A) 等捕获。 如果父类A的子类为B，指向可写B类对象的指 针异常也能被catch(A*)、 catch(const A*)、 catch(volatile A*)、 catch(const volatile A*)等 捕获。
-捕获子类对象的catch应放在捕获父类对象的 catch前面。 注意catch(const volatile void *)能捕获任意指 针类型的异常，catch(…)能捕获任意类型的异
-常。
+- 如果父类A的子类为B，B类异常能被`catch(A)、 catch(const A)、 catch(volatile A)、 catch(const volatile A)`等捕获。 
+
+- 如果父类A的子类为B，指向可写B类对象的指针异常也能被`catch(A*)、 catch(const A*)、 catch(volatile A*)、 catch(const volatile A)`等捕获。
+- 因此捕获子类对象的catch应放在捕获父类对象的 catch前面。
+
+- `catch(const volatile void *)`能捕获任意指 针类型的异常，catch(…)能捕获任意类型的异常。
 
 ## 断言
 
 - `<asset.h>`
-- `asset(expr)`，expr为假时进入断言函数
-- 静态断言（编译时检查）
+- `asset(int expr)`，expr为假时进入断言函数(会输出断言表达式、断言发生的文件名和行号)
+- 静态断言`static_asset(int expr)`（编译时检查）
 
 # 类型推导与转换
+
+## 传统转换
+
+### 显式转换
+
+- 格式：`(T)expr`
+
+- 一般类型转换得到右值: `(T)expr`，**左值引用转换得到左值: **`(T&)expr`
+- `const T`无法转为`T`，但可以通过指针类型`*(T*)&`或引用类型`(T&)`来转换
+
+### 隐式转换
+
+- 由编译器自动完成
+- 场景：传参时、赋值时、运算时
+- 转换规则：
+  - 非浮点类型字节少的向字节数多的转换：bool、char、short和int的运算按int类型进行。
+  - 非浮点类型有符号数向无符号数转换：所有浮点常量及浮点数的运算按double类型进行。
+  - 运算时整数向double类型的转换。
+
+## cast转换
+
+- **格式：**`XXX_cast<T>(expr) //将expr转化为目标类型T`
+- `static_cast`
+  - 编译时检查是否可以转换
+  - 不能去除源类型的`const`或`volatile`
+  - 目标类型不能包含存储位置类修饰符，如`static、extern、 auto、register`等
+- `const_cast`
+  - 目标类型必须是**指针、引用、或者指向对象成员的指针**
+  - 类型表达式不能包含存储位置类修饰符
+  - 不能将无址常量、位段访问、无址返回值转换为有址引用
+- `dynamic_cast`
+  - 目标类型必须是**类的引用、类的指针或者`void*`类型**
+  - 源类型必须是类的对象、对象地址
+  - **用于子类向父类转换，以及有虚函数的基类向派生类转换**
+  - 不能去除源类型中的const和volitale
+- `reinterpret_cast`
+  - 用于有址引用与无址引用之间的相互转换、指针或引用类型的转换、足够大整数与指针类型的转换
+
+## typeid
+
+- 获得对象的**真实**类型标识 
+- 格式
+  - typeid(类型表达式)
+  - typeid(数值表达式)
+- typeid的返回结果是`const type_info&`类型
+- 在使用typeid之前可先`#include <typeinfo>`，使用std名字空间。
+
+## decltype
+
+- 提取表达式的类型，构成新的类型表达式
+- `decltype(expr)`
+
+``` cpp decltype 实例
+int x = 10;
+decltype(x) y; // int y;
+
+int a1[10];
+decltype(a1) p1; // int p1[10]; p1的类型是 int[10]
+decltype(a1) *p11; // int (*p11)[10]
+```
 
 ## Lamda 表达式
 
 - 形式：`[捕获列表](形参列表) mutable 异常说明->返回类型{函数体}`
-- `auto fuc = Lambda expr; fuc(params list)`
-- `mutable`: 用于说明是否可以修改捕获变量
+- 使用：`auto fuc = [Lambda expr]; fuc(params);`
+- `mutable`: 可选，用于说明是否可以修改捕获变量
 - 捕获列表说明：
   - 捕获列表的参数用于捕获Lambda表达式的外部变量； 
   - 外部变量可以是函数参数或函数定义的局部自动变量；
-  - 出现“&变量名”表示引用外部变量； 
+  - 出现`&变量名`表示引用外部变量； 
   - `[&]`表示捕获所有函数参数或函数定义的局部自动变量。
-  - 出现“=变量名”表示使用外部变量的值（值参传递), 
+  - 出现`=变量名`表示使用外部变量的值（值参传递), 
   - `[=]`表示捕获所有函数参数或函数定义的局部自动变量的值； 
   - 外部变量不能是全局变量或static定义的变量； 
   - 外部变量不能是类的成员；
-  - 参数表后有mutable表示在Lambda表达式可以修改“值参 传递的值”，但不影响Lambda表达式外部变量的值。
+  - 参数表后有mutable表示在Lambda表达式可以修改“值参传递的值”，但不影响Lambda表达式外部变量的值。
 
 >  Lambda表达式被编译为临时类的对象，临时类重载了函数operator()
 
