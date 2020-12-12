@@ -31,12 +31,16 @@ widgets:
 <div class="justified-gallery">
 
 ![子午城外](https://i.loli.net/2020/10/25/S15RwEAOcqsumpG.png)
-![雷霆牙](https://i.loli.net/2020/10/25/sfPGZBceEV2nwRp.png)
+
+![斗兽场](https://i.loli.net/2020/11/21/5GdBqVU7KQX4xvZ.png)
+
 ![冰原猎手](https://i.loli.net/2020/10/25/o124mA73UPWd8RK.png)
+
 ![18号大坩埚](https://i.loli.net/2020/11/01/p4RmTjrqfnMFdZe.png)
-![坟屯](https://i.loli.net/2020/11/06/Vrx9qlOUj53QZNL.png)
-![造者尽头](https://i.loli.net/2020/11/08/QdDnvsyM8AJVBuP.png)
-![遗迹](https://i.loli.net/2020/11/08/Pum7XIpiGBgSrke.png)
+
+![战火](https://i.loli.net/2020/12/12/3FPu2DtNzq5vyhV.png)
+
+![哈迪斯](https://i.loli.net/2020/12/12/T1GwiohDmpFlUX7.png)
 
 </div>
 
