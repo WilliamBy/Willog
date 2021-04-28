@@ -122,8 +122,8 @@ deploy:
 - type: git
   repo: git@e.coding.net:williamby/Websites/Willog.git
   branch: deploy
-- type: git
-  repo: git@github.com:WilliamBy/Willog.git
+# - type: git
+#  repo: git@github.com:WilliamBy/Willog.git
 - type: git
   repo: git@e.coding.net:bbbaidi/baidi-blog.git
   branch: master
