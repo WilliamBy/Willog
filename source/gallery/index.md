@@ -65,11 +65,11 @@ widgets:
 
 <div class="justified-gallery">
 
-![⭐](https://gitee.com/BAIDI-CODER/PicGo/raw/master/img/20201022213327.png)
-![Eva 全明星 ×](https://gitee.com/BAIDI-CODER/PicGo/raw/master/img/20201022213457.png)
-![](https://gitee.com/BAIDI-CODER/PicGo/raw/master/img/20201022213619.png)
-![Darling in the FranXXX](https://gitee.com/BAIDI-CODER/PicGo/raw/master/img/20201022213935.png)
-![⭐](https://gitee.com/BAIDI-CODER/PicGo/raw/master/img/20201022225328.png)
+![⭐](https://gitee.com/w1_liamby/PicGo/raw/master/img/20201022213327.png)
+![Eva 全明星 ×](https://gitee.com/w1_liamby/PicGo/raw/master/img/20201022213457.png)
+![](https://gitee.com/w1_liamby/PicGo/raw/master/img/20201022213619.png)
+![Darling in the FranXXX](https://gitee.com/w1_liamby/PicGo/raw/master/img/20201022213935.png)
+![⭐](https://gitee.com/w1_liamby/PicGo/raw/master/img/20201022225328.png)
 
 </div>
 

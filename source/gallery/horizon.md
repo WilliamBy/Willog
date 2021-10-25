@@ -12,7 +12,7 @@ plugins:
 
 <div class="justified-gallery">
 
-![初遇长颈兽](https://gitee.com/BAIDI-CODER/PicGo/raw/master/img/20201024152515.jpg)
+![初遇长颈兽](https://gitee.com/w1_liamby/PicGo/raw/master/img/20201024152515.jpg)
 ![遗迹](https://i.loli.net/2020/11/08/Pum7XIpiGBgSrke.png)
 ![荣光](https://i.loli.net/2020/10/25/Q8ExtGXNVJ42rzi.png)
 ![夜袭强盗窝](https://i.loli.net/2020/10/25/AlHQaMRnWLzhGwE.png)

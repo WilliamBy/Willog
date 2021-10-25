@@ -17,7 +17,7 @@ widgets:
 		type: toc
 plugins:
 	katex: true
-thumbnail: "https://gitee.com/BAIDI-CODER/PicGo/raw/master/img/20200728191026.png"
+thumbnail: "https://gitee.com/w1_liamby/PicGo/raw/master/img/20200728191026.png"
 date: 2020-6-15
 top: 100
 ---
@@ -74,7 +74,7 @@ $$
 
 以图形表示的隐马尔可夫模型如下所示：
 
-<img src="https://gitee.com/BAIDI-CODER/PicGo/raw/master/img/20200728191122.png" alt="graph 1"  />
+<img src="https://gitee.com/w1_liamby/PicGo/raw/master/img/20200728191122.png" alt="graph 1"  />
 
 HMM 模型解决了被用来解决序列标注问题中的三个基本问题：预测、平滑和解码。本文主要讨论的解码问题，即求解给定观测序列，给出最有可能的标记序列的问题。本文使用$\lambda(W,T,\pi,\beta,A,B)$来表征一个序列标注问题的HMM模型，其中$W$表示观测序列，$T$表示输出的标记序列，$\pi$表示标记之间的概率转移转移矩阵，$\beta$表示标记到观测值的发射概率，$A$表示输入对象的集合，$B$表示标记的集合。
 
@@ -116,7 +116,7 @@ $$
 
 能够计算出特定$T^*$的概率值$P(T^*|W)$还不够，还要要找到最大的概率对应的$T$。这个问题可以转化成一个求解**最短加权路径**的图论问题。
 
-<img src="https://gitee.com/BAIDI-CODER/PicGo/raw/master/img/20200728191133.png" alt="graph 2" style="zoom:80%;" />
+<img src="https://gitee.com/w1_liamby/PicGo/raw/master/img/20200728191133.png" alt="graph 2" style="zoom:80%;" />
 
 可构建像 *graph 1* 所示的图模型（其余路径未画出）。显然，如果标记的取值有$m$种可能，序列的长度为$n$，那么枚举所有路径然后取加权值最大的路径的算法复杂度为 $O(n^m)$ ，随着序列长度增长而呈指数级增长。为了降低复杂度这里一般采用*维特比算法* (Viterbi algorithm) 。
 
@@ -126,7 +126,7 @@ $$
 
 维特比算法是一种动态规划算法，用于找出隐藏的最大可能路径（维特比路径）。维特比算法的核心思想在于**全局最优包含局部最优**。考虑从起点到某个中间点的最大加权路径，那么该路径所经过的该中间点的前一个点在同时间上所有点中也一定是加权最大的点。下面给出了Viterbi算法的伪代码。其中$T_1,T_2$分别为保存当前节点最大累计权值的矩阵和保存该节点最大累计权值路径上的上一个节点的矩阵。以下给出了维特比算法的算法伪代码：
 
-<img src="https://gitee.com/BAIDI-CODER/PicGo/raw/master/img/20200728191129.png" alt="graph3" style="zoom:80%;" />
+<img src="https://gitee.com/w1_liamby/PicGo/raw/master/img/20200728191129.png" alt="graph3" style="zoom:80%;" />
 
 {% alert warning %}
 下溢问题：$(5)$ 式中的连乘积中因子有可能过小而下溢为零从而造成整个式子变为0，为了避免这种情况可以考虑取对数化乘积为加法的技巧。
