@@ -12,6 +12,8 @@ abbrlink: 5a1e79ff
 
 - project&module 等概念, 模板, 项目结构查询管理
 
+<!-- more -->
+
 # Tips
 
 - 代码段：main

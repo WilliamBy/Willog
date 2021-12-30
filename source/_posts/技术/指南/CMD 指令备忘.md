@@ -5,6 +5,8 @@ categories:
 abbrlink: 369ceeb5
 tags: Command
 ---
+<!-- more -->
+
 # CMD 指令备忘
 
 - Process 类

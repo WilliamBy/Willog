@@ -5,6 +5,8 @@ categories:
 abbrlink: fde8aecf
 widget:
 ---
+<!-- more -->
+
 # 各大 IDE & Editor 快捷键对照表
 
 | 操作                        | IntelliJ IDEA                   | Visual Studio Code     | Visual Studio |

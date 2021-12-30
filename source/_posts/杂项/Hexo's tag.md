@@ -4,7 +4,10 @@ date: 2020-1-1
 categories:
   - 杂项
 ---
+<!-- more -->
+
 # Hexo 的插件扩展调试页面
+
 <div class="mermaid">
  classDiagram
       class NotificationManager {
@@ -20,4 +23,3 @@ categories:
       NotificationManager --> Notification: 发送
       Notification --* NotificationChannel: 对应
 </div>
-
