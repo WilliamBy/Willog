@@ -127,34 +127,34 @@ div.level-left > span {
 }
 
 /*Scroll Bar*/
-::-webkit-scrollbar {
+/* ::-webkit-scrollbar {
     width: 4px;
     height: 4px;
     transition: ease 0.1s;
 }
 ::-webkit-scrollbar:hover {
     cursor: pointer!important;
-}
+} */
 /*滚动条*/
 ::-webkit-scrollbar-thumb {
-    background-color: #ffffff!important;
+    /* background-color: #ffffff!important; */
     /* background-image: -webkit-linear-gradient(45deg, rgba(255,255,255,0.3) 25%, transparent 25%, transparent 50%, rgba(255,255,255,0.3) 50%, rgba(255,255,255,0.3) 75%, transparent 75%, transparent); */
     background-image: none;
     transition: ease 0.1s;
 }
 ::-webkit-scrollbar-thumb:hover {
-    background-color: #ffffff!important;
+    /* background-color: #ffffff!important; */
     /* background-image: -webkit-linear-gradient(45deg, rgba(255,255,255,0.3) 25%, transparent 25%, transparent 50%, rgba(255,255,255,0.3) 50%, rgba(255,255,255,0.3) 75%, transparent 75%, transparent); */
     background-image: none;
     cursor: pointer!important;
 }
 /*滚动槽*/
 ::-webkit-scrollbar-track {
-    background: #ffffff!important;
+    /* background: #ffffff!important; */
     transition: ease 0.1s;
 }
 ::-webkit-scrollbar-track:hover {
-    background: #ffffff!important;
+    /* background: #ffffff!important; */
     cursor: pointer!important;
 }
 
@@ -180,6 +180,10 @@ div.mermaid > svg {
 }
 
 .is-sticky > #toc > .card-content > .menu {
-    overflow-y: scroll !important;
+    overflow-y: hidden !important;
     height: 600px !important;
+}
+
+.is-sticky > #toc > .card-content > .menu:hover {
+    overflow-y: scroll !important;
 }
