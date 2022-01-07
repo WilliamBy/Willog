@@ -7,7 +7,7 @@ toc: true
 tags: C/C++
 sidebar:
     left:
-        sticky: false
+        sticky: true
     right:
         sticky: false
 widgets: 

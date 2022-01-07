@@ -17,7 +17,7 @@ widgets:
     type: toc
 sidebar:
     left:
-        sticky: false
+        sticky: true
 toc: true
 thumbnail: 'https://gitee.com/w1_liamby/PicGo/raw/master/img/20201020193149.jpg'
 abbrlink: 87cffae2

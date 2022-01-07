@@ -137,24 +137,24 @@ div.level-left > span {
 }
 /*滚动条*/
 ::-webkit-scrollbar-thumb {
-    background-color: #c8c8c8!important;
+    background-color: #ffffff!important;
     /* background-image: -webkit-linear-gradient(45deg, rgba(255,255,255,0.3) 25%, transparent 25%, transparent 50%, rgba(255,255,255,0.3) 50%, rgba(255,255,255,0.3) 75%, transparent 75%, transparent); */
     background-image: none;
     transition: ease 0.1s;
 }
 ::-webkit-scrollbar-thumb:hover {
-    background-color: #a7a7a7!important;
+    background-color: #ffffff!important;
     /* background-image: -webkit-linear-gradient(45deg, rgba(255,255,255,0.3) 25%, transparent 25%, transparent 50%, rgba(255,255,255,0.3) 50%, rgba(255,255,255,0.3) 75%, transparent 75%, transparent); */
     background-image: none;
     cursor: pointer!important;
 }
 /*滚动槽*/
 ::-webkit-scrollbar-track {
-    background: #ededed!important;
+    background: #ffffff!important;
     transition: ease 0.1s;
 }
 ::-webkit-scrollbar-track:hover {
-    background: #ededed!important;
+    background: #ffffff!important;
     cursor: pointer!important;
 }
 
@@ -177,4 +177,9 @@ g > foreignObject > div {
 div.mermaid > svg {
     display: block;
     margin: auto;
+}
+
+.is-sticky > #toc > .card-content > .menu {
+    overflow-y: scroll !important;
+    height: 600px !important;
 }

@@ -120,8 +120,5 @@ abbrlink:
 # Deployment
 deploy:
 - type: git
-  repo: git@e.coding.net:williamby/Websites/Willog.git
-  branch: deploy
-- type: git
   repo: git@github.com:WilliamBy/Willog.git
   branch: master
