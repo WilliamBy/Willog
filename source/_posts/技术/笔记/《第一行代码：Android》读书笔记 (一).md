@@ -11,7 +11,7 @@ widgets:
 		position: left
 		type: toc
 toc: true
-thumbnail: 'https://gitee.com/w1_liamby/PicGo/raw/master/img/20200728184345.png'
+thumbnail: 'https://migrate-1301429536.cos.ap-nanjing.myqcloud.com/img/20200728184345.png'
 date: 2020-7-28
 top: 100
 ---
@@ -104,7 +104,7 @@ top: 100
 
   - 思维导图
 
-![Activity 生命周期](https://gitee.com/w1_liamby/PicGo/raw/master/img/20200728191142.png)
+![Activity 生命周期](https://migrate-1301429536.cos.ap-nanjing.myqcloud.com/img/20200728191142.png)
 
 - 保存信息
   - Bundle 类型
@@ -123,7 +123,7 @@ top: 100
 - 高级一点的控件：ListVIew, RecyclerView ...
 ### 基本原理撇清楚
 
-![view の 继承关系图](https://gitee.com/w1_liamby/PicGo/raw/master/img/20200723232141.png)
+![view の 继承关系图](https://migrate-1301429536.cos.ap-nanjing.myqcloud.com/img/20200723232141.png)
 
 - `Inflater` 的作用：将xml格式的布局文件解析转化成View的实例
 - `findViewById()` 返回布局中指定id的View实例, 在Activity类中直接使用`findViewById()`相当于在当前Activitiy所加载的布局中寻找对应的view，而使用`view.findViewById()`则指定了寻找的区域是view内

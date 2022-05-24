@@ -16,7 +16,7 @@ widgets:
   - position: left
     type: toc
 toc: true
-thumbnail: 'https://gitee.com/w1_liamby/PicGo/raw/master/img/20200911100439.jpg'
+thumbnail: 'https://migrate-1301429536.cos.ap-nanjing.myqcloud.com/img/20200911100439.jpg'
 date: 2020-9-11
 abbrlink: c484d1a3
 top: 100
@@ -190,7 +190,7 @@ override fun onUpgrade(db: SQLiteDatabase, oldVersion: Int, newVersion: Int) {
 //查                     sql语句（含占位符）；   参数列表；
 ```
 
-<img src="https://gitee.com/w1_liamby/PicGo/raw/master/img/20200910161247.png" alt="图7-1 直接执行 SQL 语句" style="zoom:67%;" />
+<img src="https://migrate-1301429536.cos.ap-nanjing.myqcloud.com/img/20200910161247.png" alt="图7-1 直接执行 SQL 语句" style="zoom:67%;" />
 
 - 使用内置方法
 
@@ -313,7 +313,7 @@ Uri.parse(uri: String): Uri
 <!Uri>.getPathSegments(): List<String>
 ```
 
-<img src="https://gitee.com/w1_liamby/PicGo/raw/master/img/20200915191206.png" alt="图8-2" style="zoom:67%;" />
+<img src="https://migrate-1301429536.cos.ap-nanjing.myqcloud.com/img/20200915191206.png" alt="图8-2" style="zoom:67%;" />
 
 ### ContentResover 类
 

@@ -14,7 +14,7 @@ widgets:
 	- 
 		position: left
 		type: toc
-thumbnail: "https://gitee.com/w1_liamby/PicGo/raw/master/img/20201130113005.png"
+thumbnail: "https://migrate-1301429536.cos.ap-nanjing.myqcloud.com/img/20201130113005.png"
 top: 100
 ---
 {% label C/C++ success %}
@@ -97,9 +97,9 @@ top: 100
 
 ## 左右值表达式
 
-![](https://gitee.com/w1_liamby/PicGo/raw/master/img/20201002081502.png)
+![](https://migrate-1301429536.cos.ap-nanjing.myqcloud.com/img/20201002081502.png)
 
-![](https://gitee.com/w1_liamby/PicGo/raw/master/img/20201002081452.png)
+![](https://migrate-1301429536.cos.ap-nanjing.myqcloud.com/img/20201002081452.png)
 
 ## 右值引用
 
@@ -212,7 +212,7 @@ top: 100
 
 ## 对象的存储机制
 
-![](https://gitee.com/w1_liamby/PicGo/raw/master/img/20201027102300.png)
+![](https://migrate-1301429536.cos.ap-nanjing.myqcloud.com/img/20201027102300.png)
 
 # 继承与权限机制
 
@@ -261,7 +261,7 @@ Class B : private A
 
 
 
-![](https://gitee.com/w1_liamby/PicGo/raw/master/img/20201016091854.png)
+![](https://migrate-1301429536.cos.ap-nanjing.myqcloud.com/img/20201016091854.png)
 
 - C++允许父类指针指向子类对象、父类引用子类对象， 无须通过强制类型转换， 编译时按父类说明的权限访问成员
 
@@ -335,7 +335,7 @@ Class B: [virtual] [派生控制] 基类1, [派生控制][virtual] 基类2
 
 - 画出继承关系树（按定义顺序从左至右排列基类，箭头由子类指向父类），虚基类用方框框起来；
 
-<img src="https://gitee.com/w1_liamby/PicGo/raw/master/img/20201027105750.png" style="zoom: 67%;" />
+<img src="https://migrate-1301429536.cos.ap-nanjing.myqcloud.com/img/20201027105750.png" style="zoom: 67%;" />
 
 - 实例
 
@@ -361,7 +361,7 @@ void main(void) { I i; }
 
 ## 可重载类型
 
-<img src="https://gitee.com/w1_liamby/PicGo/raw/master/img/20201027114930.png" alt="各种函数可重载的运算符" style="zoom:67%;" />
+<img src="https://migrate-1301429536.cos.ap-nanjing.myqcloud.com/img/20201027114930.png" alt="各种函数可重载的运算符" style="zoom:67%;" />
 
 ## 强转重载
 

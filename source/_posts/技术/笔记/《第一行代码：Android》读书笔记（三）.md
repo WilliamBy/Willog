@@ -19,7 +19,7 @@ sidebar:
     left:
         sticky: true
 toc: true
-thumbnail: 'https://gitee.com/w1_liamby/PicGo/raw/master/img/20201020193149.jpg'
+thumbnail: 'https://migrate-1301429536.cos.ap-nanjing.myqcloud.com/img/20201020193149.jpg'
 abbrlink: 87cffae2
 date: 2020-10-17 00:00:00
 top: 100
@@ -452,7 +452,7 @@ thread {
 
 > Android 只能在主线程中改UI，因此在子线程中想要进行UI操作就需要异步机制
 
-<img src="https://gitee.com/w1_liamby/PicGo/raw/master/img/20200916163550.png" alt="图10-1 Android 异步消息处理机制" style="zoom:90%;" />
+<img src="https://migrate-1301429536.cos.ap-nanjing.myqcloud.com/img/20200916163550.png" alt="图10-1 Android 异步消息处理机制" style="zoom:90%;" />
 
 - Message是在线程之间传递的消息，它可以在内部携带少量的信息，用于在不同线程之间传递数据。
 - Handler主要用于发送和处理消息，发送消息一般是使用Handler的sendMessage()方法、post()方法等，而发出的消息经过一系列地辗转处理后，最终会传递到Handler的handleMessage()方法中。
@@ -520,7 +520,7 @@ Message --> Handler: 处理
 }
 ```
 
-<img src="https://gitee.com/w1_liamby/PicGo/raw/master/img/20200916174433.png" alt="图10-2 AsyncTask抽象方法の关系" style="zoom:80%;" />
+<img src="https://migrate-1301429536.cos.ap-nanjing.myqcloud.com/img/20200916174433.png" alt="图10-2 AsyncTask抽象方法の关系" style="zoom:80%;" />
 
 
 
