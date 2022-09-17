@@ -1,0 +1,189 @@
+.tags.has-addons .tag:not(:last-child) {
+    transition: cubic-bezier(0.4, 0, 1, 1) 0.2s!important;
+}
+
+span.tag:hover {
+    background-color: steelblue!important;
+    color: white!important;
+}
+
+span.tag {
+    font-size: 12px;
+}
+
+a.article-more.button.is-small.size-small {
+    transition: cubic-bezier(0.4, 0, 1, 1) 0.2s!important;
+    font-weight: bolder!important;
+    background-color: #323232!important;
+    border-color: transparent!important;
+    border-width: 1.75px;
+    color: white!important;
+}
+
+a.article-more.button.is-small.size-small:hover {
+    background-color: #ffffff!important;
+    border-color: black!important;
+    border-width: 1.75px;
+    color: black!important;
+}
+
+a.gallery-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+
+p.has-text-centered.is-size-6.caption {
+    margin-top: 2px;
+}
+
+article.article .content h3::before {
+    content: "♞";
+}
+article.article .content h3:hover::after {
+    content: "#h3";
+    color: rgb(164, 164, 164);
+    font-family: Impact;
+    font-size: medium;
+    font-weight: normal;
+    left: 5px;
+    position: relative;
+}
+article.article .content h1:hover::after {
+    content: "#h1";
+    color: rgb(164, 164, 164);
+    font-family: Impact;
+    font-size: medium;
+    font-weight: normal;
+    left: 5px;
+    position: relative;
+}
+article.article .content h3 {
+    font-size: 1.5em!important;
+}
+
+article.article .content h2 {
+    font-size: 1.8em!important;
+    font-weight: bold!important;
+}
+article.article .content h2:hover::after {
+    content: "#h2";
+    color: rgb(164, 164, 164);
+    font-family: Impact;
+    font-size: medium;
+    font-weight: normal;
+    left: 5px;
+    position: relative;
+}
+h2:before {
+    content: "§";
+}
+h1.title.is-3.is-size-4-mobile:hover::after {
+    content: "#h1";
+    color: rgb(164, 164, 164);
+    font-family: Impact;
+    font-size: medium;
+    font-weight: normal;
+    left: 5px;
+    position: relative;
+}
+article.article .content h1 {
+    font-size: 2em!important;
+    font-weight: bold!important;
+}
+article.article .content h1::before {
+    content: "#";
+    color: rgb(27, 136, 245);
+}
+
+article.article .content h4 {
+    font-size: 1.25em!important;
+}
+h4:before {
+    content: "『";
+}
+h4:after {
+    content: "』";
+}
+
+
+/* ???? */
+a.level-item.button.is-transparent.is-marginless {
+    transition: ease 0.3s;
+}
+a.level-item.button.is-transparent.is-marginless:hover {
+    transform: translateY(-7px);
+}
+
+article {
+    font-family: 'Microsoft YaHei', sans-serif,  monospace!important;
+}
+
+div.level-left > span {
+    color: black;
+    font-family: 'Microsoft YaHei', sans-serif, monospace;
+}
+
+/*Scroll Bar*/
+/* ::-webkit-scrollbar {
+    width: 4px;
+    height: 4px;
+    transition: ease 0.1s;
+}
+::-webkit-scrollbar:hover {
+    cursor: pointer!important;
+} */
+/*滚动条*/
+::-webkit-scrollbar-thumb {
+    /* background-color: #ffffff!important; */
+    /* background-image: -webkit-linear-gradient(45deg, rgba(255,255,255,0.3) 25%, transparent 25%, transparent 50%, rgba(255,255,255,0.3) 50%, rgba(255,255,255,0.3) 75%, transparent 75%, transparent); */
+    background-image: none;
+    transition: ease 0.1s;
+}
+::-webkit-scrollbar-thumb:hover {
+    /* background-color: #ffffff!important; */
+    /* background-image: -webkit-linear-gradient(45deg, rgba(255,255,255,0.3) 25%, transparent 25%, transparent 50%, rgba(255,255,255,0.3) 50%, rgba(255,255,255,0.3) 75%, transparent 75%, transparent); */
+    background-image: none;
+    cursor: pointer!important;
+}
+/*滚动槽*/
+::-webkit-scrollbar-track {
+    /* background: #ffffff!important; */
+    transition: ease 0.1s;
+}
+::-webkit-scrollbar-track:hover {
+    /* background: #ffffff!important; */
+    cursor: pointer!important;
+}
+
+a.alert-link:hover {
+    text-decoration: underline;
+}
+
+/* mermaid */
+text > tspan.title {
+    font-size: inherit;
+    font-family: "trebuchet ms",verdana,arial!important;
+}
+
+g > foreignObject > div {
+    font-size: 16px;
+    font-weight: normal;
+    font-family: "trebuchet ms",verdana,arial!important;
+}
+
+div.mermaid > svg {
+    display: block;
+    margin: auto;
+}
+
+.is-sticky > #toc > .card-content > .menu {
+    overflow-y: hidden !important;
+    height: 600px !important;
+}
+
+.is-sticky > #toc > .card-content > .menu:hover {
+    overflow-y: scroll !important;
+}

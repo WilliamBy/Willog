@@ -1,0 +1,276 @@
+<!doctype html>
+<html lang="zh"><head><meta charset="utf-8"><meta name="generator" content="Hexo 4.2.1"><meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"><meta><title>技术/笔记/《第一行代码：Android》读书笔记 (一) - William@blog</title><meta description="Android Kotlin 读书笔记           简介             &amp;quot;《第一行代码：Android 3rd》第一章到第五章的读书笔记，讲了AS的基本使用方法和Android项目结构，四大组件之一的Activity，以及各种UI控件的编写，还收录了本书中涉及的Kotlin的语法特性&amp;quot;"><meta property="og:type" content="blog"><meta property="og:title" content="技术/笔记/《第一行代码：Android》读书笔记 (一)"><meta property="og:url" content="https://willog.top/posts/37a431d8/"><meta property="og:site_name" content="William@blog"><meta property="og:description" content="Android Kotlin 读书笔记           简介             &amp;quot;《第一行代码：Android 3rd》第一章到第五章的读书笔记，讲了AS的基本使用方法和Android项目结构，四大组件之一的Activity，以及各种UI控件的编写，还收录了本书中涉及的Kotlin的语法特性&amp;quot;"><meta property="og:locale" content="zh_CN"><meta property="og:image" content="https://migrate-1301429536.cos.ap-nanjing.myqcloud.com/img/20200728184345.png"><meta property="article:published_time" content="2020-07-27T16:00:00.000Z"><meta property="article:modified_time" content="2022-09-17T07:16:07.967Z"><meta property="article:author" content="Weiliang Bai"><meta property="article:tag" content="Android"><meta property="article:tag" content="Kotlin"><meta property="twitter:card" content="summary"><meta property="twitter:image" content="https://migrate-1301429536.cos.ap-nanjing.myqcloud.com/img/20200728184345.png"><script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","mainEntityOfPage":{"@type":"WebPage","@id":"https://willog.top/posts/37a431d8/"},"headline":"William@blog","image":["https://migrate-1301429536.cos.ap-nanjing.myqcloud.com/img/20200728184345.png"],"datePublished":"2020-07-27T16:00:00.000Z","dateModified":"2022-09-17T07:16:07.967Z","author":{"@type":"Person","name":"Weiliang Bai"},"description":"Android Kotlin 读书笔记           简介             &quot;《第一行代码：Android 3rd》第一章到第五章的读书笔记，讲了AS的基本使用方法和Android项目结构，四大组件之一的Activity，以及各种UI控件的编写，还收录了本书中涉及的Kotlin的语法特性&quot;"}</script><link rel="canonical" href="https://willog.top/posts/37a431d8/"><link rel="icon" href="/img/favicon_owl/android-chrome-512x512.png"><link rel="stylesheet" href="https://cdnjs.loli.net/ajax/libs/font-awesome/5.12.0/css/all.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@9.12.0/styles/atom-one-light.css"><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@400;600&amp;family=Source+Code+Pro"><link rel="stylesheet" href="/css/default.css"><!--!--><script>var _hmt = _hmt || [];
+        (function() {
+            var hm = document.createElement("script");
+            hm.src = "//hm.baidu.com/hm.js?e83fc42ee83404ab3e70b1750dc52ddb";
+            var s = document.getElementsByTagName("script")[0];
+            s.parentNode.insertBefore(hm, s);
+        })();</script><script src="https://cdn.jsdelivr.net/npm/pace-js@1.0.2/pace.min.js"></script><script src="https://cdn.jsdelivr.net/npm/mermaid@8.8.2/dist/mermaid.min.js"></script><link rel="alternate" href="/atom.xml" title="William@blog" type="application/atom+xml">
+</head><body class="is-2-column"><nav class="navbar navbar-main"><div class="container"><div class="navbar-brand justify-content-center"><a class="navbar-item navbar-logo" href="/"><img src="/img/William_blog.png" alt="William@blog" height="28"></a></div><div class="navbar-menu"><div class="navbar-start"><a class="navbar-item" href="/">🏡Home</a><a class="navbar-item" href="/archives">📁Archives</a><a class="navbar-item" href="/categories">📌Categories</a><a class="navbar-item" href="/gallery">🎨Gallery</a></div><div class="navbar-end"><a class="navbar-item" target="_blank" rel="noopener" title="xiong35的博客" href="http://www.xiong35.cn"><i class="fa fa-paw"></i></a><a class="navbar-item" target="_blank" rel="noopener" title="lam的博客" href="https://lamcoding.github.io"><i class="fa fa-leaf"></i></a><a class="navbar-item is-hidden-tablet catalogue" title="目录" href="javascript:;"><i class="fas fa-list-ul"></i></a><a class="navbar-item search" title="搜索" href="javascript:;"><i class="fa fa-search"></i></a></div></div></div></nav><section class="section"><div class="container"><div class="columns"><div class="column order-2 column-main is-8-tablet is-8-desktop is-8-widescreen"><div class="card"><div class="card-image"><span class="image is-7by3"><img class="thumbnail" src="https://migrate-1301429536.cos.ap-nanjing.myqcloud.com/img/20200728184345.png" alt="技术/笔记/《第一行代码：Android》读书笔记 (一)"></span></div><article class="card-content article" role="article"><div class="article-meta size-small is-uppercase level is-mobile"><div class="level-left"><time class="level-item" dateTime="2020-07-27T16:00:00.000Z" title="2020-07-27T16:00:00.000Z">2020-07-28</time><span class="level-item"><a class="link-muted" href="/categories/%E6%8A%80%E6%9C%AF/">技术</a><span> / </span><a class="link-muted" href="/categories/%E6%8A%80%E6%9C%AF/%E7%AC%94%E8%AE%B0/">笔记</a></span><span class="level-item">6 分钟 读完 (大约 896 个字)</span></div></div><h1 class="title is-3 is-size-4-mobile">技术/笔记/《第一行代码：Android》读书笔记 (一)</h1><div class="content"><span class="label label-success">Android</span>
+<span class="label label-warning">Kotlin</span>
+<span class="label label-info">读书笔记</span>
+<br>
+<br>
+<article class="message">
+  <div class="message-header">
+    <p>简介</p>
+  </div>
+  <div class="message-body">
+      <p>"《第一行代码：Android 3rd》第一章到第五章的读书笔记，讲了AS的基本使用方法和Android项目结构，四大组件之一的Activity，以及各种UI控件的编写，还收录了本书中涉及的Kotlin的语法特性"</p>
+  </div>
+</article>
+<a id="more"></a>
+<h2 id="第一章-开启征程概要"><a class="markdownIt-Anchor" href="#第一章-开启征程概要"></a> 第一章 开启征程（概要）</h2>
+<ul>
+<li>项目结构与目录：page 17 - page 19</li>
+<li>Log 方法与 Logcat 的完美结合</li>
+</ul>
+<h2 id="第二章-kotlin-语法糖"><a class="markdownIt-Anchor" href="#第二章-kotlin-语法糖"></a> 第二章 Kotlin 语法糖</h2>
+<div class="alert alert-info"><i class="fa fa-info  float-left"></i>  <p>同《Kotlin 学习笔记》一同食用更佳！</p>
+</div>
+<h3 id="第一行中出现的-kotlin-特性预览表"><a class="markdownIt-Anchor" href="#第一行中出现的-kotlin-特性预览表"></a> 《第一行》中出现的 Kotlin 特性预览表</h3>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">主次构造函数</th>
+<th style="text-align:center">参数默认值</th>
+<th style="text-align:center">键值对传参</th>
+<th style="text-align:center">字符串内嵌表达式</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center"><code>init {}, constructor () {}</code></td>
+<td style="text-align:center"><code>fun xxx(str: String = &quot;&quot;) {...}</code></td>
+<td style="text-align:center"><code>xxx(str = &quot;...&quot;)</code></td>
+<td style="text-align:center"><code>&quot;${value}&quot;</code></td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">标准函数</th>
+<th style="text-align:center">Lambda 表达式</th>
+<th style="text-align:center">空指针检查</th>
+<th style="text-align:center">函数式 API</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center"><code>let, run, apply, with</code></td>
+<td style="text-align:center"><code>{para -&gt; ...}, {it.toString()}</code></td>
+<td style="text-align:center"><code>?   ?.   !!.   ?:</code></td>
+<td style="text-align:center"><code>map.maxby {/*Lambda*/}</code></td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">容器初始化</th>
+<th style="text-align:center">数据类</th>
+<th style="text-align:center">单例类</th>
+<th style="text-align:center">循环遍历</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center"><code>listOf(), mapOf(), setOf()</code></td>
+<td style="text-align:center"><code>data</code></td>
+<td style="text-align:center"><code>object</code></td>
+<td style="text-align:center"><code>for-in, until, downTo, step, l...r, </code>容器遍历</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">分支控制</th>
+<th style="text-align:center">条件控制</th>
+<th style="text-align:center">“不变为先”</th>
+<th style="text-align:center">访问控制</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center"><code>when () {... -&gt; ...}, if-else</code> 语句/表达式</td>
+<td style="text-align:center"><code>is (instanceof), else</code></td>
+<td style="text-align:center"><code>val, var, open class</code></td>
+<td style="text-align:center"><code>&quot;public by default&quot;</code></td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">类型强转</th>
+<th style="text-align:center">repeat 函数</th>
+<th style="text-align:center">运算符重载</th>
+<th style="text-align:center">延迟初始化</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center"><code>as, as?</code></td>
+<td style="text-align:center"><code>repeat(/*num*/) {/*Lambda*/}</code></td>
+<td style="text-align:center"><code>operator</code> 关键字</td>
+<td style="text-align:center"><code>lateinit</code></td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">初始化判断</th>
+<th style="text-align:center">密封类（与when语句一同使用）</th>
+<th style="text-align:center">扩展函数</th>
+<th style="text-align:center">无用参数</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center"><code>::($变量名).isInitialized</code></td>
+<td style="text-align:center"><code>sealed class</code></td>
+<td style="text-align:center"><code>fun ClassName.funcName(...) : ... {}</code></td>
+<td style="text-align:center">下划线<code>_</code></td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">函数类型</th>
+<th style="text-align:center">高阶函数</th>
+<th style="text-align:center">内联函数</th>
+<th style="text-align:center">可变参数</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center"><code>ClassName.(paraType, ...) -&gt; returnType</code></td>
+<td style="text-align:center">接受/返回<code>函数类型/Lambda表达式</code>的函数</td>
+<td style="text-align:center"><code>inline</code> <code>noinline</code> <code>crossinline</code></td>
+<td style="text-align:center"><code>vararg</code></td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">Pair 类型</th>
+<th style="text-align:center">Smart Cast 自动转型</th>
+<th>泛型</th>
+<th>委托</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center"><code>A to B</code>， <code>泛型</code></td>
+<td style="text-align:center"><code>is Type</code> 判断后实例自动向下转换类型</td>
+<td><code>&lt;T&gt;</code></td>
+<td>类委托、属性委托</td>
+</tr>
+</tbody>
+</table>
+<h2 id="第三章-activity所见即所得"><a class="markdownIt-Anchor" href="#第三章-activity所见即所得"></a> 第三章 Activity！所见即所得</h2>
+<h3 id="创建-activity"><a class="markdownIt-Anchor" href="#创建-activity"></a> 创建 Activity</h3>
+<ul>
+<li>创建和加载布局文件 layout</li>
+<li>在 AndroidManifest.xml 中注册Activity</li>
+<li>编写 Activity.kt 代码 （事件绑定，方法重写等）</li>
+</ul>
+<h3 id="activity-通信与切换"><a class="markdownIt-Anchor" href="#activity-通信与切换"></a> Activity 通信与切换</h3>
+<ul>
+<li>
+<p>Intent 类</p>
+<ul>
+<li>显式切换：<code>Intent(上下文, 指定Activity 的 Class 类)</code></li>
+<li>隐式切换：指定 <code>action</code> <code>category</code>，目标将会按照注册信息中的过滤条件响应 intent。
+<ul>
+<li>过滤条件：<code>&lt;category&gt; &lt;action&gt; &lt;data&gt;</code></li>
+</ul>
+</li>
+<li>传参：<code>.putExtra(), .getStringExtra()</code></li>
+<li>启动方式：<code>startActivity() //普通启动</code> <code>startActivityForResult() //请求结果</code> - Activity 类 Result 结果</li>
+<li>设置结果：<code>setResult()</code></li>
+<li>取回结果：<code>override onActivityResult()</code></li>
+<li>Bundle 类</li>
+<li>团队合作时用<strong>伴生类</strong>“静态方法”来启动</li>
+</ul>
+</li>
+<li>
+<p>Activity 生命周期</p>
+<ul>
+<li>
+<p>返回栈的概念</p>
+</li>
+<li>
+<p>思维导图</p>
+</li>
+</ul>
+</li>
+</ul>
+<p><img src="https://migrate-1301429536.cos.ap-nanjing.myqcloud.com/img/20200728191142.png" alt="Activity 生命周期" /></p>
+<ul>
+<li>保存信息
+<ul>
+<li>Bundle 类型</li>
+<li><code>onSaveInstanceState()</code>，<code>var savedInstanceState</code></li>
+</ul>
+</li>
+<li>Activity 启动模式
+<ul>
+<li>standard 无检查，直接压栈</li>
+<li>singleTop 检查栈顶</li>
+<li>singleTask 解栈恢复</li>
+<li>singleInstance 创建新栈</li>
+</ul>
+</li>
+</ul>
+<h2 id="第四章-ui-门面功夫"><a class="markdownIt-Anchor" href="#第四章-ui-门面功夫"></a> 第四章 UI！！ 门面功夫 😃</h2>
+<h3 id="控件-widget"><a class="markdownIt-Anchor" href="#控件-widget"></a> 控件 Widget</h3>
+<ul>
+<li>基本控件：TextView，EditView，Button，……</li>
+<li>自定义控件：编写class（注入布局，绑定事件）<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>→</mo></mrow><annotation encoding="application/x-tex">\rightarrow</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.36687em;vertical-align:0em;"></span><span class="mrel">→</span></span></span></span>  xml注册引入自定义控件 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>→</mo></mrow><annotation encoding="application/x-tex">\rightarrow</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.36687em;vertical-align:0em;"></span><span class="mrel">→</span></span></span></span> 引入控件</li>
+<li>高级一点的控件：ListVIew, RecyclerView …</li>
+</ul>
+<h3 id="基本原理撇清楚"><a class="markdownIt-Anchor" href="#基本原理撇清楚"></a> 基本原理撇清楚</h3>
+<p><img src="https://migrate-1301429536.cos.ap-nanjing.myqcloud.com/img/20200723232141.png" alt="view の 继承关系图" /></p>
+<ul>
+<li><code>Inflater</code> 的作用：将xml格式的布局文件解析转化成View的实例</li>
+<li><code>findViewById()</code> 返回布局中指定id的View实例, 在Activity类中直接使用<code>findViewById()</code>相当于在当前Activitiy所加载的布局中寻找对应的view，而使用<code>view.findViewById()</code>则指定了寻找的区域是view内</li>
+</ul>
+<div class="alert alert-danger"><i class="fa fa-bug  float-left"></i>  <p>留意Kotlin自动类型推导机制的使用场合，方法</p>
+</div>
+<h2 id="第五章-手机平板要兼顾探究fragment"><a class="markdownIt-Anchor" href="#第五章-手机平板要兼顾探究fragment"></a> *第五章 手机平板要兼顾，探究Fragment</h2>
+<div class="dropdown is-hoverable">
+  <div class="dropdown-trigger">
+    <button class="button" aria-haspopup="true" aria-controls="dropdown-menu4">
+      <span>学习内容</span>
+      <span class="icon is-small">
+        <i class="fas fa-angle-down" aria-hidden="true"></i>
+      </span>
+    </button>
+  </div>
+  <div class="dropdown-menu" id="dropdown-menu4" role="menu">
+    <div class="dropdown-content">
+      <div class="dropdown-item">
+        <p>Frag 生命周期，Frag 动态加载布局</p>
+      </div>
+    </div>
+  </div>
+</div></div><div class="article-tags size-small mb-4"><span class="mr-2">#</span><a class="link-muted mr-2" rel="tag" href="/tags/Android/">Android</a><a class="link-muted mr-2" rel="tag" href="/tags/Kotlin/">Kotlin</a></div><div class="addthis_inline_share_toolbox"></div><script src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-5ed1b54839d71d24" defer></script></article></div><div class="card"><div class="card-content"><h3 class="menu-label has-text-centered">喜欢这篇文章？打赏一下作者吧</h3><div class="buttons is-centered"><a class="button donate" href="https://www.buymeacoffee.com/Weiliang" style="background-color:rgba(255,128,62,.87);border-color:transparent;color:white;" target="_blank" rel="noopener"><span class="icon is-small"><i class="fas fa-coffee"></i></span><span>送杯咖啡</span></a><a class="button is-success donate"><span class="icon is-small"><i class="fab fa-weixin"></i></span><span>微信打赏</span><span class="qrcode"><img src="/img/wechat/qrcode.png" alt="微信打赏"></span></a></div></div></div><nav class="post-navigation mt-4 level is-mobile"><div class="level-start"><a class="article-nav-prev level level-item link-muted" href="/posts/c484d1a3/"><i class="level-item fas fa-chevron-left"></i><span class="level-item">技术/笔记/《第一行代码：Android》读书笔记 (二)</span></a></div><div class="level-end"><a class="article-nav-next level level-item link-muted" href="/posts/568ec988/"><span class="level-item">算法/序列标注之HMM与CRF模型</span><i class="level-item fas fa-chevron-right"></i></a></div></nav><!--!--></div><div class="column column-left is-4-tablet is-4-desktop is-4-widescreen  order-1 is-sticky"><div class="card widget" id="toc"><div class="card-content"><div class="menu"><h3 class="menu-label">目录</h3><ul class="menu-list"><li><a class="is-flex" href="#第一章-开启征程概要"><span class="mr-2">1</span><span> 第一章 开启征程（概要）</span></a></li><li><a class="is-flex" href="#第二章-kotlin-语法糖"><span class="mr-2">2</span><span> 第二章 Kotlin 语法糖</span></a><ul class="menu-list"><li><a class="is-flex" href="#第一行中出现的-kotlin-特性预览表"><span class="mr-2">2.1</span><span> 《第一行》中出现的 Kotlin 特性预览表</span></a></li></ul></li><li><a class="is-flex" href="#第三章-activity所见即所得"><span class="mr-2">3</span><span> 第三章 Activity！所见即所得</span></a><ul class="menu-list"><li><a class="is-flex" href="#创建-activity"><span class="mr-2">3.1</span><span> 创建 Activity</span></a></li><li><a class="is-flex" href="#activity-通信与切换"><span class="mr-2">3.2</span><span> Activity 通信与切换</span></a></li></ul></li><li><a class="is-flex" href="#第四章-ui-门面功夫"><span class="mr-2">4</span><span> 第四章 UI！！ 门面功夫 😃</span></a><ul class="menu-list"><li><a class="is-flex" href="#控件-widget"><span class="mr-2">4.1</span><span> 控件 Widget</span></a></li><li><a class="is-flex" href="#基本原理撇清楚"><span class="mr-2">4.2</span><span> 基本原理撇清楚</span></a></li></ul></li><li><a class="is-flex" href="#第五章-手机平板要兼顾探究fragment"><span class="mr-2">5</span><span> *第五章 手机平板要兼顾，探究Fragment</span></a></li></ul></div></div></div></div><!--!--></div></div></section><footer class="footer"><div class="container"><div class="level"><div class="level-start"><a class="footer-logo is-block mb-2" href="/"><img src="/img/William_blog.png" alt="William@blog" height="28"></a><p class="size-small"><span>&copy; 2022 Weiliang Bai</span>  Powered by <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a> &amp; <a href="https://github.com/ppoffice/hexo-theme-icarus" target="_blank" rel="noopener">Icarus</a></p></div><div class="level-end"><div class="field has-addons"><p class="control"><a class="button is-transparent is-large" target="_blank" rel="noopener" title="Creative Commons" href="https://creativecommons.org/"><i class="fab fa-creative-commons"></i></a></p><p class="control"><a class="button is-transparent is-large" target="_blank" rel="noopener" title="Attribution 4.0 International" href="https://creativecommons.org/licenses/by/4.0/"><i class="fab fa-creative-commons-by"></i></a></p><p class="control"><a class="button is-transparent is-large" target="_blank" rel="noopener" title="🐻Xiong35" href="http://www.xiong35.cn"><i class="fas fa-paw"></i></a></p><p class="control"><a class="button is-transparent is-large" target="_blank" rel="noopener" title="🍃Lam" href="https://lamcoding.github.io"><i class="fas fa-leaf"></i></a></p></div></div></div></div></footer><script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script><script src="https://cdn.jsdelivr.net/npm/moment@2.22.2/min/moment-with-locales.min.js"></script><script>moment.locale("zh-CN");</script><script>var IcarusThemeSettings = {
+            site: {
+                url: 'https://willog.top',
+                external_link: {"enable":true,"exclude":[]}
+            },
+            article: {
+                highlight: {
+                    clipboard: true,
+                    fold: 'unfolded'
+                }
+            }
+        };</script><script src="https://cdn.jsdelivr.net/npm/clipboard@2.0.4/dist/clipboard.min.js" defer></script><a id="back-to-top" title="回到顶端" href="javascript:;"><i class="fa fa-chevron-up"></i></a><script src="/js/back_to_top.js" defer></script><!--!--><!--!--><script src="/js/main.js" defer></script><div class="searchbox"><div class="searchbox-container"><div class="searchbox-header"><div class="searchbox-input-container"><input class="searchbox-input" type="text" placeholder="😆随便搜点什么呗..."></div><a class="searchbox-close" href="javascript:;">×</a></div><div class="searchbox-body"></div></div></div><script src="/js/insight.js" defer></script><script>document.addEventListener('DOMContentLoaded', function () {
+            loadInsight({"contentUrl":"/content.json"}, {"hint":"😆随便搜点什么呗...","untitled":"(无标题)","posts":"文章","pages":"页面","categories":"分类","tags":"标签"});
+        });</script></body></html>

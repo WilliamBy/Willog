@@ -1,0 +1,362 @@
+<!doctype html>
+<html lang="zh"><head><meta charset="utf-8"><meta name="generator" content="Hexo 4.2.1"><meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"><meta><title>算法/算法启蒙 - William@blog</title><meta description="算法     写在前面：“学好程序与算法，走遍天下都不怕。”"><meta property="og:type" content="blog"><meta property="og:title" content="算法/算法启蒙"><meta property="og:url" content="https://willog.top/posts/8ee1a4a1/"><meta property="og:site_name" content="William@blog"><meta property="og:description" content="算法     写在前面：“学好程序与算法，走遍天下都不怕。”"><meta property="og:locale" content="zh_CN"><meta property="og:image" content="https://migrate-1301429536.cos.ap-nanjing.myqcloud.com/img/20200728191138.jpg"><meta property="article:published_time" content="2020-05-31T16:00:00.000Z"><meta property="article:modified_time" content="2022-09-17T07:16:07.972Z"><meta property="article:author" content="Weiliang Bai"><meta property="article:tag" content="动态规划"><meta property="article:tag" content="搜索"><meta property="article:tag" content="递归"><meta property="twitter:card" content="summary"><meta property="twitter:image" content="https://migrate-1301429536.cos.ap-nanjing.myqcloud.com/img/20200728191138.jpg"><script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","mainEntityOfPage":{"@type":"WebPage","@id":"https://willog.top/posts/8ee1a4a1/"},"headline":"William@blog","image":["https://migrate-1301429536.cos.ap-nanjing.myqcloud.com/img/20200728191138.jpg"],"datePublished":"2020-05-31T16:00:00.000Z","dateModified":"2022-09-17T07:16:07.972Z","author":{"@type":"Person","name":"Weiliang Bai"},"description":"算法     写在前面：“学好程序与算法，走遍天下都不怕。”"}</script><link rel="canonical" href="https://willog.top/posts/8ee1a4a1/"><link rel="icon" href="/img/favicon_owl/android-chrome-512x512.png"><link rel="stylesheet" href="https://cdnjs.loli.net/ajax/libs/font-awesome/5.12.0/css/all.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@9.12.0/styles/atom-one-light.css"><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@400;600&amp;family=Source+Code+Pro"><link rel="stylesheet" href="/css/default.css"><!--!--><script>var _hmt = _hmt || [];
+        (function() {
+            var hm = document.createElement("script");
+            hm.src = "//hm.baidu.com/hm.js?e83fc42ee83404ab3e70b1750dc52ddb";
+            var s = document.getElementsByTagName("script")[0];
+            s.parentNode.insertBefore(hm, s);
+        })();</script><script src="https://cdn.jsdelivr.net/npm/pace-js@1.0.2/pace.min.js"></script><script src="https://cdn.jsdelivr.net/npm/mermaid@8.8.2/dist/mermaid.min.js"></script><link rel="alternate" href="/atom.xml" title="William@blog" type="application/atom+xml">
+</head><body class="is-2-column"><nav class="navbar navbar-main"><div class="container"><div class="navbar-brand justify-content-center"><a class="navbar-item navbar-logo" href="/"><img src="/img/William_blog.png" alt="William@blog" height="28"></a></div><div class="navbar-menu"><div class="navbar-start"><a class="navbar-item" href="/">🏡Home</a><a class="navbar-item" href="/archives">📁Archives</a><a class="navbar-item" href="/categories">📌Categories</a><a class="navbar-item" href="/gallery">🎨Gallery</a></div><div class="navbar-end"><a class="navbar-item" target="_blank" rel="noopener" title="xiong35的博客" href="http://www.xiong35.cn"><i class="fa fa-paw"></i></a><a class="navbar-item" target="_blank" rel="noopener" title="lam的博客" href="https://lamcoding.github.io"><i class="fa fa-leaf"></i></a><a class="navbar-item is-hidden-tablet catalogue" title="目录" href="javascript:;"><i class="fas fa-list-ul"></i></a><a class="navbar-item search" title="搜索" href="javascript:;"><i class="fa fa-search"></i></a></div></div></div></nav><section class="section"><div class="container"><div class="columns"><div class="column order-2 column-main is-8-tablet is-8-desktop is-8-widescreen"><div class="card"><div class="card-image"><span class="image is-7by3"><img class="thumbnail" src="https://migrate-1301429536.cos.ap-nanjing.myqcloud.com/img/20200728191138.jpg" alt="算法/算法启蒙"></span></div><article class="card-content article" role="article"><div class="article-meta size-small is-uppercase level is-mobile"><div class="level-left"><time class="level-item" dateTime="2020-05-31T16:00:00.000Z" title="2020-05-31T16:00:00.000Z">2020-06-01</time><span class="level-item"><a class="link-muted" href="/categories/%E7%AE%97%E6%B3%95/">算法</a></span><span class="level-item">24 分钟 读完 (大约 3578 个字)</span></div></div><h1 class="title is-3 is-size-4-mobile">算法/算法启蒙</h1><div class="content"><span class="label label-default">算法</span>
+<br>
+<br>
+<div class="alert alert-success"><i class="fa fa-lightbulb-o  float-left"></i>  <p>写在前面：“学好程序与算法，走遍天下都不怕。”</p>
+</div>
+<a id="more"></a>
+<hr />
+<h1 id="枚举"><a class="markdownIt-Anchor" href="#枚举"></a> 枚举</h1>
+<ul>
+<li>背景
+<ul>
+<li>找不到合适的数学公式和技巧</li>
+<li>（改良后）枚举复杂度不是特别大</li>
+<li>通常用于找到一种情况使之满足题意的题目</li>
+<li>配合假设法找到目标情形：假币问题</li>
+</ul>
+</li>
+<li>技巧
+<ul>
+<li><strong>跳跃枚举法</strong>：跳过对没有必要的情况的枚举</li>
+<li><strong>局部枚举法</strong>：枚举局部，剩下的由该局部确定。例如熄灯问题</li>
+</ul>
+</li>
+</ul>
+<h1 id="递归"><a class="markdownIt-Anchor" href="#递归"></a> 递归</h1>
+<ul>
+<li>作用
+<ul>
+<li>替代<strong>多重循环</strong>，如：n皇后问题。
+<ul>
+<li>这种类型往往要运用到一个<code>全局/静态变量</code>来存储前面算过的结果，譬如n皇后就用到了一个全局数组来保存每一行的皇后拜访情况。全局/静态变量的好处就在于<code>所有递归函数共享成果</code>，就像<code>递推迭代</code>一样，每一步会影响下一步。</li>
+<li>递归函数形式：T function( T f(n) )，函数意义：在前n-1步已经完成的情况下决定如何走第n步，往往第一个被调用的function参数为0或1（然后依次调用 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>1</mn></mrow><annotation encoding="application/x-tex">1</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">1</span></span></span></span> ~ <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>n</mi><mn>0</mn></msub></mrow><annotation encoding="application/x-tex">n_0</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.58056em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal">n</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.30110799999999993em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">0</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span>）</li>
+</ul>
+</li>
+<li>解决实质是<strong>递归形式</strong>的问题
+<ul>
+<li>有些问题本身就是<code>递归定义</code>的，比如不少表达式就是递归定义的：逆波兰，四则运算。逆波兰<code>直接递归</code>调用自身定义，四则运算则包含项，因子和表达式自身等多个概念，是一种<code>间接递归</code>调用自身定义</li>
+<li>函数，数列的递推公式</li>
+<li>关键是搞清楚问题是怎样递归定义的，可以借助<strong>画图，写代数式</strong>的办法捋清楚。</li>
+</ul>
+</li>
+<li>将问题分解为规模更小的<strong>子问题</strong>来求解
+<ul>
+<li>如何来分解？</li>
+<li><code>“n=1+(n-1)”法</code>
+<ul>
+<li>比方说要解决一个规模为n的问题，先找到解决该问题的<code>第一步</code>怎么做，然后再把剩下的问题解决，剩下的问题规模刚好是n-1且解决过程自相似，可以用上递归n-1。e.g.台阶问题</li>
+</ul>
+</li>
+<li><code>“n=(n-1)+1”法</code>
+<ul>
+<li>先解决n-1问题，再将最后一步完善,e.g.汉诺塔问题</li>
+</ul>
+</li>
+<li>与多重循环不同，该方法第一个调用的function参数往往时n0总规模</li>
+<li>与分治不同，分治往往偏向于均分，而且多了一步综合，不过分治与递归又可以相互补充</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<blockquote>
+<p>附注</p>
+<ol>
+<li>atof（）函数，将浮点串转变为浮点数</li>
+<li>cin.peek（）函数，提前预知输入而非读取</li>
+<li>浮点数的比较引入eps</li>
+</ol>
+</blockquote>
+<h1 id="二分"><a class="markdownIt-Anchor" href="#二分"></a> 二分</h1>
+<ul>
+<li>简介
+<ul>
+<li>对一个待求系统（通常为<strong>有序</strong>系统），每次都均分为两半，<strong>通过判断“砍掉”其中“无用”的一半</strong>，对剩下的一半用同样的方法处理，直到得出结论。</li>
+</ul>
+</li>
+<li>作用
+<ul>
+<li>二分查找
+<ul>
+<li>不仅限于查找某一个具体的数，还可以查找符合某种要求的数（通常满足一定的大小关系）</li>
+</ul>
+</li>
+<li>二分法求方程根</li>
+</ul>
+</li>
+</ul>
+<h1 id="分治"><a class="markdownIt-Anchor" href="#分治"></a> 分治</h1>
+<ul>
+<li>基本思想
+<ul>
+<li>将一个问题拆分成两个或两个以上规模更小的问题，然后将小问题分别解决或只解决<code>部分</code>问题，最后<code>综合处理</code>一次。</li>
+</ul>
+</li>
+<li>一般模式：分划，局部处理，综合处理（<strong>分治</strong> | <strong>归并</strong>）
+<ul>
+<li>常常与<code>递归</code>思想结合</li>
+</ul>
+</li>
+<li>作用：使<code>规模缩小</code>，提高算法效率（想想：不断地递归并分治，使得规模不断二分）</li>
+<li>应用举例：基于分治策略的快速排序和归并排序</li>
+</ul>
+<blockquote>
+<p>附注</p>
+<ol>
+<li>&quot; x &amp; 1 &quot; 表达式判别x奇偶性</li>
+<li>快速幂算法</li>
+</ol>
+</blockquote>
+<h1 id="动态规划"><a class="markdownIt-Anchor" href="#动态规划"></a> 动态规划</h1>
+<ul>
+<li>背景
+<ul>
+<li>问题具有<strong>最优子结构</strong>
+<ul>
+<li>问题的最优解所包含的子问题的解也是最优的</li>
+</ul>
+</li>
+<li>问题具有<strong>无后效性</strong>
+<ul>
+<li>当前的若干个状态值一旦确定，则此后过程的演变就只和这若干个状态的值有关，和之前是采取何种手段或经过哪条路径演变到当前的这若干个状态，没有关系。</li>
+</ul>
+</li>
+<li>单纯的递归会导致大量子问题 <em>重复计算</em> 时</li>
+</ul>
+</li>
+<li>思路方法
+<ol>
+<li><strong>原问题分解为子问题</strong>
+<ul>
+<li>一些问题的求解归结于它的子问题的求解，且子问题与原问题类似，只是规模减小。</li>
+<li>子问题一旦解决即被保存（通常存入一个多维数组）。</li>
+</ul>
+</li>
+<li><strong>确定状态</strong>
+<ul>
+<li>“状态”简介：在用动态规划解题时，我们往往将和子问题相 关的各个变量的<code>一组取值</code>，称之为一个“<code>状态</code>”。一个“状态”对应于一个或多个子问题， 所谓某个“状态”下的“<code>值</code>”，就是这个“状态”所对应的<code>子问题的解</code>。</li>
+<li><code>状态空间与时间复杂度</code>：整个问题的时间复杂度是状态数目乘以计算每个状态所需时间。（在数字三角形里每个“状态”只需要经过一次，且在每个状态上作计算所花的时间都是和N无关的常数。）</li>
+<li>用动态规划解题，经常碰到的情况是，K个整型变量能 构成一个状态（如数字三角形中的行号和列号这两个变量 构成“状态”）。如果这K个整型变量的取值范围分别是 N1, N2, ……Nk，那么，我们就可以用一个K维的数组 array[N1] [N2]……[Nk]来存储各个状态的“值”。这个 “值”未必就是一个整数或浮点数，可能是需要一个结构 才能表示的，那么array就可以是一个结构数组。一个 “状态”下的“值”通常会是一个或多个子问题的解。</li>
+</ul>
+</li>
+<li><strong>确定一些初始状态（边界状态）的值</strong></li>
+<li><strong>确定状态转移方程</strong>
+<ul>
+<li>将第一步 <em>分解</em> 得到的原问题与子问题的关系用数学符号语言表述出来，即实现状态之间的转移关系。</li>
+</ul>
+</li>
+</ol>
+</li>
+<li>动规程序写法
+<ul>
+<li><strong>记忆递归型</strong>
+<ul>
+<li>递归函数+记忆数组</li>
+</ul>
+</li>
+<li><strong>“人人为我”递推型</strong>
+<ul>
+<li>1,2,3,…,n-1 =&gt; n</li>
+<li>递推到“n”时“n”仍未被求出，前面已被求出的状态值用于求“n”的状态值</li>
+</ul>
+</li>
+<li><strong>“我为人人”递推型</strong>
+<ul>
+<li>n =&gt; k (k&gt;n)</li>
+<li>递推到“n”时“n”已经被求出，n将用于求后面的状态值</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>递归写法</th>
+<th>递推写法</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>难度</td>
+<td>直观简便</td>
+<td>较复杂，可能需要结合图形理解</td>
+</tr>
+<tr>
+<td>内存占用</td>
+<td>较大，有爆栈风险</td>
+<td>小，还可以用滚动数组进一步节省空间</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>动规中<strong>递归法向递推法转化</strong>的一般方法：</p>
+<ul>
+<li>递归函数有n个参数，就定义一个n维的数组，数组的下标是递归函数参数的取值范围，数组元素的值 是递归函数的返回值，这样就可以从边界值开始， 逐步填充数组，相当于计算递归函数值的逆过程。</li>
+</ul>
+</blockquote>
+<blockquote>
+<p><strong>常见分解（状态转移）方法归纳</strong></p>
+<ul>
+<li>多分类讨论， 想想解决原问题等同于解决什么和什么。有时候要经过<strong>多层分解</strong>才能够得到与原问题结构相同的子问题。</li>
+<li>“n=(n-1)+1”型与&quot;n=1+(n-1)&quot;型（与 <em>递归</em> 的 <em>先走一步</em> 思想又异曲同工之妙，n为问题规模）</li>
+<li>&quot;F(i,j,k)=F(i-1,j,k)+F(i,j-1,k)+F(i,j,k-1)&quot;型（这里拿 <em>三维</em> 的情况举例，其他维度的状态转移方程与此大同小异）</li>
+<li>&quot;F(m,n)=A, A=G( F(m-1,n),F(m,n-1) )&quot;型，<strong>间接</strong>递归</li>
+</ul>
+</blockquote>
+<blockquote>
+<p>附注</p>
+<ol>
+<li>数字三角形题目启示录：<br />
+①<strong>空间优化</strong>：<strong>滚动数组</strong>（通过覆盖今后无用的旧有数据空间的方法来压缩空间），<strong>降维</strong>，关注不必要的存储空间以及运行过程中变得可以丢弃的数据。②递归化递推：逆向思维。</li>
+</ol>
+</blockquote>
+<h1 id="深度优先搜索"><a class="markdownIt-Anchor" href="#深度优先搜索"></a> 深度优先搜索</h1>
+<blockquote>
+<p>关键词：<em>回溯</em> <em>标记(判重)</em> <em>剪枝</em> <em>图</em> <em>状态</em></p>
+</blockquote>
+<ul>
+<li>简介
+<ul>
+<li>从某个起点开始每走一步就做一个标记，然后下一步随便选择一个没有走过的节点，走不通则回退到上一步重新选择。这种走法总是试图“走的更远”。</li>
+</ul>
+</li>
+<li>重要概念
+<ul>
+<li><strong>图</strong>（连通图，非连通图，子图，极大连通子图…）</li>
+<li>图上<strong>节点</strong>（或者某抽象的状态：e.g.譬如每个棋局也可以看作是一个图节点）</li>
+<li>图上<strong>边</strong>：节点之间的联系</li>
+<li><strong>图路径（枝）</strong></li>
+</ul>
+</li>
+<li>图的表示
+<ul>
+<li><strong>邻接矩阵</strong>：<em>L[i][j]</em> 用一个二维数组（元素可以是一个结构，存储诸如 <em>连通与否</em> <em>路径长度</em> <em>权值</em> <em>方向</em> 等内容）表示节点i与节点j之间的联系。遍历复杂度：<strong>O(n^2)</strong>,n表示节点 。</li>
+<li><strong>邻接表</strong>：<em>S[k]</em> 用一个一维数组（元素可以是一个结构，存储 <em>邻接节点</em> 以及诸如 <em>路径长度</em> <em>权值</em> <em>方向</em> 等内容）表示所有与节点k有关的边的信息。遍历复杂度：<strong>O(n+e)</strong>,n表示节点数，e表示边数。
+<ul>
+<li>当e特别大而接近n^2时，邻接表就失去了优势变得和邻接矩阵差不多了。</li>
+</ul>
+</li>
+<li>其他表示方法：具体问题具体分析。</li>
+</ul>
+</li>
+<li>剪枝
+<ul>
+<li><strong>可行性剪枝</strong>：每搜索一个节点后发现不满足题目要求则直接回溯防止沿着这条路径继续错误地走下去。</li>
+<li><strong>最优性剪枝</strong>：每搜索一个节点后都对当前路径的最优性进行检验，若当前以及可以判明不是最优路径或者说接着走下去一定不是最优路径则直接回溯。
+<ul>
+<li><strong>与整体最优解比较来剪枝</strong></li>
+<li><strong>保存中间结果用于最优性剪枝</strong> ：如果到达某个状态A时，发现前面曾经也到达过A，且前面那次到达A所花代价更少，则剪枝。这要求保存到达状态A的到目前为止的最少代价。 （ 对每个节点都开辟存储空间来存放以该节点为终点的当前最优解，每次搜索到一个节点就将该最优值与新值比较，原值更优则剪枝，新值更优则更新该最优值）</li>
+<li><em>注意：“最优”的决定要素可能不止一项，还可能是多元因素，如：ROADS问题中有费用和路程两个因素。剪枝时要考虑控制单一变量。</em></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h1 id="广度优先搜索"><a class="markdownIt-Anchor" href="#广度优先搜索"></a> 广度优先搜索</h1>
+<ul>
+<li>简介
+<ul>
+<li>从节点开始层次遍历（用队列）整个图。</li>
+</ul>
+</li>
+<li>特点
+<ul>
+<li>搜到的路径一定是<strong>最短</strong>的。</li>
+<li>占用空间较大，尤其是目标节点层次很高时。</li>
+<li>如果题目要求<strong>路径</strong>则每次入队的元素都要包含有<strong>指向父节点的“指针”</strong>。要注意，STL中的queue容器中元素一旦出队则会导致<em>对象的丢失</em>，因此需要自己动手编写一个保证父节点不会丢失的队列。</li>
+</ul>
+</li>
+<li>一般模式<br />
+广度优先搜索算法如下：（用QUEUE）
+<ol>
+<li>把初始节点S0放入Open表中</li>
+<li>如果Open表为空，则问题无解，失败退出</li>
+<li>把Open表的第一个节点取出放入Closed表，并记该节点为n</li>
+<li>考察节点n是否为目标节点。若是，则 得到问题的解，成功退出</li>
+<li>若节点n不可扩展，则转第(2)步</li>
+<li>扩展节点n，将其不在Closed表和<br />
+Open表中的子节点(判重）放入Open表的尾 部，如有必要为每一个子节点设置指向父节点的指针 (或记录节点的层次），然后转第(2)步。</li>
+</ol>
+</li>
+</ul>
+<h2 id="dsp-vs-bsp"><a class="markdownIt-Anchor" href="#dsp-vs-bsp"></a> DSP vs BSP</h2>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>深搜</th>
+<th>广搜</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>适用范围</td>
+<td>几乎任何问题</td>
+<td>状态表示比较简单，求最优策略的问题</td>
+</tr>
+<tr>
+<td>优点</td>
+<td>空间占用较少</td>
+<td>找到的解一定路径最短</td>
+</tr>
+<tr>
+<td>缺点</td>
+<td>运气不好时耗时长，甚至无法在多项式时间内求解，需要剪枝优化</td>
+<td>目标节点层次高时搜索过程将产生许多无用节点，搜索效率低且占用空间大，需要优化存储方式</td>
+</tr>
+<tr>
+<td>结构</td>
+<td>栈（递归）</td>
+<td>队列</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>根据题目要求凭借自己的经验和对两个搜索的熟练程度做出选择</p>
+</blockquote>
+<h1 id="贪心"><a class="markdownIt-Anchor" href="#贪心"></a> 贪心</h1>
+<ul>
+<li>简介
+<ul>
+<li>只考虑当前最优，通过<strong>局部最优</strong>达到<strong>整体最优</strong>的策略</li>
+<li>贪心算法需要证明其正确性</li>
+</ul>
+</li>
+<li>贪心检验：<strong>替换法</strong>
+<ul>
+<li>假设最优序列为{ai}，贪心得到的序列为{bi}，则只需要证明{ai}={bi}即可证明贪心得到的是整体最优。</li>
+<li>必要时先将ai按照bi（贪心策略得到的序列）的方式<strong>排好序</strong></li>
+<li>然后从i=1开始逐个考虑能否将ai<strong>替换</strong>为bi而不影响ai后面序列的选择。如果对于所有i均可替换，则{ai}={bi}。</li>
+<li><em>数学归纳法</em></li>
+</ul>
+</li>
+</ul>
+<blockquote>
+<p><em>附注</em><br />
+一类常见的应用贪心策略的题：区间题<br />
+解决思路：关注端点，合理排序，顺序处理</p>
+</blockquote>
+</div><div class="article-tags size-small mb-4"><span class="mr-2">#</span><a class="link-muted mr-2" rel="tag" href="/tags/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/">动态规划</a><a class="link-muted mr-2" rel="tag" href="/tags/%E6%90%9C%E7%B4%A2/">搜索</a><a class="link-muted mr-2" rel="tag" href="/tags/%E9%80%92%E5%BD%92/">递归</a></div><div class="addthis_inline_share_toolbox"></div><script src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-5ed1b54839d71d24" defer></script></article></div><div class="card"><div class="card-content"><h3 class="menu-label has-text-centered">喜欢这篇文章？打赏一下作者吧</h3><div class="buttons is-centered"><a class="button donate" href="https://www.buymeacoffee.com/Weiliang" style="background-color:rgba(255,128,62,.87);border-color:transparent;color:white;" target="_blank" rel="noopener"><span class="icon is-small"><i class="fas fa-coffee"></i></span><span>送杯咖啡</span></a><a class="button is-success donate"><span class="icon is-small"><i class="fab fa-weixin"></i></span><span>微信打赏</span><span class="qrcode"><img src="/img/wechat/qrcode.png" alt="微信打赏"></span></a></div></div></div><nav class="post-navigation mt-4 level is-mobile"><div class="level-start"><a class="article-nav-prev level level-item link-muted" href="/posts/568ec988/"><i class="level-item fas fa-chevron-left"></i><span class="level-item">算法/序列标注之HMM与CRF模型</span></a></div><div class="level-end"><a class="article-nav-next level level-item link-muted" href="/posts/c737d2b3/"><span class="level-item">技术/语言/Golang 避坑手册</span><i class="level-item fas fa-chevron-right"></i></a></div></nav><!--!--></div><div class="column column-left is-4-tablet is-4-desktop is-4-widescreen  order-1 is-sticky"><div class="card widget" id="toc"><div class="card-content"><div class="menu"><h3 class="menu-label">目录</h3><ul class="menu-list"><li><a class="is-flex" href="#枚举"><span class="mr-2">1</span><span> 枚举</span></a></li><li><a class="is-flex" href="#递归"><span class="mr-2">2</span><span> 递归</span></a></li><li><a class="is-flex" href="#二分"><span class="mr-2">3</span><span> 二分</span></a></li><li><a class="is-flex" href="#分治"><span class="mr-2">4</span><span> 分治</span></a></li><li><a class="is-flex" href="#动态规划"><span class="mr-2">5</span><span> 动态规划</span></a></li><li><a class="is-flex" href="#深度优先搜索"><span class="mr-2">6</span><span> 深度优先搜索</span></a></li><li><a class="is-flex" href="#广度优先搜索"><span class="mr-2">7</span><span> 广度优先搜索</span></a><ul class="menu-list"><li><a class="is-flex" href="#dsp-vs-bsp"><span class="mr-2">7.1</span><span> DSP vs BSP</span></a></li></ul></li><li><a class="is-flex" href="#贪心"><span class="mr-2">8</span><span> 贪心</span></a></li></ul></div></div></div></div><!--!--></div></div></section><footer class="footer"><div class="container"><div class="level"><div class="level-start"><a class="footer-logo is-block mb-2" href="/"><img src="/img/William_blog.png" alt="William@blog" height="28"></a><p class="size-small"><span>&copy; 2022 Weiliang Bai</span>  Powered by <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a> &amp; <a href="https://github.com/ppoffice/hexo-theme-icarus" target="_blank" rel="noopener">Icarus</a></p></div><div class="level-end"><div class="field has-addons"><p class="control"><a class="button is-transparent is-large" target="_blank" rel="noopener" title="Creative Commons" href="https://creativecommons.org/"><i class="fab fa-creative-commons"></i></a></p><p class="control"><a class="button is-transparent is-large" target="_blank" rel="noopener" title="Attribution 4.0 International" href="https://creativecommons.org/licenses/by/4.0/"><i class="fab fa-creative-commons-by"></i></a></p><p class="control"><a class="button is-transparent is-large" target="_blank" rel="noopener" title="🐻Xiong35" href="http://www.xiong35.cn"><i class="fas fa-paw"></i></a></p><p class="control"><a class="button is-transparent is-large" target="_blank" rel="noopener" title="🍃Lam" href="https://lamcoding.github.io"><i class="fas fa-leaf"></i></a></p></div></div></div></div></footer><script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script><script src="https://cdn.jsdelivr.net/npm/moment@2.22.2/min/moment-with-locales.min.js"></script><script>moment.locale("zh-CN");</script><script>var IcarusThemeSettings = {
+            site: {
+                url: 'https://willog.top',
+                external_link: {"enable":true,"exclude":[]}
+            },
+            article: {
+                highlight: {
+                    clipboard: true,
+                    fold: 'unfolded'
+                }
+            }
+        };</script><script src="https://cdn.jsdelivr.net/npm/clipboard@2.0.4/dist/clipboard.min.js" defer></script><a id="back-to-top" title="回到顶端" href="javascript:;"><i class="fa fa-chevron-up"></i></a><script src="/js/back_to_top.js" defer></script><!--!--><!--!--><script src="/js/main.js" defer></script><div class="searchbox"><div class="searchbox-container"><div class="searchbox-header"><div class="searchbox-input-container"><input class="searchbox-input" type="text" placeholder="😆随便搜点什么呗..."></div><a class="searchbox-close" href="javascript:;">×</a></div><div class="searchbox-body"></div></div></div><script src="/js/insight.js" defer></script><script>document.addEventListener('DOMContentLoaded', function () {
+            loadInsight({"contentUrl":"/content.json"}, {"hint":"😆随便搜点什么呗...","untitled":"(无标题)","posts":"文章","pages":"页面","categories":"分类","tags":"标签"});
+        });</script></body></html>

@@ -1,0 +1,264 @@
+<!doctype html>
+<html lang="zh"><head><meta charset="utf-8"><meta name="generator" content="Hexo 4.2.1"><meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"><meta><title>技术/笔记/《第一行代码：Android》读书笔记 (二) - William@blog</title><meta description="Android Kotlin 读书笔记           简介             &amp;quot;《第一行代码：Android 3rd》第六章到第八章的读书笔记，主要内容包括Android数据存储（持久化技术），四大组件中的Broadcast广播系统以及ContentProvider内容提供商&amp;quot;"><meta property="og:type" content="blog"><meta property="og:title" content="技术/笔记/《第一行代码：Android》读书笔记 (二)"><meta property="og:url" content="https://willog.top/posts/c484d1a3/"><meta property="og:site_name" content="William@blog"><meta property="og:description" content="Android Kotlin 读书笔记           简介             &amp;quot;《第一行代码：Android 3rd》第六章到第八章的读书笔记，主要内容包括Android数据存储（持久化技术），四大组件中的Broadcast广播系统以及ContentProvider内容提供商&amp;quot;"><meta property="og:locale" content="zh_CN"><meta property="og:image" content="https://migrate-1301429536.cos.ap-nanjing.myqcloud.com/img/20200911100439.jpg"><meta property="article:published_time" content="2020-09-10T16:00:00.000Z"><meta property="article:modified_time" content="2022-09-17T07:16:07.967Z"><meta property="article:author" content="Weiliang Bai"><meta property="article:tag" content="Android"><meta property="article:tag" content="Kotlin"><meta property="twitter:card" content="summary"><meta property="twitter:image" content="https://migrate-1301429536.cos.ap-nanjing.myqcloud.com/img/20200911100439.jpg"><script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","mainEntityOfPage":{"@type":"WebPage","@id":"https://willog.top/posts/c484d1a3/"},"headline":"William@blog","image":["https://migrate-1301429536.cos.ap-nanjing.myqcloud.com/img/20200911100439.jpg"],"datePublished":"2020-09-10T16:00:00.000Z","dateModified":"2022-09-17T07:16:07.967Z","author":{"@type":"Person","name":"Weiliang Bai"},"description":"Android Kotlin 读书笔记           简介             &quot;《第一行代码：Android 3rd》第六章到第八章的读书笔记，主要内容包括Android数据存储（持久化技术），四大组件中的Broadcast广播系统以及ContentProvider内容提供商&quot;"}</script><link rel="canonical" href="https://willog.top/posts/c484d1a3/"><link rel="icon" href="/img/favicon_owl/android-chrome-512x512.png"><link rel="stylesheet" href="https://cdnjs.loli.net/ajax/libs/font-awesome/5.12.0/css/all.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@9.12.0/styles/atom-one-light.css"><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@400;600&amp;family=Source+Code+Pro"><link rel="stylesheet" href="/css/default.css"><!--!--><script>var _hmt = _hmt || [];
+        (function() {
+            var hm = document.createElement("script");
+            hm.src = "//hm.baidu.com/hm.js?e83fc42ee83404ab3e70b1750dc52ddb";
+            var s = document.getElementsByTagName("script")[0];
+            s.parentNode.insertBefore(hm, s);
+        })();</script><script src="https://cdn.jsdelivr.net/npm/pace-js@1.0.2/pace.min.js"></script><script src="https://cdn.jsdelivr.net/npm/mermaid@8.8.2/dist/mermaid.min.js"></script><link rel="alternate" href="/atom.xml" title="William@blog" type="application/atom+xml">
+</head><body class="is-2-column"><nav class="navbar navbar-main"><div class="container"><div class="navbar-brand justify-content-center"><a class="navbar-item navbar-logo" href="/"><img src="/img/William_blog.png" alt="William@blog" height="28"></a></div><div class="navbar-menu"><div class="navbar-start"><a class="navbar-item" href="/">🏡Home</a><a class="navbar-item" href="/archives">📁Archives</a><a class="navbar-item" href="/categories">📌Categories</a><a class="navbar-item" href="/gallery">🎨Gallery</a></div><div class="navbar-end"><a class="navbar-item" target="_blank" rel="noopener" title="xiong35的博客" href="http://www.xiong35.cn"><i class="fa fa-paw"></i></a><a class="navbar-item" target="_blank" rel="noopener" title="lam的博客" href="https://lamcoding.github.io"><i class="fa fa-leaf"></i></a><a class="navbar-item is-hidden-tablet catalogue" title="目录" href="javascript:;"><i class="fas fa-list-ul"></i></a><a class="navbar-item search" title="搜索" href="javascript:;"><i class="fa fa-search"></i></a></div></div></div></nav><section class="section"><div class="container"><div class="columns"><div class="column order-2 column-main is-8-tablet is-8-desktop is-8-widescreen"><div class="card"><div class="card-image"><span class="image is-7by3"><img class="thumbnail" src="https://migrate-1301429536.cos.ap-nanjing.myqcloud.com/img/20200911100439.jpg" alt="技术/笔记/《第一行代码：Android》读书笔记 (二)"></span></div><article class="card-content article" role="article"><div class="article-meta size-small is-uppercase level is-mobile"><div class="level-left"><time class="level-item" dateTime="2020-09-10T16:00:00.000Z" title="2020-09-10T16:00:00.000Z">2020-09-11</time><span class="level-item"><a class="link-muted" href="/categories/%E6%8A%80%E6%9C%AF/">技术</a><span> / </span><a class="link-muted" href="/categories/%E6%8A%80%E6%9C%AF/%E7%AC%94%E8%AE%B0/">笔记</a></span><span class="level-item">19 分钟 读完 (大约 2791 个字)</span></div></div><h1 class="title is-3 is-size-4-mobile">技术/笔记/《第一行代码：Android》读书笔记 (二)</h1><div class="content"><span class="label label-success">Android</span>
+<span class="label label-warning">Kotlin</span>
+<span class="label label-info">读书笔记</span>
+<br>
+<br>
+<article class="message">
+  <div class="message-header">
+    <p>简介</p>
+  </div>
+  <div class="message-body">
+      <p>"《第一行代码：Android 3rd》第六章到第八章的读书笔记，主要内容包括Android数据存储（持久化技术），四大组件中的Broadcast广播系统以及ContentProvider内容提供商"</p>
+  </div>
+</article>
+<a id="more"></a>
+<blockquote>
+<p>为方便笔记，约定使用一下<strong>伪Kotlin语法</strong>：</p>
+<p><code>&lt;!ClassName&gt;</code> 用来表示ClassName类的一个实例</p>
+<p><code>&lt;Abstract&gt;或&lt;A&gt;</code> 写在方法(类)前用来表示该方法（类）是一个必须要给出实现的抽象方法</p>
+<p><code>XXX</code> 表示待定的语法字符串</p>
+<p><code>...</code> 表示前后代码段省略</p>
+</blockquote>
+<h2 id="第六章-全局大喇叭详解广播机制"><a class="markdownIt-Anchor" href="#第六章-全局大喇叭详解广播机制"></a> 第六章 全局大喇叭！详解广播机制</h2>
+<h3 id="监听接受广播"><a class="markdownIt-Anchor" href="#监听接受广播"></a> 监听/接受广播</h3>
+<ul>
+<li>静态/动态注册BroadcastReciever，<strong>注意静态注册的接收器不能接受隐式Intent，还缺乏Activity上下文，但是能够在没启动的情况下收听到广播信号</strong></li>
+<li>静态注册：Manifest中注册；动态注册：Activity中注册，要记得自行销毁</li>
+</ul>
+<h3 id="发送自定义广播"><a class="markdownIt-Anchor" href="#发送自定义广播"></a> 发送自定义广播</h3>
+<ul>
+<li>
+<p>Intent可以不但可以穿梭于不同Activity之间，也可以穿梭于不同Application之间（Broadcast）</p>
+</li>
+<li>
+<p>分类：<strong>标准广播</strong>（一传多），<strong>有序广播</strong>（one by one，可截断）</p>
+</li>
+</ul>
+<h2 id="第七章-数据存储告别不持久"><a class="markdownIt-Anchor" href="#第七章-数据存储告别不持久"></a> 第七章 数据存储：告别不持久</h2>
+<div class="alert alert-warning"><i class="fa fa-bell  float-left"></i>  <p><a href="https://www.cnblogs.com/xdp-gacl/p/3634409.html" class="alert-link">Java流基础知识</a></p>
+</div>
+<h3 id="文件存储"><a class="markdownIt-Anchor" href="#文件存储"></a> 文件存储</h3>
+<div class="alert alert-info"><i class="fa fa-info  float-left"></i>  <p>适合存储一些简单的文本数据或二进制数据</p>
+</div>
+<ul>
+<li>Context 类提供 <code>openFileOutput(...), openFileInput(...)</code>用来打开（创建）一个<code>/data/data/&lt;package name&gt;/files/</code>目录下的文件，方法返回一个FileOutPutStream或FileInputStream对象，该对象可使用 <em>Java流</em> 的方式IO</li>
+<li>举例：FileOutPut - OutputStreamWriter - BufferedWriter</li>
+</ul>
+<figure class="highlight kotlin"><figcaption><span>文件存储实例</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs kotlin"><span class="hljs-function"><span class="hljs-keyword">fun</span> <span class="hljs-title">save</span><span class="hljs-params">(inputText: <span class="hljs-type">String</span>)</span></span> &#123;<br>    <span class="hljs-keyword">try</span> &#123;<br>        <span class="hljs-keyword">val</span> output = openFileOutput(<span class="hljs-string">"data"</span>, Context.MODE_PRIVATE)<br>        <span class="hljs-keyword">val</span> writer = BufferedWriter(OutputStreamWriter(output))<br>        writer.use &#123;<br>            it.write(inputText)<br>        &#125;<br>    &#125; <span class="hljs-keyword">catch</span> (e: IOException) &#123;<br>        e.printStackTrace()<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+<h3 id="sharedpreferences-存储"><a class="markdownIt-Anchor" href="#sharedpreferences-存储"></a> SharedPreferences 存储</h3>
+<div class="alert alert-info"><i class="fa fa-info-circle  float-left"></i>  <p>SharedPreferences 是使用键值对的方式来存储数据的，支持多种数据类型的存储</p>
+</div>
+<ul>
+<li>获取SharedPreferences:
+<ul>
+<li>Context 的 <code>getSharedPreferences()</code></li>
+<li>Activity 的 <code>getPreferences()</code></li>
+</ul>
+</li>
+<li>存储步骤</li>
+</ul>
+<ol>
+<li>
+<p>调用SharedPreferences对象的edit()方法获取一个SharedPreferences.Editor对象。</p>
+</li>
+<li>
+<p>向SharedPreferences.Editor对象中添加数据，比如添加一个布尔型数据就使用putBoolean()方法，添加一个字符串则使用putString()方法，以此类推。</p>
+</li>
+<li>
+<p>调用apply()方法将添加的数据提交，从而完成数据存储操作。</p>
+</li>
+</ol>
+<ul>
+<li>KTX库方法：</li>
+</ul>
+<figure class="highlight java"><figcaption><span>KTX简化SharedPreferences存储</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs java">getSharedPreferences(<span class="hljs-string">"data, Context.MODE_PRIVATE"</span>).edit &#123;<br>    putString(<span class="hljs-string">"name"</span>, <span class="hljs-string">"Tom"</span>)<br>    putInt(<span class="hljs-string">"age"</span>, <span class="hljs-number">28</span>)<br>&#125;<br></code></pre></td></tr></table></figure>
+<h3 id="sqlite数据库存储"><a class="markdownIt-Anchor" href="#sqlite数据库存储"></a> SQLite数据库存储</h3>
+<div class="alert alert-info"><i class="fa fa-info  float-left"></i>  <p>SQLite 是一种轻量简便的关系型数据库，可以用来存储复杂关系的数据</p>
+</div>
+<ul>
+<li>SQLiteOpenHelper帮助类，借助这个类可以非常简单地对数据库进行创建和升级（需要重写<code>onCreate(), onUpgrate()</code>）</li>
+<li>两种CRUD方式：SQLiteDataBase类成员函数；SQL语句执行。</li>
+<li>KTX库：contentValuesOf() 方法</li>
+<li>数据库文件存储路径：<code>/data/data/&lt;package name&gt;/databases/</code>下</li>
+</ul>
+<h4 id="创建数据库"><a class="markdownIt-Anchor" href="#创建数据库"></a> 创建数据库</h4>
+<ul>
+<li>继承一个<code>SQLiteOpenHelper</code>的帮助类</li>
+</ul>
+<figure class="highlight kotlin"><figcaption><span>解析SQLiteHelper帮助类</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><code class="hljs kotlin"><span class="hljs-comment">//构造方案之一</span><br>SQLiteOpenHelper(context: Context, name: String, cursor: Cursor, version: <span class="hljs-built_in">Int</span>) &#123;<br>    <span class="hljs-comment">//           上下文;            数据库名;  查询数据时用，一般传null;  版本号;</span><br>    <span class="hljs-comment">/*抽象方法*/</span><br>    &lt;A&gt; <span class="hljs-keyword">override</span> <span class="hljs-function"><span class="hljs-keyword">fun</span> <span class="hljs-title">onCreate</span><span class="hljs-params">(db: <span class="hljs-type">SQLiteDatabase</span>)</span></span> &#123;<br>        <span class="hljs-comment">/*创建数据库时（name指定的数据库不存在时）调用*/</span><br>    &#125;<br><br>    &lt;A&gt; <span class="hljs-keyword">override</span> <span class="hljs-function"><span class="hljs-keyword">fun</span> <span class="hljs-title">onUpgrade</span><span class="hljs-params">(db: <span class="hljs-type">SQLiteDatabase</span>, oldVersion: <span class="hljs-type">Int</span>, newVersion: <span class="hljs-type">Int</span>)</span></span> &#123;<br>        <span class="hljs-comment">/*升级数据库时（version改变时）调用*/</span><br>    &#125;<br>    <br>    <span class="hljs-comment">/*两个重要的实例方法*/</span><br>    getReadableDatabase() getWritableDataBase() <span class="hljs-comment">//打开（没有则创建）帮助类指定的数据库，返回一个可对数据库进行读写的对象(SQLiteDataBase)。当数据库不可写入时Readable将以只读方式打开，Writable将异常</span><br>    <span class="hljs-comment">//注意Kotlin中可以直接调用readableDatabase、writableDataBase属性</span><br>&#125;<br></code></pre></td></tr></table></figure>
+<blockquote>
+<p>可以使用AS的<strong>Device File Explore</strong>和<strong>Database Navigate</strong>插件浏览虚拟机中的文件和数据库</p>
+</blockquote>
+<h4 id="升级数据库"><a class="markdownIt-Anchor" href="#升级数据库"></a> 升级数据库</h4>
+<ul>
+<li>
+<p>改变<code>SQLiteOpenHelper</code>类的<code>version: Int</code>参数，则下一次打开数据库的时候（用<code>getReadableDatabase() </code> <code>getWritableDataBase()</code>）会调用<code>onUpgrade()</code>方法。</p>
+</li>
+<li>
+<p><strong>最佳编写方式</strong>：针对不同版本编写不同逻辑</p>
+</li>
+</ul>
+<figure class="highlight kotlin"><figcaption><span>最佳实例</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs kotlin"><span class="hljs-keyword">override</span> <span class="hljs-function"><span class="hljs-keyword">fun</span> <span class="hljs-title">onUpgrade</span><span class="hljs-params">(db: <span class="hljs-type">SQLiteDatabase</span>, oldVersion: <span class="hljs-type">Int</span>, newVersion: <span class="hljs-type">Int</span>)</span></span> &#123;<br>    <span class="hljs-keyword">if</span> (oldVersion &lt;= <span class="hljs-number">1</span>) &#123;<br>        db.execSQL(createCategory)<br>    &#125;<br>    <span class="hljs-keyword">if</span> (oldVersion &lt;= <span class="hljs-number">2</span>) &#123;<br>        db.execSQL(<span class="hljs-string">"alter table Book add column category_id integer"</span>)<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+<h4 id="数据库のcrud"><a class="markdownIt-Anchor" href="#数据库のcrud"></a> 数据库のCRUD</h4>
+<ul>
+<li>直接执行 SQL 语句</li>
+</ul>
+<figure class="highlight kotlin"><figcaption><span>execSQL()签名</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs kotlin">&lt;!SQLiteDataBase&gt;.execSQL(string: String, array: StringArray)<br><span class="hljs-comment">//增删改                   sql语句（含占位符）；   参数列表；</span><br><br>&lt;!SQLiteDataBase&gt;.rawQuery(string: String, array: StringArray): Cursor<br><span class="hljs-comment">//查                     sql语句（含占位符）；   参数列表；</span><br></code></pre></td></tr></table></figure>
+<img src="https://migrate-1301429536.cos.ap-nanjing.myqcloud.com/img/20200910161247.png" alt="图7-1 直接执行 SQL 语句" style="zoom:67%;" />
+<ul>
+<li>使用内置方法</li>
+</ul>
+<figure class="highlight kotlin"><figcaption><span>SQLiteDataBase部分方法</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><code class="hljs kotlin"><span class="hljs-comment">/*插入*/</span><br>&lt;!SQLiteDataBase&gt;.insert(tableName: String, <span class="hljs-literal">null</span>, contentValues: ContentValues)<br><span class="hljs-comment">//para2用于给某些为配值的可为空的列自动赋值为NULL；para3：ContentValue对象需要提供一系列put()方法的重载，用于向表中添加数据</span><br><br><span class="hljs-comment">//ContentValues()构建实例</span><br><span class="hljs-keyword">val</span> values1 = ContentValues().apply &#123;                <br>    <span class="hljs-comment">// 开始组装第一条数据                                    </span><br>    put(<span class="hljs-string">"name"</span>, <span class="hljs-string">"The Da Vinci Code"</span>)                <br>    put(<span class="hljs-string">"author"</span>, <span class="hljs-string">"Dan Brown"</span>)                      <br>    put(<span class="hljs-string">"pages"</span>, <span class="hljs-number">454</span>)                               <br>    put(<span class="hljs-string">"price"</span>, <span class="hljs-number">16.96</span>)                             <br>&#125; <br><br><span class="hljs-comment">/*修改*/</span><br>&lt;!SQLiteDataBase&gt;.updata(tableName: String, contentValues: ContentValues, <span class="hljs-keyword">where</span>: String, paraArray: Array)<br>    <span class="hljs-comment">//para3: 相当于sql中的WHERE部分；para4: 给WHERE中占位符分配参数的列表</span><br>   <br><span class="hljs-comment">/*删除*/</span><br>&lt;!SQLiteDataBase&gt;.updata(tableName: String, <span class="hljs-keyword">where</span>: String, paraArray: Array)<br><br><span class="hljs-comment">/*查找*/</span><br>&lt;!SQLiteDataBase&gt;.query(...): Cursor 方法的参数列表见下文<br><span class="hljs-comment">/*调用query()返回一个Cursor对象*/</span><br>&lt;!Cursor&gt;.moveToFirst()指针移动到第一个，成功返回True<br>&lt;!Cursor&gt;.moveToNext()移动到下一个，成功返回True<br>&lt;!Cursor&gt;.getXXX(Cursor.getColumnIndex())获取根据索引取出相应类型的值（XXX为某种Type）<br>&lt;!Cursor&gt;.close()关闭指针<br></code></pre></td></tr></table></figure>
+<table>
+<thead>
+<tr>
+<th>query()方法参数</th>
+<th>对应SQL部分</th>
+<th>描　　述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>table</td>
+<td>from  table_name</td>
+<td>指定查询的表名</td>
+</tr>
+<tr>
+<td>columns</td>
+<td>select  column1, column2</td>
+<td>指定查询的列名</td>
+</tr>
+<tr>
+<td>selection</td>
+<td>where  column = value</td>
+<td>指定where的约束条件</td>
+</tr>
+<tr>
+<td>selectionArgs</td>
+<td>-</td>
+<td>为where中的占位符提供具体的值</td>
+</tr>
+<tr>
+<td>groupBy</td>
+<td>group  by column</td>
+<td>指定需要group  by的列</td>
+</tr>
+<tr>
+<td>having</td>
+<td>having  column = value</td>
+<td>对group  by后的结果进一步约束</td>
+</tr>
+<tr>
+<td>orderBy</td>
+<td>order  by column1, column2</td>
+<td>指定查询结果的排序方式</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<a href="https://www.jianshu.com/p/2fc0d39bd2f" title="" target="">Cursor的更多用法</a>
+</blockquote>
+<figure class="highlight kotlin"><figcaption><span>KTX库简化ContentValues的组装</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs kotlin"><span class="hljs-keyword">val</span> values = cvOf(<span class="hljs-string">"name"</span> to <span class="hljs-string">"Game of Thrones"</span>, <span class="hljs-string">"author"</span> to <span class="hljs-string">"George Martin"</span>, <span class="hljs-string">"pages"</span> to <span class="hljs-number">720</span>, <span class="hljs-string">"price"</span> to <span class="hljs-number">20.85</span>)<br>db.insert(<span class="hljs-string">"Book"</span>, <span class="hljs-literal">null</span>, values)<br></code></pre></td></tr></table></figure>
+<h4 id="sqlite-事务"><a class="markdownIt-Anchor" href="#sqlite-事务"></a> SQLite 事务</h4>
+<ul>
+<li>(约定db: SQLiteDataBase) 首先用<code>db.Transaction()</code> 开启事务，之后在<code>try</code>块中编写数据库事务逻辑，结束时调用<code>db.setTransactionSuccessful()</code>，如果事务处理期间抛出异常将被<code>catch</code>捕获，事务将不被处理；如果顺利完成无<code>Exception</code>抛出，则在<code>finally</code>块中调用<code>db.endTransaction()</code>结束事务。</li>
+</ul>
+<figure class="highlight kotlin"><figcaption><span>事务实例</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><code class="hljs kotlin">replaceData.setOnClickListener &#123;<br>            <span class="hljs-keyword">val</span> db = dbHelper.writableDatabase<br>            db.beginTransaction() <span class="hljs-comment">// 开启事务</span><br>            <span class="hljs-keyword">try</span> &#123;<br>                db.delete(<span class="hljs-string">"Book"</span>, <span class="hljs-literal">null</span>, <span class="hljs-literal">null</span>)<br><span class="hljs-comment">//                if (true) &#123;</span><br><span class="hljs-comment">//                    // 在这里手动抛出一个异常，让事务失败</span><br><span class="hljs-comment">//                    throw NullPointerException()</span><br><span class="hljs-comment">//                &#125;</span><br>                <span class="hljs-keyword">val</span> values = cvOf(<span class="hljs-string">"name"</span> to <span class="hljs-string">"Game of Thrones"</span>, <span class="hljs-string">"author"</span> to <span class="hljs-string">"George Martin"</span>, <span class="hljs-string">"pages"</span> to <span class="hljs-number">720</span>, <span class="hljs-string">"price"</span> to <span class="hljs-number">20.85</span>)<br>                db.insert(<span class="hljs-string">"Book"</span>, <span class="hljs-literal">null</span>, values)<br>                db.setTransactionSuccessful() <span class="hljs-comment">// 事务已经执行成功</span><br>            &#125; <span class="hljs-keyword">catch</span> (e: Exception) &#123;<br>                e.printStackTrace()<br>            &#125; <span class="hljs-keyword">finally</span> &#123;<br>                db.endTransaction() <span class="hljs-comment">// 结束事务</span><br>            &#125;<br>        &#125;<br></code></pre></td></tr></table></figure>
+<h2 id="第八章-跨程序共享数据探究-contentprovider"><a class="markdownIt-Anchor" href="#第八章-跨程序共享数据探究-contentprovider"></a> 第八章 跨程序共享数据，探究 ContentProvider</h2>
+<h3 id="android-权限机制"><a class="markdownIt-Anchor" href="#android-权限机制"></a> Android 权限机制</h3>
+<ul>
+<li>普通权限申请：在AndroidManifest.xml中注册即可</li>
+</ul>
+<figure class="highlight kotlin"><figcaption><span>普通权限申请</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs kotlin">&lt;manifest ...&gt;<br>...<br>&lt;uses-permission android:name=<span class="hljs-string">"android.permission.RECEIVE_BOOT_COMPLETED"</span> /&gt;<br>...<br>&lt;/manifest&gt;<br></code></pre></td></tr></table></figure>
+<ul>
+<li>运行时权限（危险权限）申请：第一步同普通权限，第二步如下</li>
+</ul>
+<figure class="highlight kotlin"><figcaption><span>危险权限申请流程：</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs kotlin"><span class="hljs-comment">//检查权限是否以及授予;                          权限名（见图8-2）</span><br><span class="hljs-keyword">if</span>(ContextCompat.checkSelfPermission(context: Context, permissionName: String) == PackageManager.PERMISSION_GRANTED) &#123;...&#125;<br><br><span class="hljs-comment">//申请权限							                  权限列表                  申请码（标识一次申请）</span><br>ActivityCompat.requestPermissions(context: Context, permissions: StringArray, code: <span class="hljs-built_in">Int</span>)<br><br><span class="hljs-comment">/*权限申请结果返回时调用*/</span>                    <span class="hljs-comment">/*申请码*/</span>             <span class="hljs-comment">/*申请的权限列表*/</span>         <span class="hljs-comment">/*申请结果*/</span><br><span class="hljs-keyword">override</span> <span class="hljs-function"><span class="hljs-keyword">fun</span> <span class="hljs-title">onRequestPermissionsResult</span> <span class="hljs-params">(requestcode: <span class="hljs-type">Int</span>, permissions: <span class="hljs-type">Array</span>&lt;<span class="hljs-type">String</span>&gt;, grantResults: <span class="hljs-type">IntArray</span>)</span></span> &#123;...&#125; <span class="hljs-comment">//申请结果要与PackageManager.PERMISSION_GRANTED比较</span><br></code></pre></td></tr></table></figure>
+<h3 id="uri-类"><a class="markdownIt-Anchor" href="#uri-类"></a> Uri 类</h3>
+<ul>
+<li>
+<p>内容URI为每一个app的ContentProvider中的数据提供了一个唯一标识符</p>
+</li>
+<li>
+<p>内容URI字符串由协议声明、authority 和 path 组成（通配符：井号匹配任意长度数字；星号匹配任意长度字符串）</p>
+</li>
+</ul>
+<figure class="highlight kotlin"><figcaption><span>内容URI字符串格式</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs kotlin">content:<span class="hljs-comment">//com.example.app.provider/table1/1  ←这是id</span><br>协议部分   authority（包名.provider） path<br></code></pre></td></tr></table></figure>
+<figure class="highlight kotlin"><figcaption><span>解析Uri类</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs kotlin"><span class="hljs-comment">//内容URI字符串解析为kotlin的Uri对象</span><br>Uri.parse(uri: String): Uri<br><span class="hljs-comment">//按‘/’分割Uri对象的内容URI的Path部分</span><br>&lt;!Uri&gt;.getPathSegments(): List&lt;String&gt;<br></code></pre></td></tr></table></figure>
+<img src="https://migrate-1301429536.cos.ap-nanjing.myqcloud.com/img/20200915191206.png" alt="图8-2" style="zoom:67%;" />
+<h3 id="contentresover-类"><a class="markdownIt-Anchor" href="#contentresover-类"></a> ContentResover 类</h3>
+<ul>
+<li>
+<p>获取实例：通过<code>&lt;!Context&gt;.getContentResolver()</code> ——Kotlin中即<code>contentResolver</code>属性</p>
+</li>
+<li>
+<p>ContentResolver 的 CURD (将SQLiteDataBase对应的CURD中表名换成Uri即可)</p>
+</li>
+</ul>
+<h3 id="contentprovider-类"><a class="markdownIt-Anchor" href="#contentprovider-类"></a> ContentProvider 类</h3>
+<blockquote>
+<p>ContentProvider实例需要实现其他app访问本app的CURD接口，而ContentResolver只是提供了一个访问其他程序的api；二者CURD 函数参数列表相同。</p>
+</blockquote>
+<ul>
+<li>
+<p>创建一个ContentProvider组件</p>
+<ul>
+<li>使用AS的快捷方式</li>
+<li>手动注册AndroidManifest.xml</li>
+</ul>
+</li>
+<li>
+<p><code>&lt;ContentProvider&gt;</code>组件属性</p>
+<ul>
+<li>exported：是否允许外部程序访问</li>
+<li>enabled：是否启用</li>
+</ul>
+</li>
+<li>
+<p>ContentProvider类中有6个抽象方法，我们在使用子类继承它的时候，需要将这6个方法全部重写。</p>
+</li>
+</ul>
+<figure class="highlight kotlin"><figcaption><span>ContentProvider待实现方法</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><code class="hljs kotlin">&lt;A&gt; ContentProvider() &#123;<br><br>    <span class="hljs-comment">/*初始化ContentProvider的时候调用。通常会在这里完成对数据库的创建和升级等操作，返回true表示ContentProvider初始化成功，返回false则表示失败。*/</span><br>    <span class="hljs-keyword">override</span> <span class="hljs-function"><span class="hljs-keyword">fun</span> <span class="hljs-title">onCreate</span><span class="hljs-params">()</span></span>: <span class="hljs-built_in">Boolean</span><br>    <br>	<span class="hljs-comment">/*从ContentProvider中查询数据。uri参数用于确定查询哪张表，projection参数用于确定查询哪些列，selection和selectionArgs参数用于约束查询哪些行，sortOrder参数用于对结果进行排序，查询的结果存放在Cursor对象中返回。*/</span><br>    <span class="hljs-keyword">override</span> <span class="hljs-function"><span class="hljs-keyword">fun</span> <span class="hljs-title">query</span><span class="hljs-params">(uri: <span class="hljs-type">Uri</span>, projection: <span class="hljs-type">Array</span>&lt;<span class="hljs-type">String</span>&gt;?, selection: <span class="hljs-type">String</span>?, selectionArgs: <span class="hljs-type">Array</span>&lt;<span class="hljs-type">String</span>&gt;?, sortOrder: <span class="hljs-type">String</span>?)</span></span>: Cursor?<br><br>    <span class="hljs-comment">/*向ContentProvider中添加一条数据。uri参数用于确定要添加到的表，待添加的数据保存在values参数中。添加完成后，返回一个用于表示这条新记录的URI。*/</span><br>    <span class="hljs-keyword">override</span> <span class="hljs-function"><span class="hljs-keyword">fun</span> <span class="hljs-title">insert</span><span class="hljs-params">(uri: <span class="hljs-type">Uri</span>, values: <span class="hljs-type">ContentValues</span>?)</span></span>: Uri?<br>	<br>    <span class="hljs-comment">/*更新ContentProvider中已有的数据。uri参数用于确定更新哪一张表中的数据，新数据保存在values参数中，selection和selectionArgs参数用于约束更新哪些行，受影响的行数将作为返回值返回。*/</span><br>    <span class="hljs-keyword">override</span> <span class="hljs-function"><span class="hljs-keyword">fun</span> <span class="hljs-title">update</span><span class="hljs-params">(uri: <span class="hljs-type">Uri</span>, values: <span class="hljs-type">ContentValues</span>?, selection: <span class="hljs-type">String</span>?, selectionArgs: <span class="hljs-type">Array</span>&lt;<span class="hljs-type">String</span>&gt;?)</span></span>: <span class="hljs-built_in">Int</span><br><br>    <span class="hljs-comment">/*从ContentProvider中删除数据。uri参数用于确定删除哪一张表中的数据，selection和selectionArgs参数用于约束删除哪些行，被删除的行数将作为返回值返回。*/</span><br>    <span class="hljs-keyword">override</span> <span class="hljs-function"><span class="hljs-keyword">fun</span> <span class="hljs-title">delete</span><span class="hljs-params">(uri: <span class="hljs-type">Uri</span>, selection: <span class="hljs-type">String</span>?, selectionArgs: <span class="hljs-type">Array</span>&lt;<span class="hljs-type">String</span>&gt;?)</span></span>: <span class="hljs-built_in">Int</span><br><br>    <span class="hljs-comment">/*根据传入的内容URI返回相应的MIME类型。*/</span><br>    <span class="hljs-keyword">override</span> <span class="hljs-function"><span class="hljs-keyword">fun</span> <span class="hljs-title">getType</span><span class="hljs-params">(uri: <span class="hljs-type">Uri</span>)</span></span>: String?<br>&#125;<br></code></pre></td></tr></table></figure>
+<ul>
+<li>UriMatcher 类：方便匹配 ContentProvider 的 CURD 方法中的Uri（当调用UriMatcher的<code>match()</code>方法时，可以将一个Uri对象传入，返回值是某个能够匹配这个Uri对象所对应的自定义代码，利用这个代码，就可以判断出调用方期望访问的是哪张表中的数据了。）</li>
+</ul>
+<figure class="highlight kotlin"><figcaption><span>解析UriMatcher帮助类</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs kotlin">&lt;!UriMatcher&gt;.addURI(autority: String, path: String, code: <span class="hljs-built_in">Int</span>)<br><span class="hljs-comment">//添加匹配规则                                         返回代码（唯一标识匹配规则）</span><br><br>&lt;!UriMatcher&gt;.match(uri: Uri): <span class="hljs-built_in">Int</span><br><span class="hljs-comment">//                  匹配对象    返回代码</span><br></code></pre></td></tr></table></figure>
+<ul>
+<li>
+<p>MIME 字符串格式：</p>
+<ul>
+<li>
+<p>必须以vnd开头。</p>
+</li>
+<li>
+<p>如果内容URI以路径结尾，则后接<code>android.cursor.dir/</code>；如果内容URI以id结尾，则后接<code>android.cursor.item/</code>。</p>
+</li>
+<li>
+<p>最后接上<code>vnd.&lt;authority&gt;.&lt;path&gt;</code>。</p>
+</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight kotlin"><figcaption><span>MIME示例</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs kotlin">URI:	content:<span class="hljs-comment">//com.example.app.provider/table1</span><br>MIME:	vnd.android.cursor.dir/vnd.com.example.app.provider.table1<br>    <br>URI:	content:<span class="hljs-comment">//com.example.app.provider/table1/1</span><br>MIME:	vnd.android.cursor.item/vnd.com.example.app.provider.table1<br></code></pre></td></tr></table></figure>
+</div><div class="article-tags size-small mb-4"><span class="mr-2">#</span><a class="link-muted mr-2" rel="tag" href="/tags/Android/">Android</a><a class="link-muted mr-2" rel="tag" href="/tags/Kotlin/">Kotlin</a></div><div class="addthis_inline_share_toolbox"></div><script src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-5ed1b54839d71d24" defer></script></article></div><div class="card"><div class="card-content"><h3 class="menu-label has-text-centered">喜欢这篇文章？打赏一下作者吧</h3><div class="buttons is-centered"><a class="button donate" href="https://www.buymeacoffee.com/Weiliang" style="background-color:rgba(255,128,62,.87);border-color:transparent;color:white;" target="_blank" rel="noopener"><span class="icon is-small"><i class="fas fa-coffee"></i></span><span>送杯咖啡</span></a><a class="button is-success donate"><span class="icon is-small"><i class="fab fa-weixin"></i></span><span>微信打赏</span><span class="qrcode"><img src="/img/wechat/qrcode.png" alt="微信打赏"></span></a></div></div></div><nav class="post-navigation mt-4 level is-mobile"><div class="level-start"><a class="article-nav-prev level level-item link-muted" href="/posts/87cffae2/"><i class="level-item fas fa-chevron-left"></i><span class="level-item">技术/笔记/《第一行代码：Android》读书笔记（三）</span></a></div><div class="level-end"><a class="article-nav-next level level-item link-muted" href="/posts/37a431d8/"><span class="level-item">技术/笔记/《第一行代码：Android》读书笔记 (一)</span><i class="level-item fas fa-chevron-right"></i></a></div></nav><!--!--></div><div class="column column-left is-4-tablet is-4-desktop is-4-widescreen  order-1 is-sticky"><div class="card widget" id="toc"><div class="card-content"><div class="menu"><h3 class="menu-label">目录</h3><ul class="menu-list"><li><a class="is-flex" href="#第六章-全局大喇叭详解广播机制"><span class="mr-2">1</span><span> 第六章 全局大喇叭！详解广播机制</span></a><ul class="menu-list"><li><a class="is-flex" href="#监听接受广播"><span class="mr-2">1.1</span><span> 监听/接受广播</span></a></li><li><a class="is-flex" href="#发送自定义广播"><span class="mr-2">1.2</span><span> 发送自定义广播</span></a></li></ul></li><li><a class="is-flex" href="#第七章-数据存储告别不持久"><span class="mr-2">2</span><span> 第七章 数据存储：告别不持久</span></a><ul class="menu-list"><li><a class="is-flex" href="#文件存储"><span class="mr-2">2.1</span><span> 文件存储</span></a></li><li><a class="is-flex" href="#sharedpreferences-存储"><span class="mr-2">2.2</span><span> SharedPreferences 存储</span></a></li><li><a class="is-flex" href="#sqlite数据库存储"><span class="mr-2">2.3</span><span> SQLite数据库存储</span></a><ul class="menu-list"><li><a class="is-flex" href="#创建数据库"><span class="mr-2">2.3.1</span><span> 创建数据库</span></a></li><li><a class="is-flex" href="#升级数据库"><span class="mr-2">2.3.2</span><span> 升级数据库</span></a></li><li><a class="is-flex" href="#数据库のcrud"><span class="mr-2">2.3.3</span><span> 数据库のCRUD</span></a></li><li><a class="is-flex" href="#sqlite-事务"><span class="mr-2">2.3.4</span><span> SQLite 事务</span></a></li></ul></li></ul></li><li><a class="is-flex" href="#第八章-跨程序共享数据探究-contentprovider"><span class="mr-2">3</span><span> 第八章 跨程序共享数据，探究 ContentProvider</span></a><ul class="menu-list"><li><a class="is-flex" href="#android-权限机制"><span class="mr-2">3.1</span><span> Android 权限机制</span></a></li><li><a class="is-flex" href="#uri-类"><span class="mr-2">3.2</span><span> Uri 类</span></a></li><li><a class="is-flex" href="#contentresover-类"><span class="mr-2">3.3</span><span> ContentResover 类</span></a></li><li><a class="is-flex" href="#contentprovider-类"><span class="mr-2">3.4</span><span> ContentProvider 类</span></a></li></ul></li></ul></div></div></div></div><!--!--></div></div></section><footer class="footer"><div class="container"><div class="level"><div class="level-start"><a class="footer-logo is-block mb-2" href="/"><img src="/img/William_blog.png" alt="William@blog" height="28"></a><p class="size-small"><span>&copy; 2022 Weiliang Bai</span>  Powered by <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a> &amp; <a href="https://github.com/ppoffice/hexo-theme-icarus" target="_blank" rel="noopener">Icarus</a></p></div><div class="level-end"><div class="field has-addons"><p class="control"><a class="button is-transparent is-large" target="_blank" rel="noopener" title="Creative Commons" href="https://creativecommons.org/"><i class="fab fa-creative-commons"></i></a></p><p class="control"><a class="button is-transparent is-large" target="_blank" rel="noopener" title="Attribution 4.0 International" href="https://creativecommons.org/licenses/by/4.0/"><i class="fab fa-creative-commons-by"></i></a></p><p class="control"><a class="button is-transparent is-large" target="_blank" rel="noopener" title="🐻Xiong35" href="http://www.xiong35.cn"><i class="fas fa-paw"></i></a></p><p class="control"><a class="button is-transparent is-large" target="_blank" rel="noopener" title="🍃Lam" href="https://lamcoding.github.io"><i class="fas fa-leaf"></i></a></p></div></div></div></div></footer><script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script><script src="https://cdn.jsdelivr.net/npm/moment@2.22.2/min/moment-with-locales.min.js"></script><script>moment.locale("zh-CN");</script><script>var IcarusThemeSettings = {
+            site: {
+                url: 'https://willog.top',
+                external_link: {"enable":true,"exclude":[]}
+            },
+            article: {
+                highlight: {
+                    clipboard: true,
+                    fold: 'folded'
+                }
+            }
+        };</script><script src="https://cdn.jsdelivr.net/npm/clipboard@2.0.4/dist/clipboard.min.js" defer></script><a id="back-to-top" title="回到顶端" href="javascript:;"><i class="fa fa-chevron-up"></i></a><script src="/js/back_to_top.js" defer></script><!--!--><!--!--><script src="/js/main.js" defer></script><div class="searchbox"><div class="searchbox-container"><div class="searchbox-header"><div class="searchbox-input-container"><input class="searchbox-input" type="text" placeholder="😆随便搜点什么呗..."></div><a class="searchbox-close" href="javascript:;">×</a></div><div class="searchbox-body"></div></div></div><script src="/js/insight.js" defer></script><script>document.addEventListener('DOMContentLoaded', function () {
+            loadInsight({"contentUrl":"/content.json"}, {"hint":"😆随便搜点什么呗...","untitled":"(无标题)","posts":"文章","pages":"页面","categories":"分类","tags":"标签"});
+        });</script></body></html>
