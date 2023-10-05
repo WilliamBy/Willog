@@ -40,32 +40,6 @@
   </entry>
   
   <entry>
-    <title>杂项/读书笔记约法三章</title>
-    <link href="https://willog.top/posts/e8be4afa/"/>
-    <id>https://willog.top/posts/e8be4afa/</id>
-    <published>2022-09-17T07:16:07.971Z</published>
-    <updated>2023-10-05T09:00:42.209Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;a id=&quot;more&quot;&gt;&lt;/a&gt;
-&lt;h1 id=&quot;读书笔记约法三章&quot;&gt;&lt;a class=&quot;markdownIt-Anchor&quot; href=&quot;#读书笔记约法三章&quot;&gt;&lt;/a&gt;
-        
-      
-    
-    </summary>
-    
-    
-      <category term="杂项" scheme="https://willog.top/categories/%E6%9D%82%E9%A1%B9/"/>
-    
-    
-  </entry>
-  
-  <entry>
     <title>杂项/Ideas</title>
     <link href="https://willog.top/posts/853a41fd/"/>
     <id>https://willog.top/posts/853a41fd/</id>
@@ -85,24 +59,34 @@
   </entry>
   
   <entry>
+    <title>杂项/读书笔记约法三章</title>
+    <link href="https://willog.top/posts/e8be4afa/"/>
+    <id>https://willog.top/posts/e8be4afa/</id>
+    <published>2022-09-17T07:16:07.971Z</published>
+    <updated>2023-10-05T09:07:57.425Z</updated>
+    
+    <summary type="html">
+    
+      &lt;span class=&quot;label label-info&quot;&gt;Note&lt;/span&gt;
+    
+    </summary>
+    
+    
+      <category term="杂项" scheme="https://willog.top/categories/%E6%9D%82%E9%A1%B9/"/>
+    
+    
+  </entry>
+  
+  <entry>
     <title>技术/语言/LatexTikz</title>
     <link href="https://willog.top/posts/9b17222d/"/>
     <id>https://willog.top/posts/9b17222d/</id>
     <published>2022-09-17T07:16:07.971Z</published>
-    <updated>2023-10-05T09:00:11.121Z</updated>
+    <updated>2023-10-05T09:07:24.317Z</updated>
     
     <summary type="html">
     
-      
-      
-        
-        
-          &lt;a id=&quot;more&quot;&gt;&lt;/a&gt;
-&lt;blockquote&gt;
-&lt;p&gt;注意事项: \begin{tikzpicture} 环境下每一行命令结尾都要加分号;&lt;/p&gt;
-&lt;p&gt;\node, \coordinate, \draw 语法参考：&lt;a
-        
-      
+      &lt;span class=&quot;label label-info&quot;&gt;Latex&lt;/span&gt;
     
     </summary>
     
@@ -117,11 +101,34 @@
   </entry>
   
   <entry>
+    <title>技术/语言/JavaLearning</title>
+    <link href="https://willog.top/posts/6374ed46/"/>
+    <id>https://willog.top/posts/6374ed46/</id>
+    <published>2022-09-17T07:16:07.970Z</published>
+    <updated>2023-10-05T09:06:56.903Z</updated>
+    
+    <summary type="html">
+    
+      &lt;span class=&quot;label label-info&quot;&gt;Java&lt;/span&gt;
+    
+    </summary>
+    
+    
+      <category term="技术" scheme="https://willog.top/categories/%E6%8A%80%E6%9C%AF/"/>
+    
+      <category term="语言" scheme="https://willog.top/categories/%E6%8A%80%E6%9C%AF/%E8%AF%AD%E8%A8%80/"/>
+    
+    
+      <category term="Java" scheme="https://willog.top/tags/Java/"/>
+    
+  </entry>
+  
+  <entry>
     <title>技术/语言/Java&amp;Kotlin语法对照</title>
     <link href="https://willog.top/posts/7a368ad4/"/>
     <id>https://willog.top/posts/7a368ad4/</id>
     <published>2022-09-17T07:16:07.970Z</published>
-    <updated>2023-10-05T08:59:58.947Z</updated>
+    <updated>2023-10-05T09:06:50.713Z</updated>
     
     <summary type="html">
     
@@ -135,47 +142,9 @@
       <category term="语言" scheme="https://willog.top/categories/%E6%8A%80%E6%9C%AF/%E8%AF%AD%E8%A8%80/"/>
     
     
+      <category term="Java" scheme="https://willog.top/tags/Java/"/>
+    
       <category term="Kotlin" scheme="https://willog.top/tags/Kotlin/"/>
-    
-      <category term="Java" scheme="https://willog.top/tags/Java/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>技术/语言/JavaLearning</title>
-    <link href="https://willog.top/posts/6374ed46/"/>
-    <id>https://willog.top/posts/6374ed46/</id>
-    <published>2022-09-17T07:16:07.970Z</published>
-    <updated>2023-10-05T09:00:02.141Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;a id=&quot;more&quot;&gt;&lt;/a&gt;
-&lt;ul&gt;
-&lt;li&gt;
-&lt;p&gt;content: 对象与类，基本数据类型&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;int a, b; 则“a=b”表达式为int类型，不会自动转化为boolean类型&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;Java
-        
-      
-    
-    </summary>
-    
-    
-      <category term="技术" scheme="https://willog.top/categories/%E6%8A%80%E6%9C%AF/"/>
-    
-      <category term="语言" scheme="https://willog.top/categories/%E6%8A%80%E6%9C%AF/%E8%AF%AD%E8%A8%80/"/>
-    
-    
-      <category term="Java" scheme="https://willog.top/tags/Java/"/>
     
   </entry>
   
@@ -184,11 +153,12 @@
     <link href="https://willog.top/posts/ec3dabc7/"/>
     <id>https://willog.top/posts/ec3dabc7/</id>
     <published>2022-09-17T07:16:07.970Z</published>
-    <updated>2022-09-17T07:16:07.970Z</updated>
+    <updated>2023-10-05T09:07:05.368Z</updated>
     
     <summary type="html">
     
-      &lt;ul&gt;
+      &lt;span class=&quot;label label-info&quot;&gt;Kotlin&lt;/span&gt;
+&lt;ul&gt;
 &lt;li&gt;Kotlin 可以编译成Java字节码，也可以编译成 JavaScript，方便在没有 JVM 的设备上运行。&lt;/li&gt;
 &lt;li&gt;kotlin源文件不需要相匹配的目录和包，源文件可以放在任何文件目录。&lt;/li&gt;
 &lt;li&gt;$a 和 ${a.func()}我是真没话说。&lt;/li&gt;
@@ -295,18 +265,11 @@
     <link href="https://willog.top/posts/fac7f463/"/>
     <id>https://willog.top/posts/fac7f463/</id>
     <published>2022-09-17T07:16:07.966Z</published>
-    <updated>2023-10-05T08:59:32.185Z</updated>
+    <updated>2023-10-05T09:05:58.557Z</updated>
     
     <summary type="html">
     
-      
-      
-        
-        
-          &lt;a id=&quot;more&quot;&gt;&lt;/a&gt;
-&lt;h1 id=&quot;每天一个避坑小技巧&quot;&gt;&lt;a class=&quot;markdownIt-Anchor&quot; href=&quot;#每天一个避坑小技巧&quot;&gt;&lt;/a&gt;
-        
-      
+      &lt;span class=&quot;label label-info&quot;&gt;Note&lt;/span&gt;
     
     </summary>
     
@@ -317,34 +280,6 @@
     
     
       <category term="踩坑" scheme="https://willog.top/tags/%E8%B8%A9%E5%9D%91/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>技术/指南/IDE&amp;Editor Shortcuts Query</title>
-    <link href="https://willog.top/posts/fde8aecf/"/>
-    <id>https://willog.top/posts/fde8aecf/</id>
-    <published>2022-09-17T07:16:07.965Z</published>
-    <updated>2023-10-05T08:59:13.915Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;a id=&quot;more&quot;&gt;&lt;/a&gt;
-&lt;h1 id=&quot;各大-ide-editor-快捷键对照表&quot;&gt;&lt;a class=&quot;markdownIt-Anchor&quot; href=&quot;#各大-ide-editor-快捷键对照表&quot;&gt;&lt;/a&gt; 各大 IDE &amp;amp; Editor
-        
-      
-    
-    </summary>
-    
-    
-      <category term="技术" scheme="https://willog.top/categories/%E6%8A%80%E6%9C%AF/"/>
-    
-      <category term="指南" scheme="https://willog.top/categories/%E6%8A%80%E6%9C%AF/%E6%8C%87%E5%8D%97/"/>
-    
     
   </entry>
   
@@ -372,26 +307,57 @@
   </entry>
   
   <entry>
+    <title>技术/指南/IDE&amp;Editor Shortcuts Query</title>
+    <link href="https://willog.top/posts/fde8aecf/"/>
+    <id>https://willog.top/posts/fde8aecf/</id>
+    <published>2022-09-17T07:16:07.965Z</published>
+    <updated>2023-10-05T09:05:34.588Z</updated>
+    
+    <summary type="html">
+    
+      &lt;span class=&quot;label label-info&quot;&gt;Tools&lt;/span&gt;
+    
+    </summary>
+    
+    
+      <category term="技术" scheme="https://willog.top/categories/%E6%8A%80%E6%9C%AF/"/>
+    
+      <category term="指南" scheme="https://willog.top/categories/%E6%8A%80%E6%9C%AF/%E6%8C%87%E5%8D%97/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>技术/开发/AndroidLearning</title>
+    <link href="https://willog.top/posts/fae5c3cd/"/>
+    <id>https://willog.top/posts/fae5c3cd/</id>
+    <published>2022-09-17T07:16:07.964Z</published>
+    <updated>2023-10-05T09:05:08.501Z</updated>
+    
+    <summary type="html">
+    
+      &lt;span class=&quot;label label-warning&quot;&gt;Android&lt;/span&gt;
+    
+    </summary>
+    
+    
+      <category term="技术" scheme="https://willog.top/categories/%E6%8A%80%E6%9C%AF/"/>
+    
+      <category term="开发" scheme="https://willog.top/categories/%E6%8A%80%E6%9C%AF/%E5%BC%80%E5%8F%91/"/>
+    
+    
+  </entry>
+  
+  <entry>
     <title>技术/指南/CMD 指令备忘</title>
     <link href="https://willog.top/posts/369ceeb5/"/>
     <id>https://willog.top/posts/369ceeb5/</id>
     <published>2022-09-17T07:16:07.964Z</published>
-    <updated>2023-10-05T09:00:55.040Z</updated>
+    <updated>2023-10-05T09:04:54.248Z</updated>
     
     <summary type="html">
     
-      
-      
-        
-        
-          &lt;a id=&quot;more&quot;&gt;&lt;/a&gt;
-&lt;h1 id=&quot;cmd-指令备忘&quot;&gt;&lt;a class=&quot;markdownIt-Anchor&quot; href=&quot;#cmd-指令备忘&quot;&gt;&lt;/a&gt; CMD 指令备忘&lt;/h1&gt;
-&lt;ul&gt;
-&lt;li&gt;Process 类
-&lt;ul&gt;
-&lt;li&gt;tasklist
-        
-      
+      &lt;span class=&quot;label label-info&quot;&gt;cmd&lt;/span&gt;
     
     </summary>
     
@@ -402,34 +368,6 @@
     
     
       <category term="Command" scheme="https://willog.top/tags/Command/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>技术/开发/AndroidLearning</title>
-    <link href="https://willog.top/posts/fae5c3cd/"/>
-    <id>https://willog.top/posts/fae5c3cd/</id>
-    <published>2022-09-17T07:16:07.964Z</published>
-    <updated>2023-10-05T09:00:57.997Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;a id=&quot;more&quot;&gt;&lt;/a&gt;
-&lt;h1 id=&quot;android-studio-入坑笔记&quot;&gt;&lt;a class=&quot;markdownIt-Anchor&quot; href=&quot;#android-studio-入坑笔记&quot;&gt;&lt;/a&gt; Android Studio
-        
-      
-    
-    </summary>
-    
-    
-      <category term="技术" scheme="https://willog.top/categories/%E6%8A%80%E6%9C%AF/"/>
-    
-      <category term="开发" scheme="https://willog.top/categories/%E6%8A%80%E6%9C%AF/%E5%BC%80%E5%8F%91/"/>
-    
     
   </entry>
   
@@ -551,9 +489,9 @@
       <category term="笔记" scheme="https://willog.top/categories/%E6%8A%80%E6%9C%AF/%E7%AC%94%E8%AE%B0/"/>
     
     
-      <category term="Android" scheme="https://willog.top/tags/Android/"/>
-    
       <category term="Kotlin" scheme="https://willog.top/tags/Kotlin/"/>
+    
+      <category term="Android" scheme="https://willog.top/tags/Android/"/>
     
   </entry>
   
@@ -588,9 +526,9 @@
       <category term="笔记" scheme="https://willog.top/categories/%E6%8A%80%E6%9C%AF/%E7%AC%94%E8%AE%B0/"/>
     
     
-      <category term="Android" scheme="https://willog.top/tags/Android/"/>
-    
       <category term="Kotlin" scheme="https://willog.top/tags/Kotlin/"/>
+    
+      <category term="Android" scheme="https://willog.top/tags/Android/"/>
     
   </entry>
   
