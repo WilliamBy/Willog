@@ -4,11 +4,38 @@
   
     
     <entry>
-      <title>杂项/读书笔记约法三章</title>
-      <link href="/posts/e8be4afa/"/>
-      <url>/posts/e8be4afa/</url>
+      <title>技术/笔记/Talent Plan Note</title>
+      <link href="/posts/47eaa8c7/"/>
+      <url>/posts/47eaa8c7/</url>
       
-        <content type="html"><![CDATA[<a id="more"></a><h1 id="读书笔记约法三章"><a class="markdownIt-Anchor" href="#读书笔记约法三章"></a> 读书笔记约法三章</h1><blockquote><p>“无他，唯手熟尔”</p><p>读书不做笔记，不常常温习约等于没学，重视笔记，舍得投入时间。</p></blockquote><h2 id="一曰"><a class="markdownIt-Anchor" href="#一曰"></a> 一曰：</h2><p>读完一章后提炼出主要知识点，并结合 <strong>自己的理解</strong> 进行记录。</p><h2 id="二曰"><a class="markdownIt-Anchor" href="#二曰"></a> 二曰：</h2><p>读的过程中发现每一章节的联系（理解作者这样编排内容的深意），及时对之前的笔记进行补充说明甚至重新理解。</p><h2 id="三曰"><a class="markdownIt-Anchor" href="#三曰"></a> 三曰：</h2><p>进行二次阅读甚至多次阅读，修改理解不到位的、遗漏的知识点。</p><h2 id="四曰"><a class="markdownIt-Anchor" href="#四曰"></a> 四曰：</h2><p>实际运用书中内容的时候将遇到的问题、积累的经验写在笔记中。</p>]]></content>
+        <content type="html"><![CDATA[<span class="label label-info">TinyKV</span><h1 id="project-1"><a class="markdownIt-Anchor" href="#project-1"></a> Project 1</h1><ul><li><p>[x] 熟悉整个 <strong>tinykv</strong> 的框架</p><ul><li>一个 <em>TinyKv Node</em> 从高到低分三层：<strong>Server</strong>、<strong>Storage</strong>、<strong>Engine</strong>，此外还加上一个 <strong>TinyScheduler</strong> 组件负责管理 <em>TinyKv</em> 集群</li><li><em>TinySQL</em> 在此次项目中无需实现，值得注意的是 <em>TinySQL</em> 是通过 <strong>远端调用 RPC</strong> 的方式使用 <em>TinyKv</em> 的</li><li>Server 层的接受远程请求，依此调用 Storage 层来提供存取服务<ul><li>Raw API 提供基本的 GET、PUT、DELETE、SCAN 服务</li><li>Txn API 提供事务支持</li><li>Coproceccor</li><li>Transaction</li><li>MVCC 提供多版本管理服务</li></ul></li><li>Storage 层在 Engine 层的基础上实现 <strong>raft 分布式存储</strong> （单机存储引擎 StandAloneStorage 不需要实现 raft，只是单纯的封装Engine 层）</li><li>Engine 层为最底层，提供基本的<strong>键值存储</strong>引擎服务（项目中直接使用 <em>badger</em> 作为存储引擎）</li></ul></li><li><p>[x] 了解 <code>raft</code> 算法基本原理</p></li><li><p>[x] 熟悉 <code>badger api</code> 和 <strong>tinykv</strong> 项目模板提供的 <code>engine_util</code> 包</p></li><li><p>[x] 实现 <strong>Storage</strong> 层的单机存储引擎 <code>StandAloneStorage</code></p></li><li><p>badger 的只读事务会使用到存储<strong>快照</strong>，保证了批量读取的一致性（读到的是同一时间点的快照），因此读取操作均借助 badger 事务 <code>badger.Txn</code> 来实现</p></li><li><p><strong>列族 Column Family</strong>，相当于 key 的名称空间，Storage 需要在 Engine 层的基础上封装对列族的支持（存取操作都要指定 列族 CF）</p></li><li><p>[x] 实现 <strong>Server</strong> 层的 <code>Raw API</code></p></li><li><p>[ ] 存储引擎相关：LSM-Tree</p></li><li><p>[ ] 序列化与远程过程调用相关：ProtoBuffer &amp; gRPC</p></li></ul><blockquote><p>参考文献</p><ul><li>Raft 基本介绍与可视化：<a href="https://raft.github.io/">Raft Consensus Algorithm</a></li><li>TinyKv 和 TiKv很像，因此可以参考：<a href="https://pingcap.com/zh/blog/tidb-internal-1">三篇文章了解 TiDB 技术内幕 - 说存储 | PingCAP</a></li><li><a href="https://pkg.go.dev/github.com/dgraph-io/badger?utm_source=godoc#DB">badger package</a></li><li>网课： <a href="https://learn.pingcap.com/learner/course/510001">https://learn.pingcap.com/learner/course/510001</a></li></ul></blockquote><h1 id="project-2"><a class="markdownIt-Anchor" href="#project-2"></a> Project 2</h1><h3 id="2a-raft-算法"><a class="markdownIt-Anchor" href="#2a-raft-算法"></a> 2A Raft 算法</h3><blockquote><p>主要是处理各种情况下的 Message</p><p>如何处理 Message ？按优先级参考以下来源：</p><ol><li>测试函数 （最具体）</li><li>doc.go （大体思路）</li><li>raft  论文 （学习思想、关乎安全性的设计）</li></ol><p>对于某些特殊情况可以考虑用 raft 官网上的交互式系统（<strong>Raft Visualization</strong>）模拟出相应情形加深理解</p></blockquote><ul><li>调用关系图<ul><li>RaftLog：实现了一个日志，包含对日志的一系列增删查改的操作</li><li>Raft：实现 raft 算法，<code>tick()</code> 时钟步进，<code>step()</code> 处理信号（本地消息直接step，msg中的消息是要发送的消息）</li><li>RawNode：在 <code>Raft</code> 基础上进一步封装，方便上层应用调用（ready，advance）</li></ul></li></ul><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs mermaid">flowchart LR<br>    RaftLog --&gt; Raft --&gt; RawNode<br></code></pre></td></tr></table></figure><ul><li>关于空日志 noop entry 的定义</li></ul><figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs go"><span class="hljs-keyword">if</span> m.MsgType != pb.MessageType_MsgAppend || <span class="hljs-built_in">len</span>(m.Entries) != <span class="hljs-number">1</span> || m.Entries[<span class="hljs-number">0</span>].Data != <span class="hljs-literal">nil</span> &#123;<br><span class="hljs-built_in">panic</span>(<span class="hljs-string">"not a message to append noop entry"</span>)<br>&#125;<span class="hljs-comment">//noop entry 指代 Data 字段为 nil 的 Entry</span><br></code></pre></td></tr></table></figure><ul><li>注意集群中只有单个节点的情况（此时无需广播append消息、选举直接晋升leader无需广播reqVote等等）</li><li>过半否决：Candidate 发起一次投票后如果收到了半数 Reject 则直接变为 Follower，因此要在 Raft 结构体中新增相应的字段记录一轮投票中的否决票数</li><li>关于过半 Commit ：可以在每次收到 AppendResponse 之后按照 Prs 大小从低到高排序，然后取中间值 Commit（过半以上的节点至少复制到了该索引值以前的日志）</li><li>heartbeat和append的区别<ul><li>heartbeat<ul><li>间隔一定周期主动发送</li><li>维持节点间的主从关系</li><li>被动同步：从节点接受到主节点的心跳后发现日志并不同步于是通过HeartbeatResponse反映给主节点让其发起appendEntries同步日志</li></ul></li><li>appendEntries<ul><li>主动同步：主节点在 propose entries （新增日志）后主动发送直到从节点同步为止</li></ul></li></ul></li><li>2ac中，ready中的条目是相较于上次调用ready的“更新”的内容，因此需要保存过去的HardState和SoftState的副本，以便比较当前HS和SS是否是有所变化，如果没有变化则置为默认初始值（而不是一股脑地赋值为当前raft的state）</li></ul><h3 id="2b-raft-storage"><a class="markdownIt-Anchor" href="#2b-raft-storage"></a> 2B Raft Storage</h3><blockquote><p>主要内容：驱动Raft模块服务各种Requast并返回Response。</p><p>大致思路：接受客户请求，分发请求到对应Region的Leader，包装请求成为<code>raftlog</code>并驱动Leader发起Propose，等待日志一致（<code>commited</code>）后对节点的一些数据持久化（<code>raftlog</code>，<code>applyindex</code>，<code>hardstate</code>等），然后将已经提交的<code>raftlog</code>应用到状态机，最后返回响应，驱动raft模块进行下一步处理（<code>RawNode.advance()</code>）</p></blockquote><h4 id="代码框架"><a class="markdownIt-Anchor" href="#代码框架"></a> 代码框架</h4><ul><li><code>raft_server.go</code>：前端，对外提供访存接口，对内发送请求</li><li><code>transport.go</code> 对外发送消息的接口，面向整个raft集群</li><li><code>raftstore.go</code>：后端，管理peer节点，启动worker，接收来自前端的请求，分发到对应peer<ul><li><img src="https://gitee.com/w1_liamby/PicGo/raw/master/img/20220326125330.png" alt="image-20220326125014835" style="zoom: 80%;" /></li><li><code>peer.go</code><ul><li><code>peer_storage.go</code> 管理peer的存储引擎（分为kvDB和raftDB，kvDB相当于raft论文描述的状态机，raftDB存储raft模块里需要持久化的数据方便重启恢复数据）</li><li><code>peer_msg_handler.go</code> 处理来自上层的请求</li></ul></li><li><code>xxxworker.go</code> 各种worker的实现<ul><li><code>raft_worker.go</code> raftstore 中实现了接收、分发、处理消息的线程</li></ul></li><li><code>router.go</code> node/store 内部消息路由，面向单个raft节点</li><li><code>ticker.go</code> 计时模块</li></ul></li></ul><h4 id="注意事项"><a class="markdownIt-Anchor" href="#注意事项"></a> 注意事项</h4><ul><li><p>应用committedEntry的时候需要将appliedState以及Put、Delete等写入操作对KVDB的修改写到同一个WriteBatch中，然后一起writeToDB，以保证原子性（防止apply异常而appliedIndex更新导致的不一致性）</p></li><li><p>Snap Request 要求返回一个Transaction用于读取数据，同样也是为了保证读取的数据时间上的一致性</p></li><li><p>raft_server.go中似乎没有包装过Get类型的Request，但是测试函数里会发送Get Request。GetResponse中的Value也应当来自于同一个Transaction保证一致性</p></li><li><p>持久化时写入database的key值要遵循下表的格式</p><ul><li>可以采用meta包中的工具函数将<code>region_id</code>&amp;<code>log_idx</code>转化为对应的key</li></ul><table><thead><tr><th>Key</th><th>KeyFormat</th><th>Value</th><th>DB</th></tr></thead><tbody><tr><td>raft_log_key</td><td>0x01 0x02 region_id 0x01 log_idx</td><td>Entry</td><td>raft</td></tr><tr><td>raft_state_key</td><td>0x01 0x02 region_id 0x02</td><td>RaftLocalState</td><td>raft</td></tr><tr><td>apply_state_key</td><td>0x01 0x02 region_id 0x03</td><td>RaftApplyState</td><td>kv</td></tr><tr><td>region_state_key</td><td>0x01 0x03 region_id 0x01</td><td>RegionLocalState</td><td>kv</td></tr></tbody></table></li></ul><h3 id="2c-snapshot-logcompact"><a class="markdownIt-Anchor" href="#2c-snapshot-logcompact"></a> 2C Snapshot &amp; LogCompact</h3><ul><li><p>日志压缩 LogCompact</p><ul><li><code>RaftGCLogTick</code> 定时检查日志长度，超过一定长度后会发出一个<code>CompactLog</code>的<code>AdminRequest</code>（注意这种request也是要作为日志复制到集群中其他节点并进行commit后才能应用到状态机），store 处理该request的过程实际上就是截断日志链进行压缩，此过程包括修改<code>applyState</code>和<code>raftState</code>等元数据以及通过<code>ScheduleCompactLog</code>托付给<code>raftlog-gc worker</code>将被截断的entries进行删除。以上过程均发生在store层次。</li><li>除了store要进行日志压缩外，raft模块中的entry也不能无限增长，需要实现raft.raftlog中的<code>maybeCompact</code>函数对raft模块的日志链进行截断。maybeCompact在Advance时调用。</li></ul></li><li><p>快照发送 Snapshot</p><ul><li>发送：当Leader需要发送已经被截断的日志时（SendAppendEntry），由于此部分日志已经不存在了，所以 leader 需要通过<code>storage.Snapshot</code>获取状态机的快照（快照的具体构建和发送逻辑不需要我们来实现）并发送给目标节点</li><li>接受：store层面，节点要判断ready中是否有待处理的快照（即snapshot字段是否为空），如果有则应用该快照（交付给<strong>regionWorker</strong>处理）并修改元数据</li></ul></li></ul>]]></content>
+      
+      
+      <categories>
+          
+          <category> 技术 </category>
+          
+          <category> 笔记 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> storage </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>杂项/Ideas</title>
+      <link href="/posts/853a41fd/"/>
+      <url>/posts/853a41fd/</url>
+      
+        <content type="html"><![CDATA[<h1 id="williamss-fantastic-ideas"><a class="markdownIt-Anchor" href="#williamss-fantastic-ideas"></a> Williams’s Fantastic Ideas</h1><a id="more"></a><blockquote><p>Github 有一个叫做 <strong>app ideas</strong> 的仓库有很多好的项目</p></blockquote><ul><li>根据图片定位到视频中的某一帧</li></ul>]]></content>
       
       
       <categories>
@@ -23,11 +50,11 @@
     
     
     <entry>
-      <title>杂项/Ideas</title>
-      <link href="/posts/853a41fd/"/>
-      <url>/posts/853a41fd/</url>
+      <title>杂项/读书笔记约法三章</title>
+      <link href="/posts/e8be4afa/"/>
+      <url>/posts/e8be4afa/</url>
       
-        <content type="html"><![CDATA[<h1 id="williamss-fantastic-ideas"><a class="markdownIt-Anchor" href="#williamss-fantastic-ideas"></a> Williams’s Fantastic Ideas</h1><a id="more"></a><blockquote><p>Github 有一个叫做 <strong>app ideas</strong> 的仓库有很多好的项目</p></blockquote><ul><li>根据图片定位到视频中的某一帧</li></ul>]]></content>
+        <content type="html"><![CDATA[<a id="more"></a><h1 id="读书笔记约法三章"><a class="markdownIt-Anchor" href="#读书笔记约法三章"></a> 读书笔记约法三章</h1><blockquote><p>“无他，唯手熟尔”</p><p>读书不做笔记，不常常温习约等于没学，重视笔记，舍得投入时间。</p></blockquote><h2 id="一曰"><a class="markdownIt-Anchor" href="#一曰"></a> 一曰：</h2><p>读完一章后提炼出主要知识点，并结合 <strong>自己的理解</strong> 进行记录。</p><h2 id="二曰"><a class="markdownIt-Anchor" href="#二曰"></a> 二曰：</h2><p>读的过程中发现每一章节的联系（理解作者这样编排内容的深意），及时对之前的笔记进行补充说明甚至重新理解。</p><h2 id="三曰"><a class="markdownIt-Anchor" href="#三曰"></a> 三曰：</h2><p>进行二次阅读甚至多次阅读，修改理解不到位的、遗漏的知识点。</p><h2 id="四曰"><a class="markdownIt-Anchor" href="#四曰"></a> 四曰：</h2><p>实际运用书中内容的时候将遇到的问题、积累的经验写在笔记中。</p>]]></content>
       
       
       <categories>
@@ -87,36 +114,9 @@
       
         <tags>
             
+            <tag> Java </tag>
+            
             <tag> Kotlin </tag>
-            
-            <tag> Java </tag>
-            
-        </tags>
-      
-    </entry>
-    
-    
-    
-    <entry>
-      <title>技术/语言/JavaLearning</title>
-      <link href="/posts/6374ed46/"/>
-      <url>/posts/6374ed46/</url>
-      
-        <content type="html"><![CDATA[<h1 id="2020-4-28"><a class="markdownIt-Anchor" href="#2020-4-28"></a> 2020-4-28</h1><ul><li><p>content: 对象与类，基本数据类型</p></li><li><p>int a, b; 则“a=b”表达式为int类型，不会自动转化为boolean类型</p></li><li><p>Java 的匿名内部类</p></li></ul><figure class="highlight java"><figcaption><span>Java</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-comment">//定义语法</span><br><span class="hljs-keyword">new</span> 父类构造器（实参列表) | 实现接口()<span class="hljs-comment">//必须继承一个父类或接口</span><br>&#123;<br>      <span class="hljs-comment">//匿名内部类的类体部分</span><br>&#125;<br><br><span class="hljs-comment">/**</span><br><span class="hljs-comment"> * 规范：</span><br><span class="hljs-comment"> *匿名类的声明是由java编译器自动派生自一个类实例创建表达式。</span><br><span class="hljs-comment"> *匿名类永远不能是抽象的。</span><br><span class="hljs-comment"> *匿名类总是隐式的final。</span><br><span class="hljs-comment"> *匿名类总是一个内部类；并且不能是static的。</span><br><span class="hljs-comment"> */</span><br></code></pre></td></tr></table></figure><ul><li><p><strong>注意</strong>：</p><ol><li>使用匿名内部类时，我们必须是继承一个类或者实现一个接口，但是两者不可兼得，同时也只能继承一个类或者实现一个接口。</li><li>匿名内部类中是不能定义构造函数的。</li><li>匿名内部类中不能存在任何的静态成员变量和静态方法。</li><li>匿名内部类为局部内部类，所以局部内部类的所有限制同样对匿名内部类生效。</li><li>匿名内部类不能是抽象的，它必须要实现继承的类或者实现的接口的所有抽象方法。</li></ol></li><li><p>内部类的class文件命名是：主类＋$＋内部类名</p></li><li><p>匿名类的class文件命名是：主类＋$＋(1,2,3…)</p></li><li><p>class 对象</p><ul><li>获取方式：有三种获得Class对象的方式：<ol><li>Class.forName(“类的全限定名”)</li><li>实例对象.getClass()</li><li>类名.class （类字面常量）</li></ol></li><li>每个类的运行时的<strong>类型信息</strong>就是用Class对象表示的</li></ul></li></ul>]]></content>
-      
-      
-      <categories>
-          
-          <category> 技术 </category>
-          
-          <category> 语言 </category>
-          
-      </categories>
-      
-      
-        <tags>
-            
-            <tag> Java </tag>
             
         </tags>
       
@@ -144,6 +144,33 @@
         <tags>
             
             <tag> Kotlin </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>技术/语言/JavaLearning</title>
+      <link href="/posts/6374ed46/"/>
+      <url>/posts/6374ed46/</url>
+      
+        <content type="html"><![CDATA[<h1 id="2020-4-28"><a class="markdownIt-Anchor" href="#2020-4-28"></a> 2020-4-28</h1><ul><li><p>content: 对象与类，基本数据类型</p></li><li><p>int a, b; 则“a=b”表达式为int类型，不会自动转化为boolean类型</p></li><li><p>Java 的匿名内部类</p></li></ul><figure class="highlight java"><figcaption><span>Java</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-comment">//定义语法</span><br><span class="hljs-keyword">new</span> 父类构造器（实参列表) | 实现接口()<span class="hljs-comment">//必须继承一个父类或接口</span><br>&#123;<br>      <span class="hljs-comment">//匿名内部类的类体部分</span><br>&#125;<br><br><span class="hljs-comment">/**</span><br><span class="hljs-comment"> * 规范：</span><br><span class="hljs-comment"> *匿名类的声明是由java编译器自动派生自一个类实例创建表达式。</span><br><span class="hljs-comment"> *匿名类永远不能是抽象的。</span><br><span class="hljs-comment"> *匿名类总是隐式的final。</span><br><span class="hljs-comment"> *匿名类总是一个内部类；并且不能是static的。</span><br><span class="hljs-comment"> */</span><br></code></pre></td></tr></table></figure><ul><li><p><strong>注意</strong>：</p><ol><li>使用匿名内部类时，我们必须是继承一个类或者实现一个接口，但是两者不可兼得，同时也只能继承一个类或者实现一个接口。</li><li>匿名内部类中是不能定义构造函数的。</li><li>匿名内部类中不能存在任何的静态成员变量和静态方法。</li><li>匿名内部类为局部内部类，所以局部内部类的所有限制同样对匿名内部类生效。</li><li>匿名内部类不能是抽象的，它必须要实现继承的类或者实现的接口的所有抽象方法。</li></ol></li><li><p>内部类的class文件命名是：主类＋$＋内部类名</p></li><li><p>匿名类的class文件命名是：主类＋$＋(1,2,3…)</p></li><li><p>class 对象</p><ul><li>获取方式：有三种获得Class对象的方式：<ol><li>Class.forName(“类的全限定名”)</li><li>实例对象.getClass()</li><li>类名.class （类字面常量）</li></ol></li><li>每个类的运行时的<strong>类型信息</strong>就是用Class对象表示的</li></ul></li></ul>]]></content>
+      
+      
+      <categories>
+          
+          <category> 技术 </category>
+          
+          <category> 语言 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> Java </tag>
             
         </tags>
       
@@ -264,7 +291,7 @@
       <link href="/posts/6e7bdc/"/>
       <url>/posts/6e7bdc/</url>
       
-        <content type="html"><![CDATA[<h2 id="基本指令"><a class="markdownIt-Anchor" href="#基本指令"></a> 基本指令</h2><figure class="highlight plain"><figcaption><span>基本指令</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs plain">&#x2F;*npm指令*&#x2F;<br>npm install&#x2F;uninstall xxx<br>&#x2F;&#x2F;执行package.json中定义的脚本<br>npm run server<br><br>&#x2F;*hexo指令*&#x2F;<br>hexo cl &amp;&amp; hexo g &amp;&amp; hexo s&#x2F;&#x2F;清理，生成，本地服务器<br>hexo d &#x2F;&#x2F;部署<br>hexagon -l &#x2F;&#x2F;查看插件<br></code></pre></td></tr></table></figure><h2 id="更多-hexo-指令"><a class="markdownIt-Anchor" href="#更多-hexo-指令"></a> 更多 Hexo 指令</h2><a id="more"></a><a href="https://hexo.io/zh-cn/docs/commands" title="" target="">传送门</a><h2 id="front-matter"><a class="markdownIt-Anchor" href="#front-matter"></a> Front-matter</h2><table><thead><tr><th style="text-align:left">参数</th><th style="text-align:left">描述</th><th style="text-align:left">默认值</th></tr></thead><tbody><tr><td style="text-align:left"><code>layout</code></td><td style="text-align:left">布局</td><td style="text-align:left"></td></tr><tr><td style="text-align:left"><code>title</code></td><td style="text-align:left">标题</td><td style="text-align:left">文章的文件名</td></tr><tr><td style="text-align:left"><code>date</code></td><td style="text-align:left">建立日期</td><td style="text-align:left">文件建立日期</td></tr><tr><td style="text-align:left"><code>updated</code></td><td style="text-align:left">更新日期</td><td style="text-align:left">文件更新日期</td></tr><tr><td style="text-align:left"><code>comments</code></td><td style="text-align:left">开启文章的评论功能</td><td style="text-align:left">true</td></tr><tr><td style="text-align:left"><code>tags</code></td><td style="text-align:left">标签（不适用于分页）</td><td style="text-align:left"></td></tr><tr><td style="text-align:left"><code>categories</code></td><td style="text-align:left">分类（不适用于分页）</td><td style="text-align:left"></td></tr><tr><td style="text-align:left"><code>permalink</code></td><td style="text-align:left">覆盖文章网址</td><td style="text-align:left"></td></tr><tr><td style="text-align:left"><code>keywords</code></td><td style="text-align:left">仅用于 meta 标签和 Open Graph 的关键词（不推荐使用）</td><td style="text-align:left"></td></tr><tr><td style="text-align:left"><code>excerpt</code></td><td style="text-align:left">摘要</td><td style="text-align:left"></td></tr><tr><td style="text-align:left"><code>widget</code></td><td style="text-align:left">icarus 主题空间</td><td style="text-align:left"></td></tr></tbody></table><h2 id="标签插件-embed"><a class="markdownIt-Anchor" href="#标签插件-embed"></a> 标签插件 Embed</h2><blockquote><p>增强了 markdown 的功能的一系列插件<br /><em><strong>info: embed 语法不要包裹在反引号中，且冒号后面不要空格！！</strong></em></p></blockquote><h3 id="官方文档"><a class="markdownIt-Anchor" href="#官方文档"></a> 官方文档</h3><a href="https://hexo.io/zh-cn/docs/tag-plugins" title="" target="">官方插件文档</a><h3 id="其他插件"><a class="markdownIt-Anchor" href="#其他插件"></a> 其他插件</h3><ul><li>探宝方法：<a href="http://hexo.io">hexo.io</a> 搜索 embed</li><li>自己做：<code>&lt;embed&gt;</code></li></ul><iframe src="https://www.runoob.com/tags/tag-embed.html" width="100%" height="500" frameborder="0" loading="lazy" allowfullscreen></iframe><ul><li>hexo-github-card</li></ul><div style="text-align: center">  <div class="github-card"    data-user="Gisonrg"    data-repo="hexo-github-card"    data-height="200"    data-width="400"    data-theme="default"    data-target=""    data-client-id=""    data-client-secret=""  ></div></div><script src="/github-card-lib/githubcard.js"></script><ul><li>hexo-pdf</li></ul><div style="text-align: center">  <div class="github-card"    data-user="superalsrk"    data-repo="hexo-pdf"    data-height="200"    data-width="400"    data-theme="default"    data-target=""    data-client-id=""    data-client-secret=""  ></div></div><script src="/github-card-lib/githubcard.js"></script><ul><li>hexo-tag-bilibili</li></ul><div style="text-align: center">  <div class="github-card"    data-user="Z4Tech"    data-repo="hexo-tag-bilibili"    data-height="200"    data-width="400"    data-theme="default"    data-target=""    data-client-id=""    data-client-secret=""  ></div></div><script src="/github-card-lib/githubcard.js"></script><ul><li>hexo-tag-douban</li></ul><div style="text-align: center">  <div class="github-card"    data-user="YuyingWu"    data-repo="hexo-tag-douban"    data-height="200"    data-width="400"    data-theme="default"    data-target=""    data-client-id=""    data-client-secret=""  ></div></div><script src="/github-card-lib/githubcard.js"></script><h2 id="hexo-tag-bootstrap-插件"><a class="markdownIt-Anchor" href="#hexo-tag-bootstrap-插件"></a> hexo-tag-bootstrap 插件</h2><h3 id="components"><a class="markdownIt-Anchor" href="#components"></a> Components</h3><ul><li><strong>textcolor</strong> - Convey meaning through color with a handful of emphasis utility classes.</li><li><strong>button</strong> - Inserts a button with target links, text and specified color. ** <a class="btn btn-secondary" href="url">text</a></li><li><strong>label</strong> - Inserts a label with text and specified color.</li><li><strong>pill</strong> - Inserts a label with text and specified color. ** <span class="badge badge-secondary">text</span></li><li><strong>badge</strong> - Inserts a badge with text.</li><li><strong>alert</strong> - Inserts alert messages with text and specified color.</li><li><strong>card</strong> - Add a card control ** <em>carddeck</em> - use with cards to combine multiples ** <em>cardgroup</em> - similar to carddeck</li><li><strong>jumbo</strong> - jumbotron</li><li><strong>carousel</strong> - carousel tag - each img within will create a new “slide”</li><li><strong>row</strong> - add a grid row</li><li><strong>col</strong> - add a column within a grid row</li></ul><h3 id="使用示例"><a class="markdownIt-Anchor" href="#使用示例"></a> 使用示例</h3><a href="https://www.hahack.com/hexo-theme-freemind-blog/2014/03/16/tag-plugins/" title="" target="">！🐱‍🏍传送门🐱‍🏍</a><h3 id="举亿个栗子"><a class="markdownIt-Anchor" href="#举亿个栗子"></a> 举亿个栗子</h3><blockquote><p>渲染效果因css而异</p></blockquote><ul><li>badge</li></ul><span class="badge badge-secondary">text</span><ul><li>alert 块级 属性：waring danger success info</li></ul><div class="alert alert-warning"><i class="fa fa-bell  float-left"></i>  <p>Best check yo self, you’re not looking too good.</p></div><div class="alert alert-danger"><i class="fa fa-bug  float-left"></i>  <p>Change a few things up and try submitting again.</p></div><div class="alert alert-success"><i class="fa fa-lightbulb-o  float-left"></i>  <p>You successfully read this important alert message.</p></div><div class="alert alert-info"><i class="fa fa-info  float-left"></i>  <p>This alert needs your attention, but it’s not super important.</p></div><ul><li>textcolor （暂无css渲染）</li></ul><p class="text-muted"><p>Fusce dapibus, tellus ac cursus commodo, tortor mauris nibh.</p></p><p class="text-primary"><p>Nullam id dolor id nibh ultricies vehicula ut id elit.</p></p><p class="text-success"><p>Duis mollis, est non commodo luctus, nisi erat porttitor ligula.</p></p><p class="text-info"><p>Maecenas sed diam eget risus varius blandit sit amet non magna.</p></p><p class="text-warning"><p>Etiam porta sem malesuada magna mollis euismod.</p></p><p class="text-danger"><p>Donec ullamcorper nulla non metus auctor fringilla.</p></p><ul><li>行内label 支持属性 default warning success danger primary info</li></ul><span class="label label-default">default</span><span class="label label-warning">warinng</span><span class="label label-success">success</span><span class="label label-danger">danger</span><span class="label label-primary">primary</span><span class="label label-info">info</span><ul><li>行内btn 支持属性 primary success warning danger info</li></ul><a class="btn btn-secondary" href="http://hahack.com">btn</a><a class="btn btn-primary" href="http://hahack.com">btn</a><a class="btn btn-success" href="http://hahack.com">btn</a><a class="btn btn-warning" href="http://hahack.com">btn</a><a class="btn btn-danger" href="http://hahack.com">btn</a><a class="btn btn-info" href="http://hahack.com">btn</a><h2 id="插入html来增强阅读体验"><a class="markdownIt-Anchor" href="#插入html来增强阅读体验"></a> 插入HTML来增强阅读体验</h2><div class="alert alert-info"><i class="fa fa-info  float-left"></i>  <p><a href="https://bulma.io/documentation/" title="" target="">Bulma</a> 是一个CSS框架。查看<a href="https://bulma.io/documentation/" title="" target="">Bulma</a>文档。</p></div><div class="alert alert-warning"><i class="fa fa-bell  float-left"></i>  <p>CSS 框架不包含js，涉及点击事件需要自行处理！</p></div><article class="message">  <div class="message-header">    <p>Note</p>    <button class="delete" aria-label="delete"></button>  </div>  <div class="message-body">    不用js的情况下适合的组件有：button，dropdown，message  </div></article><div class="dropdown">  <div class="dropdown-trigger">    <button class="button" aria-haspopup="true" aria-controls="dropdown-menu3">      <span>Click me</span>      <span class="icon is-small">        <i class="fas fa-angle-down" aria-hidden="true"></i>      </span>    </button>  </div>  <div class="dropdown-menu" id="dropdown-menu3" role="menu">    <div class="dropdown-content">      <a href="#" class="dropdown-item">        Overview      </a>      <a href="#" class="dropdown-item">        Modifiers      </a>      <a href="#" class="dropdown-item">        Grid      </a>      <a href="#" class="dropdown-item">        Form      </a>      <a href="#" class="dropdown-item">        Elements      </a>      <a href="#" class="dropdown-item">        Components      </a>      <a href="#" class="dropdown-item">        Layout      </a>      <hr class="dropdown-divider">      <a href="#" class="dropdown-item">        More      </a>    </div>  </div></div><div class="dropdown is-hoverable">  <div class="dropdown-trigger">    <button class="button" aria-haspopup="true" aria-controls="dropdown-menu4">      <span>Hover me</span>      <span class="icon is-small">        <i class="fas fa-angle-down" aria-hidden="true"></i>      </span>    </button>  </div>  <div class="dropdown-menu" id="dropdown-menu4" role="menu">    <div class="dropdown-content">      <div class="dropdown-item">        <p>You can insert <strong>any type of content</strong> within the dropdown menu.</p>      </div>    </div>  </div></div><h2 id="博客备份迁移"><a class="markdownIt-Anchor" href="#博客备份迁移"></a> 博客备份迁移</h2><iframe src="https://www.dazhuanlan.com/2020/03/18/5e7196c49acac/" width="100%" height="500" frameborder="0" loading="lazy" allowfullscreen></iframe>]]></content>
+        <content type="html"><![CDATA[<h2 id="基本指令"><a class="markdownIt-Anchor" href="#基本指令"></a> 基本指令</h2><figure class="highlight plain"><figcaption><span>基本指令</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs plain">&#x2F;*npm指令*&#x2F;<br>npm install&#x2F;uninstall xxx<br>&#x2F;&#x2F;执行package.json中定义的脚本<br>npm run server<br><br>&#x2F;*hexo指令*&#x2F;<br>hexo cl &amp;&amp; hexo g &amp;&amp; hexo s&#x2F;&#x2F;清理，生成，本地服务器<br>hexo d &#x2F;&#x2F;部署<br>hexagon -l &#x2F;&#x2F;查看插件<br></code></pre></td></tr></table></figure><h2 id="更多-hexo-指令"><a class="markdownIt-Anchor" href="#更多-hexo-指令"></a> 更多 Hexo 指令</h2><a id="more"></a><a href="https://hexo.io/zh-cn/docs/commands" title="" target="">传送门</a><h2 id="front-matter"><a class="markdownIt-Anchor" href="#front-matter"></a> Front-matter</h2><table><thead><tr><th style="text-align:left">参数</th><th style="text-align:left">描述</th><th style="text-align:left">默认值</th></tr></thead><tbody><tr><td style="text-align:left"><code>layout</code></td><td style="text-align:left">布局</td><td style="text-align:left"></td></tr><tr><td style="text-align:left"><code>title</code></td><td style="text-align:left">标题</td><td style="text-align:left">文章的文件名</td></tr><tr><td style="text-align:left"><code>date</code></td><td style="text-align:left">建立日期</td><td style="text-align:left">文件建立日期</td></tr><tr><td style="text-align:left"><code>updated</code></td><td style="text-align:left">更新日期</td><td style="text-align:left">文件更新日期</td></tr><tr><td style="text-align:left"><code>comments</code></td><td style="text-align:left">开启文章的评论功能</td><td style="text-align:left">true</td></tr><tr><td style="text-align:left"><code>tags</code></td><td style="text-align:left">标签（不适用于分页）</td><td style="text-align:left"></td></tr><tr><td style="text-align:left"><code>categories</code></td><td style="text-align:left">分类（不适用于分页）</td><td style="text-align:left"></td></tr><tr><td style="text-align:left"><code>permalink</code></td><td style="text-align:left">覆盖文章网址</td><td style="text-align:left"></td></tr><tr><td style="text-align:left"><code>keywords</code></td><td style="text-align:left">仅用于 meta 标签和 Open Graph 的关键词（不推荐使用）</td><td style="text-align:left"></td></tr><tr><td style="text-align:left"><code>excerpt</code></td><td style="text-align:left">摘要</td><td style="text-align:left"></td></tr><tr><td style="text-align:left"><code>widget</code></td><td style="text-align:left">icarus 主题空间</td><td style="text-align:left"></td></tr></tbody></table><h2 id="标签插件-embed"><a class="markdownIt-Anchor" href="#标签插件-embed"></a> 标签插件 Embed</h2><blockquote><p>增强了 markdown 的功能的一系列插件<br /><em><strong>info: embed 语法不要包裹在反引号中，且冒号后面不要空格！！</strong></em></p></blockquote><h3 id="官方文档"><a class="markdownIt-Anchor" href="#官方文档"></a> 官方文档</h3><a href="https://hexo.io/zh-cn/docs/tag-plugins" title="" target="">官方插件文档</a><h3 id="其他插件"><a class="markdownIt-Anchor" href="#其他插件"></a> 其他插件</h3><ul><li>探宝方法：<a href="http://hexo.io">hexo.io</a> 搜索 embed</li><li>自己做：<code>&lt;embed&gt;</code></li></ul><iframe src="https://www.runoob.com/tags/tag-embed.html" width="100%" height="500" frameborder="0" loading="lazy" allowfullscreen></iframe><ul><li>hexo-github-card</li></ul><div style="text-align: center">  <div class="github-card"    data-user="Gisonrg"    data-repo="hexo-github-card"    data-height="200"    data-width="400"    data-theme="default"    data-target=""    data-client-id=""    data-client-secret=""  ></div></div><script src="/github-card-lib/githubcard.js"></script><ul><li>hexo-pdf</li></ul><div style="text-align: center">  <div class="github-card"    data-user="superalsrk"    data-repo="hexo-pdf"    data-height="200"    data-width="400"    data-theme="default"    data-target=""    data-client-id=""    data-client-secret=""  ></div></div><script src="/github-card-lib/githubcard.js"></script><ul><li>hexo-tag-bilibili</li></ul><div style="text-align: center">  <div class="github-card"    data-user="Z4Tech"    data-repo="hexo-tag-bilibili"    data-height="200"    data-width="400"    data-theme="default"    data-target=""    data-client-id=""    data-client-secret=""  ></div></div><script src="/github-card-lib/githubcard.js"></script><ul><li>hexo-tag-douban</li></ul><div style="text-align: center">  <div class="github-card"    data-user="YuyingWu"    data-repo="hexo-tag-douban"    data-height="200"    data-width="400"    data-theme="default"    data-target=""    data-client-id=""    data-client-secret=""  ></div></div><script src="/github-card-lib/githubcard.js"></script><h2 id="hexo-tag-bootstrap-插件"><a class="markdownIt-Anchor" href="#hexo-tag-bootstrap-插件"></a> hexo-tag-bootstrap 插件</h2><h3 id="components"><a class="markdownIt-Anchor" href="#components"></a> Components</h3><ul><li><strong>textcolor</strong> - Convey meaning through color with a handful of emphasis utility classes.</li><li><strong>button</strong> - Inserts a button with target links, text and specified color. ** <a class="btn btn-secondary" href="url">text</a></li><li><strong>label</strong> - Inserts a label with text and specified color.</li><li><strong>pill</strong> - Inserts a label with text and specified color. ** <span class="badge badge-secondary">text</span></li><li><strong>badge</strong> - Inserts a badge with text.</li><li><strong>alert</strong> - Inserts alert messages with text and specified color.</li><li><strong>card</strong> - Add a card control ** <em>carddeck</em> - use with cards to combine multiples ** <em>cardgroup</em> - similar to carddeck</li><li><strong>jumbo</strong> - jumbotron</li><li><strong>carousel</strong> - carousel tag - each img within will create a new “slide”</li><li><strong>row</strong> - add a grid row</li><li><strong>col</strong> - add a column within a grid row</li></ul><h3 id="使用示例"><a class="markdownIt-Anchor" href="#使用示例"></a> 使用示例</h3><a href="https://www.hahack.com/hexo-theme-freemind-blog/2014/03/16/tag-plugins/" title="" target="">！🐱‍🏍传送门🐱‍🏍</a><h3 id="举亿个栗子"><a class="markdownIt-Anchor" href="#举亿个栗子"></a> 举亿个栗子</h3><blockquote><p>渲染效果因css而异</p></blockquote><ul><li>badge</li></ul><span class="badge badge-secondary">text</span><ul><li>alert 块级 属性：waring danger success info</li></ul><div class="alert alert-warning"><i class="fa fa-bell  float-left"></i>  <p>Best check yo self, you’re not looking too good.</p></div><div class="alert alert-danger"><i class="fa fa-bug  float-left"></i>  <p>Change a few things up and try submitting again.</p></div><div class="alert alert-success"><i class="fa fa-lightbulb-o  float-left"></i>  <p>You successfully read this important alert message.</p></div><div class="alert alert-info"><i class="fa fa-info  float-left"></i>  <p>This alert needs your attention, but it’s not super important.</p></div><ul><li>textcolor （暂无css渲染）</li></ul><p class="text-muted"><p>Fusce dapibus, tellus ac cursus commodo, tortor mauris nibh.</p></p><p class="text-primary"><p>Nullam id dolor id nibh ultricies vehicula ut id elit.</p></p><p class="text-success"><p>Duis mollis, est non commodo luctus, nisi erat porttitor ligula.</p></p><p class="text-info"><p>Maecenas sed diam eget risus varius blandit sit amet non magna.</p></p><p class="text-warning"><p>Etiam porta sem malesuada magna mollis euismod.</p></p><p class="text-danger"><p>Donec ullamcorper nulla non metus auctor fringilla.</p></p><ul><li>行内label 支持属性 default warning success danger primary info</li></ul><span class="label label-default">default</span><span class="label label-warning">warinng</span><span class="label label-success">success</span><span class="label label-danger">danger</span><span class="label label-primary">primary</span><span class="label label-info">info</span><ul><li>行内btn 支持属性 primary success warning danger info</li></ul><a class="btn btn-secondary" href="http://hahack.com">btn</a><a class="btn btn-primary" href="http://hahack.com">btn</a><a class="btn btn-success" href="http://hahack.com">btn</a><a class="btn btn-warning" href="http://hahack.com">btn</a><a class="btn btn-danger" href="http://hahack.com">btn</a><a class="btn btn-info" href="http://hahack.com">btn</a><h2 id="插入html来增强阅读体验"><a class="markdownIt-Anchor" href="#插入html来增强阅读体验"></a> 插入HTML来增强阅读体验</h2><div class="alert alert-info"><i class="fa fa-info  float-left"></i>  <p><a href="https://bulma.io/documentation/" title="" target="">Bulma</a> 是一个CSS框架。查看<a href="https://bulma.io/documentation/" title="" target="">Bulma</a>文档。</p></div><div class="alert alert-warning"><i class="fa fa-bell  float-left"></i>  <p>CSS 框架不包含js，涉及点击事件需要自行处理！</p></div><article class="message">  <div class="message-header">    <p>Note</p>    <button class="delete" aria-label="delete"></button>  </div>  <div class="message-body">    不用js的情况下适合的组件有：button，dropdown，message  </div></article><div class="dropdown">  <div class="dropdown-trigger">    <button class="button" aria-haspopup="true" aria-controls="dropdown-menu3">      <span>Click me</span>      <span class="icon is-small">        <i class="fas fa-angle-down" aria-hidden="true"></i>      </span>    </button>  </div>  <div class="dropdown-menu" id="dropdown-menu3" role="menu">    <div class="dropdown-content">      <a href="#" class="dropdown-item">        Overview      </a>      <a href="#" class="dropdown-item">        Modifiers      </a>      <a href="#" class="dropdown-item">        Grid      </a>      <a href="#" class="dropdown-item">        Form      </a>      <a href="#" class="dropdown-item">        Elements      </a>      <a href="#" class="dropdown-item">        Components      </a>      <a href="#" class="dropdown-item">        Layout      </a>      <hr class="dropdown-divider">      <a href="#" class="dropdown-item">        More      </a>    </div>  </div></div><div class="dropdown is-hoverable">  <div class="dropdown-trigger">    <button class="button" aria-haspopup="true" aria-controls="dropdown-menu4">      <span>Hover me</span>      <span class="icon is-small">        <i class="fas fa-angle-down" aria-hidden="true"></i>      </span>    </button>  </div>  <div class="dropdown-menu" id="dropdown-menu4" role="menu">    <div class="dropdown-content">      <div class="dropdown-item">        <p>You can insert <strong>any type of content</strong> within the dropdown menu.</p>      </div>    </div>  </div></div>## 博客备份迁移<iframe src="https://www.dazhuanlan.com/2020/03/18/5e7196c49acac/" width="100%" height="500" frameborder="0" loading="lazy" allowfullscreen></iframe>]]></content>
       
       
       <categories>
@@ -308,27 +335,6 @@
     
     
     <entry>
-      <title>技术/开发/AndroidLearning</title>
-      <link href="/posts/fae5c3cd/"/>
-      <url>/posts/fae5c3cd/</url>
-      
-        <content type="html"><![CDATA[<h1 id="android-studio-入坑笔记"><a class="markdownIt-Anchor" href="#android-studio-入坑笔记"></a> Android Studio 入坑笔记</h1><ul><li>Android Studio 自动创建 resource id 失败<ul><li>重启 AS。</li><li>Sync with file system 同步一下？</li><li>查看 R.java 中的 id 。Project 下依次打开app–&gt;build–&gt;generated–&gt;source–&gt;r–&gt;debug，在debug中的两个选项的子文件中分别有有一个R文件，既我们要找的R.java文件。（或者直接shift+shift查找R.java</li></ul></li></ul>]]></content>
-      
-      
-      <categories>
-          
-          <category> 技术 </category>
-          
-          <category> 开发 </category>
-          
-      </categories>
-      
-      
-    </entry>
-    
-    
-    
-    <entry>
       <title>技术/指南/CMD 指令备忘</title>
       <link href="/posts/369ceeb5/"/>
       <url>/posts/369ceeb5/</url>
@@ -350,6 +356,27 @@
             <tag> Command </tag>
             
         </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>技术/开发/AndroidLearning</title>
+      <link href="/posts/fae5c3cd/"/>
+      <url>/posts/fae5c3cd/</url>
+      
+        <content type="html"><![CDATA[<h1 id="android-studio-入坑笔记"><a class="markdownIt-Anchor" href="#android-studio-入坑笔记"></a> Android Studio 入坑笔记</h1><ul><li>Android Studio 自动创建 resource id 失败<ul><li>重启 AS。</li><li>Sync with file system 同步一下？</li><li>查看 R.java 中的 id 。Project 下依次打开app–&gt;build–&gt;generated–&gt;source–&gt;r–&gt;debug，在debug中的两个选项的子文件中分别有有一个R文件，既我们要找的R.java文件。（或者直接shift+shift查找R.java</li></ul></li></ul>]]></content>
+      
+      
+      <categories>
+          
+          <category> 技术 </category>
+          
+          <category> 开发 </category>
+          
+      </categories>
+      
       
     </entry>
     
@@ -422,13 +449,13 @@
             
             <tag> 动态规划 </tag>
             
-            <tag> 搜索 </tag>
-            
-            <tag> 递归 </tag>
-            
             <tag> 贪心 </tag>
             
+            <tag> 搜索 </tag>
+            
             <tag> 排序 </tag>
+            
+            <tag> 递归 </tag>
             
             <tag> 图 </tag>
             
@@ -457,9 +484,9 @@
       
         <tags>
             
-            <tag> Android </tag>
-            
             <tag> Kotlin </tag>
+            
+            <tag> Android </tag>
             
         </tags>
       
@@ -486,9 +513,9 @@
       
         <tags>
             
-            <tag> Android </tag>
-            
             <tag> Kotlin </tag>
+            
+            <tag> Android </tag>
             
         </tags>
       
@@ -515,9 +542,9 @@
       
         <tags>
             
-            <tag> Android </tag>
-            
             <tag> Kotlin </tag>
+            
+            <tag> Android </tag>
             
         </tags>
       
