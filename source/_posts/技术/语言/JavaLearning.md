@@ -5,7 +5,9 @@ categories:
 abbrlink: 6374ed46
 tags: Java
 ---
+{% label Java info %}
 <!--more-->
+
 - content: 对象与类，基本数据类型
 - int a, b; 则“a=b”表达式为int类型，不会自动转化为boolean类型
 

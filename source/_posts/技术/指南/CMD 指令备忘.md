@@ -5,6 +5,7 @@ categories:
 abbrlink: 369ceeb5
 tags: Command
 ---
+{% label cmd info %}
 <!-- more -->
 
 # CMD 指令备忘

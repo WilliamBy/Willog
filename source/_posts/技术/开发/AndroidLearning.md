@@ -4,6 +4,7 @@ categories:
   - 开发
 abbrlink: fae5c3cd
 ---
+{% label Android warning %}
 <!--more-->
 # Android Studio 入坑笔记
 

@@ -7,6 +7,7 @@ widgets: null
 abbrlink: ec3dabc7
 widget: null
 ---
+{% label Kotlin info %}
 - Kotlin 可以编译成Java字节码，也可以编译成 JavaScript，方便在没有 JVM 的设备上运行。
 - kotlin源文件不需要相匹配的目录和包，源文件可以放在任何文件目录。
 - \$a 和 \${a.func()}我是真没话说。

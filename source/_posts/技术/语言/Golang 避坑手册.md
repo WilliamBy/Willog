@@ -8,6 +8,7 @@ tags:
   - 踩坑
   - Go
 ---
+{% label Golang info %}
 <!--more-->
 -	"{"的位置要注意	分号无
 	多变量声明：

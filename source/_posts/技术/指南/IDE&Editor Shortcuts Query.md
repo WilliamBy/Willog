@@ -5,6 +5,7 @@ categories:
 abbrlink: fde8aecf
 widget:
 ---
+{% label Tools info %}
 <!-- more -->
 
 # 各大 IDE & Editor 快捷键对照表

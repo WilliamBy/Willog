@@ -10,6 +10,7 @@ widgets:
   - position: left
     type: toc
 ---
+{% label hexo info %}
 <!--more-->
 ## 基本指令
 

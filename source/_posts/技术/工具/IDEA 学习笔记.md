@@ -30,7 +30,6 @@ abbrlink: 5a1e79ff
 - ctrl+u 查看表达式的值
 - Tools javadoc generator:
 - Local: zh_CN; Other command line args: encoding UTF-8 -charset UTF-8
-<!-- more -->
 - IDE 常用快捷键对照表（原始来源: https://www.jianshu.com/p/6267a7d76018 )
 
 | 操作                        | eclipse                           | IDEA                            | Visual Studio Code     | Sublime              |

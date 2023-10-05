@@ -4,6 +4,7 @@ date: 2020-1-1
 categories:
   - 杂项
 ---
+{% label Hexo info %}
 <!-- more -->
 
 # Hexo 的插件扩展调试页面
