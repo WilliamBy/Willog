@@ -233,33 +233,6 @@
     
     
     <entry>
-      <title>技术/指南/小技巧手册</title>
-      <link href="/posts/fac7f463/"/>
-      <url>/posts/fac7f463/</url>
-      
-        <content type="html"><![CDATA[<a id="more"></a><h1 id="每天一个避坑小技巧"><a class="markdownIt-Anchor" href="#每天一个避坑小技巧"></a> 每天一个避坑小技巧</h1><ul><li>解决网站元素（例如图片）加载不出来的方法<ol><li>浏览器下审查该元素的URL地址，然后在搜索他的域名对应的地址（<a href="https://tools.ipip.net/domain.php%EF%BC%89">https://tools.ipip.net/domain.php）</a></li><li>将域名解析 “<a href="http://xxx.xxx.xxx.xxx">xxx.xxx.xxx.xxx</a> 域名” 加入到hosts文件中（一般在 %SystemRoot%\system32\drivers\etc\ 目录下）</li><li>cmd 下 ipconfig \flushdns 刷新试试</li><li>刷新浏览器查看效果</li></ol></li><li>SSR 解决端口占用问题：<ul><li>法一：在 SSR 选项设置里改变端口</li><li>法二：taskkill /pid xxx -f</li></ul></li></ul>]]></content>
-      
-      
-      <categories>
-          
-          <category> 技术 </category>
-          
-          <category> 指南 </category>
-          
-      </categories>
-      
-      
-        <tags>
-            
-            <tag> 踩坑 </tag>
-            
-        </tags>
-      
-    </entry>
-    
-    
-    
-    <entry>
       <title>技术/指南/Ubuntu &amp; Windows 10 双系统安装指南</title>
       <link href="/posts/5258147c/"/>
       <url>/posts/5258147c/</url>
@@ -279,6 +252,33 @@
         <tags>
             
             <tag> Linux </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>技术/指南/小技巧手册</title>
+      <link href="/posts/fac7f463/"/>
+      <url>/posts/fac7f463/</url>
+      
+        <content type="html"><![CDATA[<a id="more"></a><h1 id="每天一个避坑小技巧"><a class="markdownIt-Anchor" href="#每天一个避坑小技巧"></a> 每天一个避坑小技巧</h1><ul><li>解决网站元素（例如图片）加载不出来的方法<ol><li>浏览器下审查该元素的URL地址，然后在搜索他的域名对应的地址（<a href="https://tools.ipip.net/domain.php%EF%BC%89">https://tools.ipip.net/domain.php）</a></li><li>将域名解析 “<a href="http://xxx.xxx.xxx.xxx">xxx.xxx.xxx.xxx</a> 域名” 加入到hosts文件中（一般在 %SystemRoot%\system32\drivers\etc\ 目录下）</li><li>cmd 下 ipconfig \flushdns 刷新试试</li><li>刷新浏览器查看效果</li></ol></li><li>SSR 解决端口占用问题：<ul><li>法一：在 SSR 选项设置里改变端口</li><li>法二：taskkill /pid xxx -f</li></ul></li></ul>]]></content>
+      
+      
+      <categories>
+          
+          <category> 技术 </category>
+          
+          <category> 指南 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 踩坑 </tag>
             
         </tags>
       
@@ -335,27 +335,6 @@
     
     
     <entry>
-      <title>技术/开发/AndroidLearning</title>
-      <link href="/posts/fae5c3cd/"/>
-      <url>/posts/fae5c3cd/</url>
-      
-        <content type="html"><![CDATA[<a id="more"></a><h1 id="android-studio-入坑笔记"><a class="markdownIt-Anchor" href="#android-studio-入坑笔记"></a> Android Studio 入坑笔记</h1><ul><li>Android Studio 自动创建 resource id 失败<ul><li>重启 AS。</li><li>Sync with file system 同步一下？</li><li>查看 R.java 中的 id 。Project 下依次打开app–&gt;build–&gt;generated–&gt;source–&gt;r–&gt;debug，在debug中的两个选项的子文件中分别有有一个R文件，既我们要找的R.java文件。（或者直接shift+shift查找R.java</li></ul></li></ul>]]></content>
-      
-      
-      <categories>
-          
-          <category> 技术 </category>
-          
-          <category> 开发 </category>
-          
-      </categories>
-      
-      
-    </entry>
-    
-    
-    
-    <entry>
       <title>技术/指南/CMD 指令备忘</title>
       <link href="/posts/369ceeb5/"/>
       <url>/posts/369ceeb5/</url>
@@ -383,11 +362,32 @@
     
     
     <entry>
+      <title>技术/开发/AndroidLearning</title>
+      <link href="/posts/fae5c3cd/"/>
+      <url>/posts/fae5c3cd/</url>
+      
+        <content type="html"><![CDATA[<a id="more"></a><h1 id="android-studio-入坑笔记"><a class="markdownIt-Anchor" href="#android-studio-入坑笔记"></a> Android Studio 入坑笔记</h1><ul><li>Android Studio 自动创建 resource id 失败<ul><li>重启 AS。</li><li>Sync with file system 同步一下？</li><li>查看 R.java 中的 id 。Project 下依次打开app–&gt;build–&gt;generated–&gt;source–&gt;r–&gt;debug，在debug中的两个选项的子文件中分别有有一个R文件，既我们要找的R.java文件。（或者直接shift+shift查找R.java</li></ul></li></ul>]]></content>
+      
+      
+      <categories>
+          
+          <category> 技术 </category>
+          
+          <category> 开发 </category>
+          
+      </categories>
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>技术/工具/IDEA 学习笔记</title>
       <link href="/posts/5a1e79ff/"/>
       <url>/posts/5a1e79ff/</url>
       
-        <content type="html"><![CDATA[<h1 id="idea基础功能概览"><a class="markdownIt-Anchor" href="#idea基础功能概览"></a> IDEA基础功能概览：</h1><ul><li><p>shortcut(edit, 代码片段, 功能), 版本控制(VCS: git, github, local history)</p></li><li><p>Debug, javadoc generator, database, web deployment</p></li><li><p>project&amp;module 等概念, 模板, 项目结构查询管理</p></li></ul><a id="more"></a><h1 id="tips"><a class="markdownIt-Anchor" href="#tips"></a> Tips</h1><ul><li>代码段：main</li><li>sout标准输出</li><li>soutv输出变量，soutm输出方法名，soutp输出命令行参数</li><li>变量名.sout输出变量</li><li>iter增强型for循环</li><li>引用名.for 迭代指定引用类型</li><li>实例名.fori顺序遍历 xxx.forr倒序遍历</li><li>ifn --“if xxx is null”, inn --“if not null”</li><li>xxx.nn, xxx.ifn</li><li>JavaLea</li><li>条件断点 --右键断点处</li><li>ctrl+u 查看表达式的值</li><li>Tools javadoc generator:</li><li>Local: zh_CN; Other command line args: encoding UTF-8 -charset UTF-8</li></ul><!-- more --><ul><li>IDE 常用快捷键对照表（原始来源: <a href="https://www.jianshu.com/p/6267a7d76018">https://www.jianshu.com/p/6267a7d76018</a> )</li></ul><table><thead><tr><th>操作</th><th>eclipse</th><th>IDEA</th><th>Visual Studio Code</th><th>Sublime</th></tr></thead><tbody><tr><td><strong>编辑 Editing</strong></td><td></td><td></td><td></td><td></td></tr><tr><td>格式化代码 Format Code</td><td><code>Ctrl+Shift+F</code></td><td><code>Ctrl+Shift+L</code></td><td><code>Shift+Alt+F</code></td><td>无</td></tr><tr><td>删除行 Delete Line</td><td><code>Ctrl+D</code></td><td><code>Ctrl+Y</code></td><td><code>Ctrl+Shift+K</code></td><td><code>Ctrl+Shift+K</code></td></tr><tr><td>复制行 Copy Line</td><td></td><td><code>Ctrl+C</code></td><td><code>Ctrl+C</code></td><td><code>Ctrl+C</code></td></tr><tr><td>剪切行 Cut Line</td><td></td><td><code>Ctrl+X</code></td><td><code>Ctrl+X</code></td><td><code>Ctrl+X</code></td></tr><tr><td>重复行 Duplicate Line</td><td><code>Ctrl+Shift+Up/Down</code></td><td><code>Ctrl+D</code></td><td><code>Alt+Shift+Up/Down</code></td><td><code>Ctrl+Shift+D</code></td></tr><tr><td>移动行 Move Line</td><td><code>Alt+Up/Down</code></td><td><code>Alt+Shift+Up/Down</code></td><td><code>Alt+Up/Down</code></td><td><code>Ctrl+Shift+Up/Down</code></td></tr><tr><td>换行 New Line</td><td><code>Shift+Enter</code></td><td><code>Shift+Enter</code></td><td><code>Shift+Enter</code></td><td><code>Ctrl+Enter</code></td></tr><tr><td>插入上行 Insert Line Above</td><td><code>Ctrl+Shift+Enter</code></td><td><code>Ctrl+Alt+Enter</code></td><td><code>Ctrl+Shift+Enter</code></td><td><code>Ctrl+Shift+Enter</code></td></tr><tr><td>注释 Comment</td><td><code>Ctrl+/</code></td><td><code>Ctrl+/</code></td><td><code>Ctrl+/</code></td><td><code>Ctrl+/</code></td></tr><tr><td>块注释 Block Comment</td><td><code>Ctrl+Shift+/</code> <code>Ctrl+Shift+\</code></td><td><code>Ctrl+Shift+/</code></td><td></td><td><code>Ctrl+Shift+/</code></td></tr><tr><td>选择块 Block Selection</td><td><code>Alt+Shift+Up/Down</code></td><td><code>Ctrl+W</code> <code>Ctrl+Shift+W</code></td><td><code>Alt+Shift+Right/Left</code></td><td></td></tr><tr><td>优化导包 Optimize Imports</td><td><code>Ctrl+Shift+O</code></td><td><code>Ctrl+Alt+O</code></td><td></td><td></td></tr><tr><td>代码提示 Code Assist</td><td><code>Alt+/</code></td><td><code>Ctrl+Space</code> <code>Ctrl+Shift+Space</code></td><td></td><td></td></tr><tr><td>代码补全 Code Completion</td><td><code>Ctrl+Alt+/</code><br />比较low</td><td><code>Ctrl+Shift+Enter</code></td><td></td><td></td></tr><tr><td>快速修复 Quick Fix</td><td><code>Ctrl+1</code></td><td><code>Alt+Enter</code></td><td></td><td></td></tr><tr><td>Quick Access</td><td><code>Ctrl+3</code></td><td><code>Double Shift</code></td><td></td><td></td></tr><tr><td>参数信息 Parameter Info</td><td><code>Alt+Shift+/</code><br />还不如 <code>Alt+/</code></td><td><code>Ctrl+P</code></td><td></td><td></td></tr><tr><td>查看API文档 Quick Document</td><td></td><td><code>Ctrl+Q</code></td><td></td><td></td></tr><tr><td>新建文件 New File</td><td><code>Alt+Shift+N</code> <code>Ctrl+N</code></td><td></td><td></td><td></td></tr><tr><td>激活编辑器 Active Editor</td><td><code>F12</code></td><td><code>Esc</code></td><td></td><td></td></tr><tr><td>全部小写</td><td><code>Ctrl+Shift+Y</code></td><td></td><td></td><td></td></tr><tr><td>全部大写</td><td><code>Ctrl+Shift+X</code></td><td></td><td></td><td></td></tr><tr><td><strong>导航 Navigation</strong></td><td></td><td></td><td></td><td></td></tr><tr><td>上/下一个Tab</td><td><code>Ctrl+PgUp/PgDn</code></td><td><code>Alt+Left/Right</code></td><td><code>Ctrl+PgUp/PgDn</code></td><td></td></tr><tr><td>上/下一个</td><td><code>Alt+Left/Right</code></td><td><code>Ctrl+Alt+Left/Right</code></td><td></td><td></td></tr><tr><td>上一处修改的地方</td><td><code>Ctrl+Q</code></td><td><code>Ctrl+Shift+Backspace</code></td><td></td><td></td></tr><tr><td>跳转到行 Go To Line</td><td><code>Ctrl+L</code></td><td><code>Ctrl+G</code></td><td></td><td></td></tr><tr><td>大纲/结构 Outline/Structure</td><td><code>Ctrl+O</code></td><td><code>Ctrl+F12</code></td><td></td><td></td></tr><tr><td>查看类层级 Type Hierarchy</td><td><code>Ctrl+T</code></td><td></td><td></td><td></td></tr><tr><td>查看最近文件 Recent File</td><td><code>Ctrl+E</code> <code>Ctrl+F6</code></td><td><code>Ctrl+E</code></td><td></td><td></td></tr><tr><td>跳到文件 Go To File</td><td><code>Ctrl+Shift+N</code></td><td></td><td></td><td></td></tr><tr><td>切换视图 Switch View</td><td><code>Ctrl+F7</code></td><td></td><td></td><td></td></tr><tr><td><strong>重构 Refator</strong></td><td></td><td></td><td></td><td></td></tr><tr><td>重命名 Rename</td><td><code>Alt+Shift+R</code></td><td><code>Shift+F6</code></td><td></td><td></td></tr><tr><td>提取变量 Extract Variable</td><td><code>Alt+Shift+L</code></td><td></td><td></td><td></td></tr><tr><td>提取方法 Extract Method</td><td><code>Alt+Shift+M</code></td><td></td><td></td><td></td></tr><tr><td><strong>搜索 Find</strong></td><td></td><td></td><td></td><td></td></tr><tr><td>查找下一个</td><td><code>Ctrl+K</code></td><td></td><td></td><td></td></tr><tr><td>查找上一个</td><td><code>Ctrl+Shfit+K</code></td><td></td><td></td><td></td></tr><tr><td>全局搜索</td><td><code>Ctrl+H</code></td><td></td><td></td><td></td></tr></tbody></table>]]></content>
+        <content type="html"><![CDATA[<h1 id="idea基础功能概览"><a class="markdownIt-Anchor" href="#idea基础功能概览"></a> IDEA基础功能概览：</h1><ul><li><p>shortcut(edit, 代码片段, 功能), 版本控制(VCS: git, github, local history)</p></li><li><p>Debug, javadoc generator, database, web deployment</p></li><li><p>project&amp;module 等概念, 模板, 项目结构查询管理</p></li></ul><a id="more"></a><h1 id="tips"><a class="markdownIt-Anchor" href="#tips"></a> Tips</h1><ul><li>代码段：main</li><li>sout标准输出</li><li>soutv输出变量，soutm输出方法名，soutp输出命令行参数</li><li>变量名.sout输出变量</li><li>iter增强型for循环</li><li>引用名.for 迭代指定引用类型</li><li>实例名.fori顺序遍历 xxx.forr倒序遍历</li><li>ifn --“if xxx is null”, inn --“if not null”</li><li>xxx.nn, xxx.ifn</li><li>JavaLea</li><li>条件断点 --右键断点处</li><li>ctrl+u 查看表达式的值</li><li>Tools javadoc generator:</li><li>Local: zh_CN; Other command line args: encoding UTF-8 -charset UTF-8</li><li>IDE 常用快捷键对照表（原始来源: <a href="https://www.jianshu.com/p/6267a7d76018">https://www.jianshu.com/p/6267a7d76018</a> )</li></ul><table><thead><tr><th>操作</th><th>eclipse</th><th>IDEA</th><th>Visual Studio Code</th><th>Sublime</th></tr></thead><tbody><tr><td><strong>编辑 Editing</strong></td><td></td><td></td><td></td><td></td></tr><tr><td>格式化代码 Format Code</td><td><code>Ctrl+Shift+F</code></td><td><code>Ctrl+Shift+L</code></td><td><code>Shift+Alt+F</code></td><td>无</td></tr><tr><td>删除行 Delete Line</td><td><code>Ctrl+D</code></td><td><code>Ctrl+Y</code></td><td><code>Ctrl+Shift+K</code></td><td><code>Ctrl+Shift+K</code></td></tr><tr><td>复制行 Copy Line</td><td></td><td><code>Ctrl+C</code></td><td><code>Ctrl+C</code></td><td><code>Ctrl+C</code></td></tr><tr><td>剪切行 Cut Line</td><td></td><td><code>Ctrl+X</code></td><td><code>Ctrl+X</code></td><td><code>Ctrl+X</code></td></tr><tr><td>重复行 Duplicate Line</td><td><code>Ctrl+Shift+Up/Down</code></td><td><code>Ctrl+D</code></td><td><code>Alt+Shift+Up/Down</code></td><td><code>Ctrl+Shift+D</code></td></tr><tr><td>移动行 Move Line</td><td><code>Alt+Up/Down</code></td><td><code>Alt+Shift+Up/Down</code></td><td><code>Alt+Up/Down</code></td><td><code>Ctrl+Shift+Up/Down</code></td></tr><tr><td>换行 New Line</td><td><code>Shift+Enter</code></td><td><code>Shift+Enter</code></td><td><code>Shift+Enter</code></td><td><code>Ctrl+Enter</code></td></tr><tr><td>插入上行 Insert Line Above</td><td><code>Ctrl+Shift+Enter</code></td><td><code>Ctrl+Alt+Enter</code></td><td><code>Ctrl+Shift+Enter</code></td><td><code>Ctrl+Shift+Enter</code></td></tr><tr><td>注释 Comment</td><td><code>Ctrl+/</code></td><td><code>Ctrl+/</code></td><td><code>Ctrl+/</code></td><td><code>Ctrl+/</code></td></tr><tr><td>块注释 Block Comment</td><td><code>Ctrl+Shift+/</code> <code>Ctrl+Shift+\</code></td><td><code>Ctrl+Shift+/</code></td><td></td><td><code>Ctrl+Shift+/</code></td></tr><tr><td>选择块 Block Selection</td><td><code>Alt+Shift+Up/Down</code></td><td><code>Ctrl+W</code> <code>Ctrl+Shift+W</code></td><td><code>Alt+Shift+Right/Left</code></td><td></td></tr><tr><td>优化导包 Optimize Imports</td><td><code>Ctrl+Shift+O</code></td><td><code>Ctrl+Alt+O</code></td><td></td><td></td></tr><tr><td>代码提示 Code Assist</td><td><code>Alt+/</code></td><td><code>Ctrl+Space</code> <code>Ctrl+Shift+Space</code></td><td></td><td></td></tr><tr><td>代码补全 Code Completion</td><td><code>Ctrl+Alt+/</code><br />比较low</td><td><code>Ctrl+Shift+Enter</code></td><td></td><td></td></tr><tr><td>快速修复 Quick Fix</td><td><code>Ctrl+1</code></td><td><code>Alt+Enter</code></td><td></td><td></td></tr><tr><td>Quick Access</td><td><code>Ctrl+3</code></td><td><code>Double Shift</code></td><td></td><td></td></tr><tr><td>参数信息 Parameter Info</td><td><code>Alt+Shift+/</code><br />还不如 <code>Alt+/</code></td><td><code>Ctrl+P</code></td><td></td><td></td></tr><tr><td>查看API文档 Quick Document</td><td></td><td><code>Ctrl+Q</code></td><td></td><td></td></tr><tr><td>新建文件 New File</td><td><code>Alt+Shift+N</code> <code>Ctrl+N</code></td><td></td><td></td><td></td></tr><tr><td>激活编辑器 Active Editor</td><td><code>F12</code></td><td><code>Esc</code></td><td></td><td></td></tr><tr><td>全部小写</td><td><code>Ctrl+Shift+Y</code></td><td></td><td></td><td></td></tr><tr><td>全部大写</td><td><code>Ctrl+Shift+X</code></td><td></td><td></td><td></td></tr><tr><td><strong>导航 Navigation</strong></td><td></td><td></td><td></td><td></td></tr><tr><td>上/下一个Tab</td><td><code>Ctrl+PgUp/PgDn</code></td><td><code>Alt+Left/Right</code></td><td><code>Ctrl+PgUp/PgDn</code></td><td></td></tr><tr><td>上/下一个</td><td><code>Alt+Left/Right</code></td><td><code>Ctrl+Alt+Left/Right</code></td><td></td><td></td></tr><tr><td>上一处修改的地方</td><td><code>Ctrl+Q</code></td><td><code>Ctrl+Shift+Backspace</code></td><td></td><td></td></tr><tr><td>跳转到行 Go To Line</td><td><code>Ctrl+L</code></td><td><code>Ctrl+G</code></td><td></td><td></td></tr><tr><td>大纲/结构 Outline/Structure</td><td><code>Ctrl+O</code></td><td><code>Ctrl+F12</code></td><td></td><td></td></tr><tr><td>查看类层级 Type Hierarchy</td><td><code>Ctrl+T</code></td><td></td><td></td><td></td></tr><tr><td>查看最近文件 Recent File</td><td><code>Ctrl+E</code> <code>Ctrl+F6</code></td><td><code>Ctrl+E</code></td><td></td><td></td></tr><tr><td>跳到文件 Go To File</td><td><code>Ctrl+Shift+N</code></td><td></td><td></td><td></td></tr><tr><td>切换视图 Switch View</td><td><code>Ctrl+F7</code></td><td></td><td></td><td></td></tr><tr><td><strong>重构 Refator</strong></td><td></td><td></td><td></td><td></td></tr><tr><td>重命名 Rename</td><td><code>Alt+Shift+R</code></td><td><code>Shift+F6</code></td><td></td><td></td></tr><tr><td>提取变量 Extract Variable</td><td><code>Alt+Shift+L</code></td><td></td><td></td><td></td></tr><tr><td>提取方法 Extract Method</td><td><code>Alt+Shift+M</code></td><td></td><td></td><td></td></tr><tr><td><strong>搜索 Find</strong></td><td></td><td></td><td></td><td></td></tr><tr><td>查找下一个</td><td><code>Ctrl+K</code></td><td></td><td></td><td></td></tr><tr><td>查找上一个</td><td><code>Ctrl+Shfit+K</code></td><td></td><td></td><td></td></tr><tr><td>全局搜索</td><td><code>Ctrl+H</code></td><td></td><td></td><td></td></tr></tbody></table>]]></content>
       
       
       <categories>
@@ -449,13 +449,13 @@
             
             <tag> 动态规划 </tag>
             
-            <tag> 搜索 </tag>
-            
-            <tag> 递归 </tag>
-            
             <tag> 贪心 </tag>
             
+            <tag> 搜索 </tag>
+            
             <tag> 排序 </tag>
+            
+            <tag> 递归 </tag>
             
             <tag> 图 </tag>
             
