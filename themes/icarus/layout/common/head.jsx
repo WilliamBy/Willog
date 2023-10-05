@@ -152,7 +152,7 @@ module.exports = class extends Component {
 
             {adsenseClientId ? <script data-ad-client={adsenseClientId}
                 src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js" async={true}></script> : null}
-            <script src="https://cdn.jsdelivr.net/npm/mermaid@8.8.2/dist/mermaid.min.js"></script>
+            <script src="https://cdn.jsdelivr.net/npm/mermaid@10.5.0/dist/mermaid.min.js"></script>
         </head>;
     }
 };
