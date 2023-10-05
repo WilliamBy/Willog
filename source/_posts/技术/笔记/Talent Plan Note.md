@@ -15,7 +15,6 @@ widgets:
     type: toc
 plugins:
   katex: false
-excerpt: TinyKV project
 categories:
   - 技术
   - 笔记
@@ -23,6 +22,7 @@ abbrlink: 47eaa8c7
 ---
 
 {% label TinyKV info %}
+<!--more-->
 
 # Project 1
 
@@ -73,10 +73,10 @@ abbrlink: 47eaa8c7
   - Raft：实现 raft 算法，`tick()` 时钟步进，`step()` 处理信号（本地消息直接step，msg中的消息是要发送的消息）
   - RawNode：在 `Raft` 基础上进一步封装，方便上层应用调用（ready，advance）
 
-``` mermaid
+<div class="mermaid">
 flowchart LR
     RaftLog --> Raft --> RawNode
-```
+</div>
 
 - 关于空日志 noop entry 的定义
 

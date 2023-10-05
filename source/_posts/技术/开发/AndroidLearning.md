@@ -4,6 +4,7 @@ categories:
   - 开发
 abbrlink: fae5c3cd
 ---
+<!--more-->
 # Android Studio 入坑笔记
 
 - Android Studio 自动创建 resource id 失败

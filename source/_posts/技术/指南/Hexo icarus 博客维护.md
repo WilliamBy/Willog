@@ -10,6 +10,7 @@ widgets:
   - position: left
     type: toc
 ---
+<!--more-->
 ## 基本指令
 
 ```plain 基本指令

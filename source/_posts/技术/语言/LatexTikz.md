@@ -6,7 +6,7 @@ abbrlink: 9b17222d
 tags:
   - Latex
 ---
-# Tikz 绘图学习笔记
+<!--more-->
 
 > 注意事项: \begin{tikzpicture} 环境下每一行命令结尾都要加分号;
 >

@@ -9,7 +9,7 @@ widgets: null
 abbrlink: 7a368ad4
 excerpt: "比较两种语言代码的不同，方便更好的记忆与理解 Kotlin 和 Java 的关系，体会语法糖的真香。"
 ---
-# Java & Kotlin 的语法片段对照
+<!--more-->
 
 ## 函数式 API
 

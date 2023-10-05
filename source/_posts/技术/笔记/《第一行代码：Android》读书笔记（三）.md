@@ -140,11 +140,11 @@ val notification = NotificationCompat.Builder(context, channelId: String)//通�
 
 - 通知属性(进阶)：`.setStyle()` 方法——让通知呈现富文本
 
-{% mermaid %}
+<div class="mermaid">
 flowchart TD
 	Style --> BigPictureStyle;
 	Style --> BigTextStyle
-{% endmermaid %}
+</div>
 
 ``` kotlin setStyle 举例
 //大图片
