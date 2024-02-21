@@ -19,9 +19,13 @@ categories:
   - 技术
   - 笔记
 abbrlink: 47eaa8c7
+top: 100
+thumbnail: 'https://picgo-1301429536.cos.ap-nanjing.myqcloud.com/img/talent.png'
 ---
 
-{% label TinyKV info %}
+{% label Project info %}
+
+{% label TinyKV warning%}
 
 <!--more-->
 
